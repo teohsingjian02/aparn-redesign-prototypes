@@ -1,7 +1,8 @@
-// Builds the three prototypes as independent static sites, each published to its own GitHub Pages repository:
+// Builds the four prototypes as independent static sites, each published to its own GitHub Pages repository:
 //   dist/aparn-prototypeA/   Concept A: Editorial Gallery
 //   dist/aparn-prototypeB/   Concept B: Living Network
 //   dist/aparn-prototypeC/   Concept C: Clear Signal
+//   dist/aparn-prototypeD/   Concept D: Monochrome
 // It also writes COMPARISON.md, PROPOSAL.md and SOURCES.md from the content files, then checks every page:
 // links and anchors resolve, the required wording is present, noindex is set, and there are no em dashes.
 //   node src/build.mjs
@@ -12,6 +13,7 @@ import { loadContent, esc, assertNoEmDash, STATUS } from "./lib.mjs";
 import { buildPages as buildA } from "./concept-a/pages.mjs";
 import { buildPages as buildB } from "./concept-b/pages.mjs";
 import { buildPages as buildC } from "./concept-c/pages.mjs";
+import { buildPages as buildD } from "./concept-d/pages.mjs";
 
 const ROOT_URL = new URL("../", import.meta.url);
 const ROOT = fileURLToPath(ROOT_URL);
@@ -32,8 +34,12 @@ const SITES = [
   { key: "a", ...D.sites.a, other: D.sites.b, build: buildA, css: "src/concept-a/a.css", cssName: "a.css", fonts: ["newsreader", "work-sans"] },
   { key: "b", ...D.sites.b, other: D.sites.a, build: buildB, css: "src/concept-b/b.css", cssName: "b.css", fonts: ["archivo"] },
   { key: "c", ...D.sites.c, other: D.sites.a, build: buildC, css: "src/concept-c/c.css", cssName: "c.css", fonts: ["roboto"], js: "src/concept-c/c.js" },
+  { key: "d", ...D.sites.d, other: D.sites.a, build: buildD, css: "src/concept-d/d.css", cssName: "d.css", fonts: ["manrope"], js: "src/concept-d/d.js" },
 ];
-const SHOT_FILES = ["a-home-desktop.jpg", "a-home-mobile.jpg", "b-home-desktop.jpg", "b-home-mobile.jpg", "c-home-desktop.jpg", "c-home-mobile.jpg", "greyscale-home.jpg"];
+const SHOT_FILES = [...SITES.flatMap((s) => [`${s.key}-home-desktop.jpg`, `${s.key}-home-mobile.jpg`]), "greyscale-home.jpg"];
+const COUNT = ["", "One", "Two", "Three", "Four", "Five", "Six"][SITES.length];
+const count = COUNT.toLowerCase();
+const GREY_H = Math.round(900 / SITES.length); // the greyscale strip: the home pages side by side, 1440 px wide in all
 
 // ------------------------------------------------------------------ helpers
 const files = (dir) => existsSync(dir) ? readdirSync(dir, { withFileTypes: true }).flatMap((d) => (d.isDirectory() ? files(join(dir, d.name)) : [join(dir, d.name)])) : [];
@@ -69,7 +75,7 @@ p{margin:0 0 .8rem}
 .lead{font-size:1.15rem;max-width:46rem}
 .sec{padding:2.4rem 0;border-bottom:1px solid var(--line)}
 .concepts{display:grid;gap:1.2rem}
-@media(min-width:64em){.concepts{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(min-width:64em){.concepts{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .concept{border:1px solid var(--line);display:grid;gap:.9rem;padding:1.3rem;align-content:start}
 .concept p{margin:0}
 .concept--a{background:var(--a);color:var(--a-ink);font-family:Georgia,"Times New Roman",serif}
@@ -79,6 +85,9 @@ p{margin:0 0 .8rem}
 .concept--b h2{font-family:"Arial Narrow",Arial,sans-serif;font-stretch:condensed;text-transform:uppercase;letter-spacing:.01em}
 .concept--c{background:#fff;color:#0A0F1C;border-color:#C9D1DE;border-radius:20px}
 .concept--c h2{font-family:Roboto,system-ui,sans-serif;font-weight:500;letter-spacing:-.02em}
+.concept--d{background:#0A0A0A;color:#F5F5F3;border-color:#0A0A0A;border-radius:20px}
+.concept--d a{color:#F5F5F3}
+.concept--d h2{font-family:Manrope,system-ui,sans-serif;font-weight:600;letter-spacing:-.03em}
 .here{font-family:system-ui,sans-serif;font-size:.74rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em}
 .shots{display:grid;grid-template-columns:3fr 1fr;gap:.7rem;align-items:start}
 .shots img{border:1px solid rgba(128,128,128,.45)}
@@ -88,6 +97,7 @@ p{margin:0 0 .8rem}
 .concept--a .open{background:var(--a-acc);border-color:var(--a-acc);color:#fff}
 .concept--b .open{background:var(--b-acc);border-color:var(--b-acc);color:#121212}
 .concept--c .open{background:#002FA7;border-color:#002FA7;color:#fff;border-radius:999px}
+.concept--d .open{background:#F5F5F3;border-color:#F5F5F3;color:#0A0A0A;border-radius:999px}
 .facts{font-family:system-ui,sans-serif;font-size:.92rem;display:grid;gap:.6rem;margin:0}
 .facts dt{font-weight:700;font-size:.74rem;text-transform:uppercase;letter-spacing:.08em}
 .facts dd{margin:0}
@@ -99,7 +109,7 @@ tbody th{width:20%}
 ul,ol{padding-left:1.25rem;margin:0}
 li{margin:.35rem 0}
 .cols{display:grid;gap:1.6rem}
-@media(min-width:64em){.cols{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(min-width:64em){.cols{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .grey figure{margin:0}
 .grey img{border:1px solid var(--line)}
 .grey figcaption{font-size:.85rem;color:var(--muted);margin-top:.4rem}
@@ -155,21 +165,21 @@ function conceptCard(site, s, cc) {
 function comparePage(site) {
   const cc = Object.fromEntries(h.concepts.map((x) => [x.id, x]));
   const body = `
-<header class="top"><div class="wrap"><p class="k">APARN website redesign</p><h1>Three prototypes for discussion</h1><p class="lead">${esc(h.intro)}</p><p class="meta">${esc(h.note)}</p></div></header>
-<section class="sec" aria-label="The three concepts"><div class="wrap"><div class="concepts">${SITES.map((s) => conceptCard(site, s, cc[s.key])).join("")}</div></div></section>
+<header class="top"><div class="wrap"><p class="k">APARN website redesign</p><h1>${COUNT} prototypes for discussion</h1><p class="lead">${esc(h.intro)}</p><p class="meta">${esc(h.note)}</p></div></header>
+<section class="sec" aria-label="The ${count} concepts"><div class="wrap"><div class="concepts">${SITES.map((s) => conceptCard(site, s, cc[s.key])).join("")}</div></div></section>
 <section class="sec" aria-labelledby="h-side"><div class="wrap"><h2 id="h-side">Side by side</h2>
 <table><thead><tr><th scope="col">Aspect</th>${SITES.map((s) => `<th scope="col">${esc(s.name)}</th>`).join("")}</tr></thead>
 <tbody>${h.compare.map(([k, ...vals]) => `<tr><th scope="row">${esc(k)}</th>${vals.map((v, i) => `<td data-label="${esc(SITES[i].short)}">${esc(v)}</td>`).join("")}</tr>`).join("")}</tbody></table></div></section>
-${shotsAvailable() ? `<section class="sec grey" aria-labelledby="h-grey"><div class="wrap"><h2 id="h-grey">The same pages in greyscale</h2><p>The three directions stay distinct without colour: serif type on warm light pages (A), heavy condensed type on dark pages (B), and open white space with rounded shapes (C).</p>
-<figure><img src="../assets/shots/greyscale-home.jpg" width="1440" height="300" alt="The three home pages side by side in greyscale: Concept A on the left, Concept B in the middle, Concept C on the right." loading="lazy"><figcaption>Home pages at desktop width, colour removed. Concept A left, Concept B middle, Concept C right.</figcaption></figure></div></section>` : ""}
+${shotsAvailable() ? `<section class="sec grey" aria-labelledby="h-grey"><div class="wrap"><h2 id="h-grey">The same pages in greyscale</h2><p>The ${count} directions stay distinct without colour: serif type on warm light pages (A), heavy condensed type on dark pages (B), open white space with rounded shapes (C), and black title areas over white pages ruled with hairlines (D).</p>
+<figure><img src="../assets/shots/greyscale-home.jpg" width="1440" height="${GREY_H}" alt="The ${count} home pages side by side in greyscale, from left to right: ${SITES.map((s) => `Concept ${s.key.toUpperCase()}`).join(", ")}." loading="lazy"><figcaption>Home pages at desktop width, colour removed. From left to right: ${SITES.map((s) => `Concept ${s.key.toUpperCase()}`).join(", ")}.</figcaption></figure></div></section>` : ""}
 <section class="sec" aria-labelledby="h-st"><div class="wrap"><h2 id="h-st">Strengths and trade-offs</h2><div class="cols">${h.concepts.map((x) => `<div><h3>${esc(D.sites[x.id].name)}</h3><p><strong>Strengths</strong></p><ul>${x.strengths.map((s) => `<li>${esc(s)}</li>`).join("")}</ul><p style="margin-top:.8rem"><strong>Trade-offs</strong></p><ul>${x.tradeoffs.map((s) => `<li>${esc(s)}</li>`).join("")}</ul></div>`).join("")}</div></div></section>
-<section class="sec" aria-labelledby="h-shared"><div class="wrap"><h2 id="h-shared">What all three share</h2><ul>${h.shared.map((s) => `<li>${esc(s)}</li>`).join("")}</ul>
+<section class="sec" aria-labelledby="h-shared"><div class="wrap"><h2 id="h-shared">What all ${count} share</h2><ul>${h.shared.map((s) => `<li>${esc(s)}</li>`).join("")}</ul>
 <div class="btns"><a class="btn" href="../downloads/${esc(T.files.docx)}" download>Template (DOCX, editable)</a><a class="btn" href="../downloads/${esc(T.files.pdf)}">Template (PDF)</a></div></div></section>
 <section class="sec" id="proposal" aria-labelledby="h-prop"><div class="wrap"><h2 id="h-prop">Proposal summary for ${esc(h.proposal.to)}</h2><p class="lead">${esc(h.proposal.summary)}</p>
 <ol>${h.proposal.points.map((p) => `<li><strong>${esc(p.title)}.</strong> ${esc(p.text)}</li>`).join("")}</ol><p style="margin-top:1rem">${esc(h.proposal.ask)}</p></div></section>
 <section class="sec" id="decisions" aria-labelledby="h-dec"><div class="wrap"><h2 id="h-dec">To confirm before launch</h2><ol>${c.sources.confirm.map((x) => `<li>${esc(x)}</li>`).join("")}</ol>
 <p style="margin-top:1rem"><a href="../sources/">Sources, credits and open questions</a> · <a href="${esc(D.source.url)}">Source code and content on GitHub</a></p></div></section>`;
-  return neutralPage({ site, depth: 1, title: "Compare the two concepts", description: h.intro, body });
+  return neutralPage({ site, depth: 1, title: "Compare the concepts", description: h.intro, body });
 }
 
 function sourcesPage(site) {
@@ -180,7 +190,7 @@ function sourcesPage(site) {
 <ul class="cards">${s.sources.map((x) => `<li id="src-${esc(x.id)}"><h3>${x.url ? `<a href="${esc(x.url)}" rel="noopener">${esc(x.title)}</a>` : esc(x.title)}</h3><p class="meta">${esc(x.date || "")}</p><p>${esc(x.used || "")}</p></li>`).join("")}</ul></div></section>
 <section class="sec" aria-labelledby="h-img"><div class="wrap"><h2 id="h-img">Images and credits</h2><p>Every photograph comes from aparn.net and keeps its published credit. Permission to reuse each one must be confirmed before launch. All other graphics are original to these prototypes.</p>
 <ul class="cards">${s.assets.map((x) => `<li><h3>${esc(x.title)}</h3><p>${esc(x.credit)}</p><p class="meta">Source: ${esc(c.sourceById[x.source]?.title || x.source)}. ${esc(x.permission)}</p></li>`).join("")}</ul>
-<p class="meta" style="margin-top:1rem">Fonts: Newsreader and Work Sans (Concept A), Archivo (Concept B) and Roboto (Concept C and the template), served from this site. All are under the SIL Open Font License 1.1.</p></div></section>
+<p class="meta" style="margin-top:1rem">Fonts: Newsreader and Work Sans (Concept A), Archivo (Concept B), Roboto (Concept C and the template) and Manrope (Concept D), served from this site. All are under the SIL Open Font License 1.1.</p></div></section>
 <section class="sec" aria-labelledby="h-conf"><div class="wrap"><h2 id="h-conf">To confirm before launch</h2><ol>${s.confirm.map((x) => `<li>${esc(x)}</li>`).join("")}</ol></div></section>
 <section class="sec" aria-labelledby="h-ref"><div class="wrap"><h2 id="h-ref">Design references</h2><p>${esc(s.referencesNote)}</p>
 <ul class="cards">${s.references.map((x) => `<li><h3><a href="${esc(x.url)}" rel="noopener">${esc(x.site)}</a></h3><p><strong>Observed:</strong> ${esc(x.observed)}</p><p><strong>Idea taken forward:</strong> ${esc(x.idea)}</p></li>`).join("")}</ul></div></section>
@@ -268,11 +278,11 @@ ${x.tradeoffs.map((s) => `- ${s}`).join("\n")}
 |---|${SITES.map(() => "---").join("|")}|
 ${h.compare.map((r) => `| ${r.map(mdEsc).join(" | ")} |`).join("\n")}
 
-## What all three share
+## What all ${count} share
 
 ${h.shared.map((s) => `- ${s}`).join("\n")}
 
-Screenshots are in [screenshots/](screenshots/). The three home pages in greyscale are in [screenshots/greyscale-home.jpg](screenshots/greyscale-home.jpg).
+Screenshots are in [screenshots/](screenshots/). The ${count} home pages in greyscale are in [screenshots/greyscale-home.jpg](screenshots/greyscale-home.jpg).
 `);
 
 writeFileSync(join(ROOT, "PROPOSAL.md"), `# Proposal summary for ${h.proposal.to}
@@ -318,7 +328,7 @@ ${c.sources.sources.map((s) => `| ${s.id} | ${s.url ? `[${mdEsc(s.title)}](${s.u
 |---|---|---|---|---|
 ${c.sources.assets.map((a) => `| ${mdEsc(a.title)} | ${a.files.map((f) => `\`${f}\``).join(", ")} | ${mdEsc(a.credit)} | ${a.source} | ${mdEsc(a.permission)} |`).join("\n")}
 
-All other graphics (Concept A's isles plates, Concept B's poster cards, Concept C's transit diagram and orbit, icons) are original to these prototypes. Fonts: Newsreader and Work Sans (Concept A), Archivo (Concept B) and Roboto (Concept C and the template), all SIL Open Font License 1.1, from Google Fonts, self-hosted.
+All other graphics (Concept A's isles plates, Concept B's poster cards, Concept C's transit diagram and orbit, Concept D's meeting dial and opening titles, icons) are original to these prototypes. Fonts: Newsreader and Work Sans (Concept A), Archivo (Concept B), Roboto (Concept C and the template) and Manrope (Concept D), all SIL Open Font License 1.1, from Google Fonts, self-hosted.
 
 ## To confirm before launch
 
@@ -339,7 +349,7 @@ ${c.sources.references.map((r) => `| [${mdEsc(r.site)}](${r.url}) | ${mdEsc(r.ob
 | \`content/site.json\` | Name, join link and wording, key messages, About text, dated evidence, membership benefits, contact |
 | \`content/people.json\` | The Director and convenors: roles, institutions, short biographies, emails, sources |
 | \`content/events.json\` | Every APARN Conference and every APARN Gathering at the SAR Conference, with status, dates, place, host, programme, organisers and links |
-| \`content/network.json\` | Places, practices, outputs and the documented connections used by both network explorers |
+| \`content/network.json\` | Places, practices, outputs and the documented connections used by the network explorers |
 | \`content/contributions.json\` | The ${c.contributions.items.length} pieces in APARN's JAR channel, used by the research filter |
 | \`content/publications.json\` | Existing publications and the proposed Annual Publication |
 | \`content/template.json\` | The shared template: sections, draft limits, presentation guide; drives the DOCX, PDF and web preview |
@@ -349,24 +359,12 @@ ${c.sources.references.map((r) => `| [${mdEsc(r.site)}](${r.url}) | ${mdEsc(r.ob
 
 ## Pages
 
-### ${D.sites.a.name} (${D.sites.a.url})
+${SITES.map((s) => `### ${s.name} (${s.url})
 
 | Path | Title |
 |---|---|
-${pageList("a")}
-
-### ${D.sites.b.name} (${D.sites.b.url})
-
-| Path | Title |
-|---|---|
-${pageList("b")}
-
-### ${D.sites.c.name} (${D.sites.c.url})
-
-| Path | Title |
-|---|---|
-${pageList("c")}
-
+${pageList(s.key)}
+`).join("\n")}
 Each site also has \`compare/\` (the comparison and proposal summary), \`sources/\` (this inventory as a page), \`downloads/\` (the template) and a \`404.html\` page.
 `);
 

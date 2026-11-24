@@ -1,7 +1,7 @@
-# APARN website redesign: three prototypes
+# APARN website redesign: four prototypes
 
-Three working prototypes for a new website for the Asia Pacific Artistic Research Network (APARN), prepared for
-Dr Roopesh Sitharan, Director of APARN. All three use the same checked content and the same functions, so they can be
+Four working prototypes for a new website for the Asia Pacific Artistic Research Network (APARN), prepared for
+Dr Roopesh Sitharan, Director of APARN. All four use the same checked content and the same functions, so they can be
 compared fairly. They differ in art direction and in how you move through them.
 
 | | Live prototype | Built site repository |
@@ -9,8 +9,9 @@ compared fairly. They differ in art direction and in how you move through them.
 | Concept A: Editorial Gallery | https://teohsingjian02.github.io/aparn-prototypeA/ | https://github.com/teohsingjian02/aparn-prototypeA |
 | Concept B: Living Network | https://teohsingjian02.github.io/aparn-prototypeB/ | https://github.com/teohsingjian02/aparn-prototypeB |
 | Concept C: Clear Signal | https://teohsingjian02.github.io/aparn-prototypeC/ | https://github.com/teohsingjian02/aparn-prototypeC |
+| Concept D: Monochrome | https://teohsingjian02.github.io/aparn-prototypeD/ | https://github.com/teohsingjian02/aparn-prototypeD |
 
-This repository holds the source: content, code, the shared template, screenshots and documents. The three site
+This repository holds the source: content, code, the shared template, screenshots and documents. The four site
 repositories only receive the built output. Each site also has a `compare/` page (the comparison and the proposal
 summary) and a `sources/` page (sources, credits and open questions).
 
@@ -26,13 +27,14 @@ engines not to index it.
 | `src/concept-a/` | Concept A page templates (`pages.mjs`) and stylesheet (`a.css`) |
 | `src/concept-b/` | Concept B page templates (`pages.mjs`) and stylesheet (`b.css`) |
 | `src/concept-c/` | Concept C page templates (`pages.mjs`), stylesheet (`c.css`) and script (`c.js`: the network orbit, section index and sliding navigation bar) |
-| `src/shared/motion.js` | Motion shared by all three: smooth scrolling, back to top, progress line, scroll reveals, counters, press ripple, the Animations switch |
-| `src/shared/aparn.js` | The small script all three sites share: menus, explorers, filters, timeline, connection board, demo. No libraries, no tracking, nothing stored |
-| `src/build.mjs` | Builds both sites into `dist/` and checks them |
+| `src/concept-d/` | Concept D page templates (`pages.mjs`), stylesheet (`d.css`) and script (`d.js`: the opening titles, section index, sliding navigation bar and the light that follows the pointer) |
+| `src/shared/motion.js` | Motion shared by all four: smooth scrolling, back to top, progress line, scroll reveals, counters, press ripple |
+| `src/shared/aparn.js` | The small script all four sites share: menus, explorers, filters, timeline, connection board, demo. No libraries, no tracking, nothing stored |
+| `src/build.mjs` | Builds the four sites into `dist/` and checks them |
 | `static/` | Fonts, optimised images and the template downloads (DOCX and PDF) |
 | `tools/` | Template generator, Word PDF export, local server, browser tests, screenshots, deploy |
-| `screenshots/` | Desktop, tablet and phone screenshots of all three concepts, plus a greyscale comparison |
-| `COMPARISON.md` | The three concepts compared: art direction, user experience, strengths and trade-offs |
+| `screenshots/` | Desktop, tablet and phone screenshots of all four concepts, plus a greyscale comparison |
+| `COMPARISON.md` | The four concepts compared: art direction, user experience, strengths and trade-offs |
 | `PROPOSAL.md` | The short proposal summary for Dr Roopesh |
 | `SOURCES.md` | The source and content inventory: sources, dates, image credits, items to confirm, page list |
 
@@ -50,8 +52,8 @@ The only dependency is `docx`, used to generate the template. The sites themselv
 ## Build, preview and test
 
 ```
-npm run build        # writes dist/aparn-prototypeA, B and C, then checks them
-npm run serve        # http://127.0.0.1:8137/aparn-prototypeA/, /aparn-prototypeB/ and /aparn-prototypeC/
+npm run build        # writes dist/aparn-prototypeA, B, C and D, then checks them
+npm run serve        # http://127.0.0.1:8137/aparn-prototypeA/ (and B, C and D)
 npm test             # every page at 360, 768 and 1440 px, plus menus, explorers, filters and the demo
 npm run shots        # the tests, then fresh screenshots in screenshots/
 npm run test:live    # the same tests against the published sites
@@ -82,7 +84,7 @@ Each concept is its own GitHub Pages site, published from the `main` branch, fol
 
 ```
 npm run build
-npm run deploy       # pushes dist/aparn-prototypeA, B and C to their repositories
+npm run deploy       # pushes dist/aparn-prototypeA, B, C and D to their repositories
 ```
 
 `tools/deploy.mjs` uses your normal git login (Git Credential Manager on Windows) and never prints credentials.
@@ -91,7 +93,7 @@ GitHub Pages usually publishes within a minute or two. Then run `npm run test:li
 First-time setup for a new owner or repository name:
 
 1. Change `owner`, the repository names, `base` and `url` in `content/deploy.json`.
-2. Create three empty public repositories with those names on GitHub.
+2. Create four empty public repositories with those names on GitHub.
 3. Run `npm run build` and `npm run deploy`.
 4. In each repository: Settings, Pages, Build and deployment, Source: Deploy from a branch, Branch: `main`, `/ (root)`.
 
@@ -100,7 +102,7 @@ addresses show the site's own `404.html`.
 
 ## Motion
 
-All three concepts animate (shared script `src/shared/motion.js`, plus Concept C's `c.js` for its orbit and index):
+All four concepts animate (shared script `src/shared/motion.js`, plus Concept C's `c.js` and Concept D's `d.js`):
 links within a page scroll smoothly up and down, a back-to-top button and a reading-progress line appear as you
 scroll, content glides in from the direction you scroll, figures count up, headlines rise in word by word,
 buttons respond when pressed, gradient headline words keep flowing and pages fade into each other.
@@ -113,6 +115,15 @@ adds the class `anim` only when `prefers-reduced-motion` is not `reduce`. Nothin
 
 A small round button at the bottom of Concept C's footer switches to an inverted, dark palette and back, with a
 soft fade. The choice is remembered in that browser (localStorage, key `aparn-invert`).
+
+## The opening of Concept D
+
+Concept D's home page opens like a film when a visitor arrives from outside the site (a direct visit, a shared link
+or another site): the APARN mark appears on black, a sweep of light crosses it and the curtain lifts on the title,
+in about two seconds. Any key, click, touch or scroll ends it at once, and moving between pages of the site does not
+play it again. Nothing is stored to decide this: the page looks only at where the visitor came from
+(`document.referrer`). Below the title, a dial marks every APARN Conference since 2019, and its hand lights each
+meeting as it passes.
 
 ## Updating content
 
@@ -142,7 +153,7 @@ facts were checked on 24 November 2026.
 
 ## Before a production launch
 
-1. Choose a direction: Concept A, Concept B, or a combination.
+1. Choose a direction: Concept A, B, C or D, or a combination.
 2. Confirm the open items in `SOURCES.md`, especially the Director title and start date on aparn.net and SAR's page,
    APARN2027 details, whether and how the 2027 SAR gathering runs, and the publication's editors, publisher, schedule
    and licence.

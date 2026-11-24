@@ -44,7 +44,7 @@ Source and content inventory for the APARN redesign prototypes. All pages were r
 | Edition plates, line drawings, network diagrams | `drawn SVG and CSS elements` | Made for these prototypes | null | Original. No third-party assets. |
 | Portraits of the Director and convenors | `convenor-*.webp` | Supplied by the APARN project team, November 2026. Photographers to be confirmed. | team-2026-11 | Supplied for this proposal. Confirm each photographer’s credit and each person’s consent to publish before launch. |
 
-All other graphics (Concept A's isles plates, Concept B's poster cards, Concept C's transit diagram and orbit, icons) are original to these prototypes. Fonts: Newsreader and Work Sans (Concept A), Archivo (Concept B) and Roboto (Concept C and the template), all SIL Open Font License 1.1, from Google Fonts, self-hosted.
+All other graphics (Concept A's isles plates, Concept B's poster cards, Concept C's transit diagram and orbit, Concept D's meeting dial and opening titles, icons) are original to these prototypes. Fonts: Newsreader and Work Sans (Concept A), Archivo (Concept B), Roboto (Concept C and the template) and Manrope (Concept D), all SIL Open Font License 1.1, from Google Fonts, self-hosted.
 
 ## To confirm before launch
 
@@ -78,7 +78,7 @@ References were studied for ideas only. Neither prototype copies their layouts, 
 | `content/site.json` | Name, join link and wording, key messages, About text, dated evidence, membership benefits, contact |
 | `content/people.json` | The Director and convenors: roles, institutions, short biographies, emails, sources |
 | `content/events.json` | Every APARN Conference and every APARN Gathering at the SAR Conference, with status, dates, place, host, programme, organisers and links |
-| `content/network.json` | Places, practices, outputs and the documented connections used by both network explorers |
+| `content/network.json` | Places, practices, outputs and the documented connections used by the network explorers |
 | `content/contributions.json` | The 28 pieces in APARN's JAR channel, used by the research filter |
 | `content/publications.json` | Existing publications and the proposed Annual Publication |
 | `content/template.json` | The shared template: sections, draft limits, presentation guide; drives the DOCX, PDF and web preview |
@@ -143,6 +143,33 @@ References were studied for ideas only. Neither prototype copies their layouts, 
 | `archive/sar2027/` | APARN Gathering at SAR 2027 · APARN |
 
 ### Concept C: Clear Signal (https://teohsingjian02.github.io/aparn-prototypeC/)
+
+| Path | Title |
+|---|---|
+| `/` | Home · APARN |
+| `about/` | About · APARN |
+| `network/` | Network · APARN |
+| `programme/` | Programme · APARN |
+| `programme/conference/` | APARN Conference · APARN |
+| `programme/gathering-at-sar/` | APARN Gathering at the SAR Conference · APARN |
+| `publication/` | Publication · APARN |
+| `template/` | Template for Annual Publication · APARN |
+| `contribute/` | Contribute · APARN |
+| `archive/` | Archive · APARN |
+| `archive/aparn2019/` | APARN 2019 · APARN |
+| `archive/aparn2020/` | APARN2020 · APARN |
+| `archive/aparn2021/` | APARN2021 · APARN |
+| `archive/aparn2022/` | #APARN2022 · APARN |
+| `archive/aparn2023/` | APARN2023 · APARN |
+| `archive/aparn2024/` | APARN2024 · APARN |
+| `archive/aparn2025/` | APARN2025 · APARN |
+| `archive/sar2025/` | APARN Gathering at SAR 2025 · APARN |
+| `archive/aparn2026/` | ADPRex × APARN 2026 · APARN |
+| `archive/sar2026/` | APARN Gathering at SAR 2026 · APARN |
+| `archive/aparn2027/` | APARN2027 · APARN |
+| `archive/sar2027/` | APARN Gathering at SAR 2027 · APARN |
+
+### Concept D: Monochrome (https://teohsingjian02.github.io/aparn-prototypeD/)
 
 | Path | Title |
 |---|---|

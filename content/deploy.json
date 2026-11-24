@@ -26,6 +26,13 @@
       "url": "https://teohsingjian02.github.io/aparn-prototypeC/",
       "name": "Concept C: Clear Signal",
       "short": "Clear Signal"
+    },
+    "d": {
+      "repo": "aparn-prototypeD",
+      "base": "/aparn-prototypeD/",
+      "url": "https://teohsingjian02.github.io/aparn-prototypeD/",
+      "name": "Concept D: Monochrome",
+      "short": "Monochrome"
     }
   }
 }

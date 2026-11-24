@@ -454,7 +454,7 @@ html:not(.js) .filter-controls, html:not(.js) .filter-buttons { display: none; }
 /* ---------------------------------------------------------------- submission demo (shared markup) */
 .demo { max-width: 52rem; display: grid; gap: 1.3rem; }
 .demo-title { font-size: clamp(1.9rem, 3vw, 2.5rem); }
-.demo-banner { display: flex; gap: .6rem; align-items: center; padding: .95rem 1.3rem; border-radius: 20px; background: var(--grad-soft); font-family: var(--sans); font-size: 1rem; color: var(--ink); }
+.demo-banner { display: block; padding: .95rem 1.3rem; border-radius: 20px; background: var(--grad-soft); font-family: var(--sans); font-size: 1rem; color: var(--ink); }
 .demo-banner strong { color: var(--accent); }
 .demo-steps { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: .5rem; font-family: var(--sans); font-size: .92rem; }
 @media (min-width: 48em) { .demo-steps { grid-template-columns: repeat(4, 1fr); } }

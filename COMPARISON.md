@@ -1,10 +1,11 @@
-# APARN website redesign: three prototypes: comparison
+# APARN website redesign: four prototypes: comparison
 
-Three directions for a new website for the Asia Pacific Artistic Research Network (APARN), prepared for Dr Roopesh Sitharan, Director of APARN. All three use the same checked content and the same functions, so they can be compared fairly. They differ in look, tone and the way you move through them.
+Four directions for a new website for the Asia Pacific Artistic Research Network (APARN), prepared for Dr Roopesh Sitharan, Director of APARN. All four use the same checked content and the same functions, so they can be compared fairly. They differ in look, tone and the way you move through them.
 
 - Concept A: Editorial Gallery: https://teohsingjian02.github.io/aparn-prototypeA/
 - Concept B: Living Network: https://teohsingjian02.github.io/aparn-prototypeB/
 - Concept C: Clear Signal: https://teohsingjian02.github.io/aparn-prototypeC/
+- Concept D: Monochrome: https://teohsingjian02.github.io/aparn-prototypeD/
 
 ## Concept A: Editorial Gallery
 
@@ -23,7 +24,7 @@ Calm, warm and editorial: large serif headlines on light pages, made for easy re
 
 **Trade-offs**
 
-- The quietest of the three: activity is told more than shown.
+- The quietest of the four: activity is told more than shown.
 - Depends on strong images and good writing to stay lively.
 
 ## Concept B: Living Network
@@ -47,7 +48,7 @@ Bold, luminous and energetic: a network glowing in the dark.
 
 ## Concept C: Clear Signal
 
-Clean, precise and technological: the clearest hierarchy of the three.
+Clean, precise and technological: the most technological of the four.
 
 **Art direction.** White pages with a blue-to-violet gradient, Roboto in a strict scale, rounded buttons and cards, and an original two-line transit diagram of every gathering since 2019 that draws itself.
 
@@ -64,22 +65,42 @@ Clean, precise and technological: the clearest hierarchy of the three.
 - Less artistic character than A or B; the diagrams carry the personality.
 - White, rounded interfaces are common; the gradient and diagrams keep it distinct.
 
+## Concept D: Monochrome
+
+Classic, low-key and strong: black title areas and a strict black and grey hierarchy, like the opening of a film.
+
+**Art direction.** Black title areas over calm white reading pages, Manrope (the typeface of aparn.net) in a strict black and grey hierarchy, hairlines instead of boxes, black and white pill buttons, a few words in polished silver, and an original dial that marks every APARN Conference since 2019.
+
+**How it works.** The home page opens like a film: the APARN mark appears on black with a sweep of light, then the curtain lifts on one large title and a dial whose hand sweeps past every meeting, lighting each one as it passes. Below it, the same calm home page as the others, with a section index. Light follows the pointer across the black title areas, a hairline draws across above every section and rows turn black as you point at them. The Network page has a tabbed explorer beside a reading panel, and the archive is a register of every gathering with filters.
+
+**Strengths**
+
+- The most serious and confident of the four: it feels important from the first second.
+- Closest to the current aparn.net (Manrope, black and grey), so it reads as a step forward rather than a break.
+- A very clear hierarchy: black for what matters, grey for what supports it.
+- Photographs and artworks stand out against the restrained palette.
+
+**Trade-offs**
+
+- The opening titles take about two seconds on a first visit (any key, click or scroll skips them).
+- Without colour, warmth has to come from the photographs and the wording.
+
 ## Side by side
 
-| Aspect | Concept A: Editorial Gallery | Concept B: Living Network | Concept C: Clear Signal |
-|---|---|---|---|
-| Feeling | Calm, warm, editorial | Bold, luminous, energetic | Clean, precise, technological |
-| First screen | A serif headline that rises in word by word, the Join button and the artwork | A poster headline with a gliding gradient, the Join button and the glowing artwork | A headline that rises in, the Join button and a transit diagram that draws itself |
-| Type | Newsreader serif with Work Sans | Archivo condensed at poster scale | Roboto in a strict scale |
-| Colour | Warm off-white with a cinnabar-to-amber gradient | Near-black with jade, cyan, amber and red gradients | White with a blue-to-violet gradient |
-| Navigation | Rounded menu links; a drop-down menu on phones | Slim bar with Explore, Take part and Publish; a full-screen index | Sliding indicator, section index and back-to-top; a full-screen menu on phones |
-| Network | Tabbed index beside a reading panel | Connection board with links that draw themselves | An orbit that re-centres on whatever you choose |
-| Archive | Horizontal timeline with year plates | Poster wall with filters | A vertical timeline with filters |
-| Original graphics | Gradient isles plates | Gradient poster cards | Transit lines and the network orbit |
-| In greyscale | Light pages, serif type, soft shading | Dark pages, heavy condensed type, glowing lines | White space, sans-serif type, rounded shapes |
-| Best if APARN wants | A warm, scholarly home that reads easily | A vivid community that stands out | A clear, modern site that is quickest to navigate |
+| Aspect | Concept A: Editorial Gallery | Concept B: Living Network | Concept C: Clear Signal | Concept D: Monochrome |
+|---|---|---|---|---|
+| Feeling | Calm, warm, editorial | Bold, luminous, energetic | Clean, precise, technological | Classic, serious, low-key but strong |
+| First screen | A serif headline that rises in word by word, the Join button and the artwork | A poster headline with a gliding gradient, the Join button and the glowing artwork | A headline that rises in, the Join button and a transit diagram that draws itself | Opening titles on black, then a large title, the Join button and a dial that marks every meeting |
+| Type | Newsreader serif with Work Sans | Archivo condensed at poster scale | Roboto in a strict scale | Manrope, the typeface of aparn.net, in a strict scale |
+| Colour | Warm off-white with a cinnabar-to-amber gradient | Near-black with jade, cyan, amber and red gradients | White with a blue-to-violet gradient | Black title areas and white pages in a black and grey hierarchy |
+| Navigation | Rounded menu links; a drop-down menu on phones | Slim bar with Explore, Take part and Publish; a full-screen index | Sliding indicator, section index and back-to-top; a full-screen menu on phones | Sliding indicator, section index and back-to-top; a full-screen black menu on phones |
+| Network | Tabbed index beside a reading panel | Connection board with links that draw themselves | An orbit that re-centres on whatever you choose | Tabbed index beside a reading panel |
+| Archive | Horizontal timeline with year plates | Poster wall with filters | A vertical timeline with filters | A register of every gathering with filters |
+| Original graphics | Gradient isles plates | Gradient poster cards | Transit lines and the network orbit | The meeting dial and the opening titles |
+| In greyscale | Light pages, serif type, soft shading | Dark pages, heavy condensed type, glowing lines | White space, sans-serif type, rounded shapes | Black title areas, white pages and hairlines |
+| Best if APARN wants | A warm, scholarly home that reads easily | A vivid community that stands out | A clear, modern site that is quickest to navigate | A serious, classic presence that feels important |
 
-## What all three share
+## What all four share
 
 - “Join APARN” opens the APARN Google Group. It sits in the header, the phone menu, the opening screen, after the network section and in a closing invitation, with a note that joining happens on Google Groups.
 - Across the network: dated evidence that keeps members, conference participation, host locations and project locations apart.
@@ -89,6 +110,6 @@ Clean, precise and technological: the clearest hierarchy of the three.
 - A submission demo in four steps: download, prepare, add details, review. It asks only for what is needed, the publication checkbox starts unchecked, and nothing is uploaded, sent or stored.
 - An archive of every gathering since 2019, with programmes, organisers and links to the published work.
 - Content kept in JSON files, pages readable without JavaScript, keyboard and screen-reader support, and layouts checked at 360, 768 and 1440 pixels.
-- Smooth motion in all three: links scroll smoothly up and down, sections glide in from the direction you scroll, figures count up, headlines rise in and their gradient words keep flowing, buttons respond to a press and pages fade into each other.
+- Smooth motion in all four: links scroll smoothly up and down, sections glide in from the direction you scroll, figures count up, headlines rise in and their gradient words keep flowing, buttons respond to a press and pages fade into each other.
 
-Screenshots are in [screenshots/](screenshots/). The three home pages in greyscale are in [screenshots/greyscale-home.jpg](screenshots/greyscale-home.jpg).
+Screenshots are in [screenshots/](screenshots/). The four home pages in greyscale are in [screenshots/greyscale-home.jpg](screenshots/greyscale-home.jpg).

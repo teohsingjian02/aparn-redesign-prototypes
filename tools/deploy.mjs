@@ -1,6 +1,7 @@
-// Publishes the two built sites to their own GitHub Pages repositories (branch main, folder / (root)):
+// Publishes each built site to its own GitHub Pages repository (branch main, folder / (root)), for every site in
+// content/deploy.json (A, B, C and D):
 //   dist/aparn-prototypeA  ->  github.com/<owner>/aparn-prototypeA  ->  https://<owner>.github.io/aparn-prototypeA/
-//   dist/aparn-prototypeB  ->  github.com/<owner>/aparn-prototypeB  ->  https://<owner>.github.io/aparn-prototypeB/
+//   ...and the same for B, C and D.
 // Run `npm run build` first. Uses your normal git login (for example Git Credential Manager) and never prints credentials.
 //   npm run deploy
 import { execFileSync } from "node:child_process";

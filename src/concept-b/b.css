@@ -441,7 +441,7 @@ html:not(.js) .filter-controls, html:not(.js) .filter-buttons { display: none; }
 /* ---------------------------------------------------------------- submission demo (shared markup) */
 .demo { max-width: 52rem; display: grid; gap: 1.3rem; }
 .demo-title { font-weight: 850; font-stretch: 76%; font-size: clamp(2rem, 4vw, 3rem); line-height: 1; }
-.demo-banner { display: flex; gap: .6rem; align-items: center; padding: .95rem 1.3rem; border-radius: 20px; background: linear-gradient(110deg, rgba(255, 194, 61, .18), rgba(255, 90, 78, .1)); color: var(--ink); }
+.demo-banner { display: block; padding: .95rem 1.3rem; border-radius: 20px; background: linear-gradient(110deg, rgba(255, 194, 61, .18), rgba(255, 90, 78, .1)); color: var(--ink); }
 .demo-banner strong { color: #FFD36E; }
 .demo-steps { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: .5rem; font-size: .92rem; }
 @media (min-width: 48em) { .demo-steps { grid-template-columns: repeat(4, 1fr); } }

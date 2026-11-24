@@ -10,6 +10,7 @@ const FAMILIES = {
   "work-sans": "family=Work+Sans:wght@400..700",
   "archivo": "family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900",
   "roboto": "family=Roboto:ital,wght@0,300..700;1,300..700",
+  "manrope": "family=Manrope:wght@300..800",
 };
 const only = process.argv.slice(2); // optional: fetch only the named families
 for (const [name, q] of Object.entries(FAMILIES)) {

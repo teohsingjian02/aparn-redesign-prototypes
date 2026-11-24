@@ -504,8 +504,8 @@ html:not(.js) .filter-controls, html:not(.js) .filter-buttons { display: none; }
 /* ---------------------------------------------------------------- submission demo (shared markup) */
 .demo { max-width: 52rem; display: grid; gap: 1.3rem; }
 .demo-title { font-size: clamp(1.8rem, 3vw, 2.3rem); letter-spacing: -.02em; }
-.demo-banner { display: flex; gap: .6rem; align-items: center; background: var(--blue-soft); color: var(--blue-ink); padding: .9rem 1.2rem; border-radius: var(--r); }
-.demo-banner::before { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--blue); flex: none; }
+.demo-banner { position: relative; display: block; background: var(--blue-soft); color: var(--blue-ink); padding: .9rem 1.2rem .9rem 2.6rem; border-radius: var(--r); }
+.demo-banner::before { content: ""; position: absolute; left: 1.2rem; top: 50%; margin-top: -5px; width: 10px; height: 10px; border-radius: 50%; background: var(--blue); }
 .demo-steps { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: .5rem; font-size: .9rem; counter-reset: none; }
 @media (min-width: 48em) { .demo-steps { grid-template-columns: repeat(4, 1fr); } }
 .demo-steps li { position: relative; padding: .7rem .9rem; border-radius: 999px; background: var(--bg-2); color: var(--ink-3); font-weight: 500; transition: background-color .3s var(--ease), color .3s var(--ease); }
