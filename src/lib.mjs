@@ -121,7 +121,7 @@ export function nodePanel(c, concept, page, idx, id, tag = "article") {
   const n = idx.nodes[id];
   const typeName = { person: "Person", place: "Place", activity: "Activity", practice: "Practice", output: "Output" }[n.type];
   let body = "", srcIds = [];
-  if (n.type === "person") { const p = c.personById[id]; body = `<p class="panel-roles">${p.roles.map(esc).join(" · ")}</p><p>${esc(p.bio)}</p>`; srcIds = p.sources; }
+  if (n.type === "person") { const p = c.personById[id]; body = `${personImg(page, p, { cls: "panel-photo", sizes: "112px" })}<p class="panel-roles">${p.roles.map(esc).join(" · ")}</p><p>${esc(p.bio)}</p>`; srcIds = p.sources; }
   if (n.type === "place") { const p = c.placeById[id]; body = `<p class="panel-kinds">${p.kinds.map((k) => `<span class="kind kind--${k}">${esc(c.network.placeKinds[k])}</span>`).join(" ")}</p><p>${esc(p.text)}</p>`; srcIds = p.sources; }
   if (n.type === "activity") { const e = c.eventById[id]; body = `<p class="panel-meta">${statusChip(e.status, e.statusLabel)} <span>${esc(e.dates.display)}</span> <span>${esc([e.place.city, e.place.country].filter((x, i, a) => x && a.indexOf(x) === i).join(", "))}</span></p><p>${esc(e.summary)}</p>`; srcIds = e.sources; }
   if (n.type === "practice") { const t = c.practiceById[id]; body = `<p>${esc(t.text)}</p>`; srcIds = t.sources; }
@@ -283,10 +283,9 @@ export function assertNoEmDash(html, where) {
 }
 
 // ------------------------------------------------------------------ motion helpers shared by the three concepts
-// Runs in <head> before anything is drawn: motion is on when the device allows it, or when the visitor has
-// turned on the Animations switch (remembered in localStorage as "aparn-motion").
-export const HEAD_MOTION = `<script>(function () { var r = document.documentElement, m = null; r.classList.add("js"); try { m = localStorage.getItem("aparn-motion"); } catch (e) {} var q = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches; if (m === "on" || (m !== "off" && !q)) r.classList.add("anim"); if (m === "off") r.classList.add("motion-off"); })();</script>`;
-export const motionSwitch = () => `<button type="button" class="motion-sw" data-motion-toggle aria-pressed="false" hidden><span>Animations</span><span class="motion-sw-k" aria-hidden="true"></span></button>`;
+// Runs in <head> before anything is drawn: animations are always on (the owner's choice).
+export const HEAD_MOTION = `<script>document.documentElement.classList.add("js", "anim");</script>`;
+export const motionSwitch = () => ""; // no on/off switch: animations are always on
 export const progressBar = () => `<div class="progress" aria-hidden="true"><span data-progress></span></div>`;
 export const toTop = () => `<a class="totop" href="#main" data-totop><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M10 16V4M5 9l5-5 5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="vh">Back to top</span></a>`;
 // A headline whose words rise in one after another. `grad` lists words drawn with the concept's gradient.
@@ -346,4 +345,28 @@ export function homeClosing(c) {
   return `<section class="hclose" id="join" aria-labelledby="h-join"><div class="wrap" data-rise>
   <h2 class="hclose-h" id="h-join">Join the conversation</h2>${joinButton(c, "btn btn--join btn--lg")}
 </div></section>`;
+}
+
+// ------------------------------------------------------------------ portraits of the Director and convenors
+export function personImg(page, p, { sizes = "(min-width: 64em) 16vw, 45vw", cls = "", eager = false } = {}) {
+  if (!p.photo) return "";
+  const srcset = [360, 720].map((w) => `${rel(page, `assets/img/${p.photo}-${w}.webp`)} ${w}w`).join(", ");
+  return `<img class="${cls}" src="${rel(page, `assets/img/${p.photo}-360.webp`)}" srcset="${srcset}" sizes="${sizes}" width="720" height="804" alt="Portrait of ${esc(p.name)}" ${eager ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async">`;
+}
+export function homePeople(c, page, base = "") {
+  return `<section class="hsec hsec--people" id="people" aria-labelledby="h-people"><div class="wrap">
+  <h2 class="hh2" id="h-people" data-rise>The people behind APARN</h2>
+  <ul class="hpeople">${c.people.people.map((p, i) => `<li data-rise style="--i:${i}"><a href="${rel(page, `${base}about/#${p.id}`)}"><span class="hpeople-img">${personImg(page, p)}</span><span class="hpeople-n">${esc(p.name)}</span><span class="hpeople-r">${esc(p.roles[0].replace(" (from 2026)", ""))}</span></a></li>`).join("")}</ul>
+</div></section>`;
+}
+
+// ------------------------------------------------------------------ the APARN logo and favicon (supplied by the project team)
+export function brandLogo(page, { tone = "black", cls = "brand-logo", alt = "APARN, Asia Pacific Artistic Research Network", sizes = "220px", lazy = false } = {}) {
+  const f = (w) => rel(page, `assets/brand/logo-${tone}-${w}.png`);
+  return `<img class="${cls}" src="${f(300)}" srcset="${f(300)} 300w, ${f(600)} 600w" sizes="${sizes}" width="300" height="99" alt="${esc(alt)}"${lazy ? ' loading="lazy"' : ""} decoding="async">`;
+}
+export function faviconLinks(page) {
+  return `<link rel="icon" href="${rel(page, "assets/brand/favicon-32.png")}" sizes="32x32" type="image/png">
+<link rel="icon" href="${rel(page, "assets/brand/favicon-192.png")}" sizes="192x192" type="image/png">
+<link rel="apple-touch-icon" href="${rel(page, "assets/brand/apple-touch-icon.png")}">`;
 }

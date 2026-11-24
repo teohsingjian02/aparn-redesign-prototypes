@@ -103,13 +103,11 @@ addresses show the site's own `404.html`.
 All three concepts animate (shared script `src/shared/motion.js`, plus Concept C's `c.js` for its orbit and index):
 links within a page scroll smoothly up and down, a back-to-top button and a reading-progress line appear as you
 scroll, content glides in from the direction you scroll, figures count up, headlines rise in word by word,
-buttons respond when pressed and pages fade into each other.
+buttons respond when pressed, gradient headline words keep flowing and pages fade into each other.
 
-Motion follows the device setting for reduced motion. Many Windows computers have "Animation effects" turned off
-(Settings, Accessibility, Visual effects), which asks every website to reduce motion; the sites then start still and
-show a small prompt, **Turn on animations**. The **Animations** switch in each footer turns motion on or off. The
-choice is remembered in that browser (localStorage, key `aparn-motion`) and applies to all three sites, because they
-share one address. Nothing else is stored.
+Animations are always on, as requested, including on devices whose owners ask for reduced motion (on Windows,
+"Animation effects" turned off). To respect that setting again, change `HEAD_MOTION` in `src/lib.mjs` so that it
+adds the class `anim` only when `prefers-reduced-motion` is not `reduce`. Nothing is stored in the browser.
 
 ## Updating content
 

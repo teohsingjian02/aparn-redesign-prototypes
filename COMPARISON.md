@@ -88,7 +88,7 @@ Clean, precise and technological: the clearest hierarchy of the three.
 - The template as an editable DOCX, a PDF reading copy and a web preview, with a presentation guide built on the same structure.
 - A submission demo in four steps: download, prepare, add details, review. It asks only for what is needed, the publication checkbox starts unchecked, and nothing is uploaded, sent or stored.
 - An archive of every gathering since 2019, with programmes, organisers and links to the published work.
-- Content kept in JSON files, pages readable without JavaScript, keyboard and screen-reader support, reduced motion respected, and layouts checked at 360, 768 and 1440 pixels.
-- Smooth motion in all three: links scroll smoothly up and down, sections glide in from the direction you scroll, figures count up, buttons respond to a press and pages fade into each other. Motion follows the device setting, and an Animations switch turns it on or off.
+- Content kept in JSON files, pages readable without JavaScript, keyboard and screen-reader support, and layouts checked at 360, 768 and 1440 pixels.
+- Smooth motion in all three: links scroll smoothly up and down, sections glide in from the direction you scroll, figures count up, headlines rise in and their gradient words keep flowing, buttons respond to a press and pages fade into each other.
 
 Screenshots are in [screenshots/](screenshots/). The three home pages in greyscale are in [screenshots/greyscale-home.jpg](screenshots/greyscale-home.jpg).

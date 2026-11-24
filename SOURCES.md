@@ -31,6 +31,7 @@ Source and content inventory for the APARN redesign prototypes. All pages were r
 
 | Image | Files | Credit | Source | Permission |
 |---|---|---|---|---|
+| APARN logo and favicon | `brand/logo-*.png`, `brand/favicon-*.png`, `favicon.ico` | Supplied by the APARN project team, November 2026. | team-2026-11 | Supplied for this proposal. Confirm these are the approved versions before launch. |
 | Léuli Eshrāghi, re(cul)naissance, 2020 | `eshraghi-reculnaissance-2020-*.webp` | Installation view, 22nd Biennale of Sydney (2020), Cockatoo Island. Commissioned by the Biennale of Sydney. Courtesy the artist. Photograph: Jessica Maurer. | aparn-2020 | Published on aparn.net with this credit. Confirm reuse with the artist and photographer before launch. |
 | Raqs Media Collective | `raqs-media-collective-*.webp` | Photographer not credited on aparn.net | aparn-2020 | To be confirmed: credit and permission. |
 | Victoria Hunt (image from the APARN2020 speaker page) | `victoria-hunt-*.webp` | Photographer not credited on aparn.net | aparn-2020 | To be confirmed: credit, the people shown and permission. |
@@ -41,6 +42,7 @@ Source and content inventory for the APARN redesign prototypes. All pages were r
 | Image from the APARN2021 page (leaves and berries) | `aparn2021-leaves-*.webp` | Not credited on aparn.net | aparn-2021 | To be confirmed: credit and permission. |
 | Newsreader, Work Sans, Archivo, IBM Plex Mono | `assets/fonts/*.woff2` | Google Fonts | null | SIL Open Font License 1.1. Self-hosted. |
 | Edition plates, line drawings, network diagrams | `drawn SVG and CSS elements` | Made for these prototypes | null | Original. No third-party assets. |
+| Portraits of the Director and convenors | `convenor-*.webp` | Supplied by the APARN project team, November 2026. Photographers to be confirmed. | team-2026-11 | Supplied for this proposal. Confirm each photographer’s credit and each person’s consent to publish before launch. |
 
 All other graphics (Concept A's isles plates, Concept B's poster cards, Concept C's transit diagram and orbit, icons) are original to these prototypes. Fonts: Newsreader and Work Sans (Concept A), Archivo (Concept B) and Roboto (Concept C and the template), all SIL Open Font License 1.1, from Google Fonts, self-hosted.
 
@@ -53,7 +55,7 @@ All other graphics (Concept A's isles plates, Concept B's poster cards, Concept 
 5. Whether the 2025 yearbook pilot (SAR’s APARN page) was published.
 6. How the June 2026 online gathering during SAR’s Galway forum went (it was announced in the January 2026 newsletter).
 7. Rebordering the Archipelago: the JAR channel dates it 2024, the January 2026 newsletter 2025 (it was launched in Porto in 2025).
-8. Credits and permissions for every reused image, especially the three images without a stated credit.
+8. Credits and permissions for every image, including the five portraits and the three images without a stated credit.
 9. Which contact addresses to publish (Director, convenors, or one shared APARN address).
 10. Approved member-location data, if APARN wants to show where members are based.
 11. The YouTube channel handle (@APARN202, as printed in the 2024 info pack).
@@ -90,81 +92,81 @@ References were studied for ideas only. Neither prototype copies their layouts, 
 
 | Path | Title |
 |---|---|
-| `/` | Home · APARN · Concept A prototype |
-| `about/` | About · APARN · Concept A prototype |
-| `network/` | Network · APARN · Concept A prototype |
-| `programme/` | Programme · APARN · Concept A prototype |
-| `programme/conference/` | APARN Conference · APARN · Concept A prototype |
-| `programme/gathering-at-sar/` | APARN Gathering at the SAR Conference · APARN · Concept A prototype |
-| `publication/` | Publication · APARN · Concept A prototype |
-| `template/` | Template for Annual Publication · APARN · Concept A prototype |
-| `contribute/` | Contribute · APARN · Concept A prototype |
-| `archive/` | Archive · APARN · Concept A prototype |
-| `archive/aparn2019/` | APARN 2019 · APARN · Concept A prototype |
-| `archive/aparn2020/` | APARN2020 · APARN · Concept A prototype |
-| `archive/aparn2021/` | APARN2021 · APARN · Concept A prototype |
-| `archive/aparn2022/` | #APARN2022 · APARN · Concept A prototype |
-| `archive/aparn2023/` | APARN2023 · APARN · Concept A prototype |
-| `archive/aparn2024/` | APARN2024 · APARN · Concept A prototype |
-| `archive/aparn2025/` | APARN2025 · APARN · Concept A prototype |
-| `archive/sar2025/` | APARN Gathering at SAR 2025 · APARN · Concept A prototype |
-| `archive/aparn2026/` | ADPRex × APARN 2026 · APARN · Concept A prototype |
-| `archive/sar2026/` | APARN Gathering at SAR 2026 · APARN · Concept A prototype |
-| `archive/aparn2027/` | APARN2027 · APARN · Concept A prototype |
-| `archive/sar2027/` | APARN Gathering at SAR 2027 · APARN · Concept A prototype |
+| `/` | Home · APARN |
+| `about/` | About · APARN |
+| `network/` | Network · APARN |
+| `programme/` | Programme · APARN |
+| `programme/conference/` | APARN Conference · APARN |
+| `programme/gathering-at-sar/` | APARN Gathering at the SAR Conference · APARN |
+| `publication/` | Publication · APARN |
+| `template/` | Template for Annual Publication · APARN |
+| `contribute/` | Contribute · APARN |
+| `archive/` | Archive · APARN |
+| `archive/aparn2019/` | APARN 2019 · APARN |
+| `archive/aparn2020/` | APARN2020 · APARN |
+| `archive/aparn2021/` | APARN2021 · APARN |
+| `archive/aparn2022/` | #APARN2022 · APARN |
+| `archive/aparn2023/` | APARN2023 · APARN |
+| `archive/aparn2024/` | APARN2024 · APARN |
+| `archive/aparn2025/` | APARN2025 · APARN |
+| `archive/sar2025/` | APARN Gathering at SAR 2025 · APARN |
+| `archive/aparn2026/` | ADPRex × APARN 2026 · APARN |
+| `archive/sar2026/` | APARN Gathering at SAR 2026 · APARN |
+| `archive/aparn2027/` | APARN2027 · APARN |
+| `archive/sar2027/` | APARN Gathering at SAR 2027 · APARN |
 
 ### Concept B: Living Network (https://teohsingjian02.github.io/aparn-prototypeB/)
 
 | Path | Title |
 |---|---|
-| `/` | Home · APARN · Concept B prototype |
-| `about/` | About · APARN · Concept B prototype |
-| `network/` | Network · APARN · Concept B prototype |
-| `programme/` | Programme · APARN · Concept B prototype |
-| `programme/conference/` | APARN Conference · APARN · Concept B prototype |
-| `programme/gathering-at-sar/` | APARN Gathering at the SAR Conference · APARN · Concept B prototype |
-| `publication/` | Publication · APARN · Concept B prototype |
-| `template/` | Template for Annual Publication · APARN · Concept B prototype |
-| `contribute/` | Contribute · APARN · Concept B prototype |
-| `archive/` | Archive · APARN · Concept B prototype |
-| `archive/aparn2019/` | APARN 2019 · APARN · Concept B prototype |
-| `archive/aparn2020/` | APARN2020 · APARN · Concept B prototype |
-| `archive/aparn2021/` | APARN2021 · APARN · Concept B prototype |
-| `archive/aparn2022/` | #APARN2022 · APARN · Concept B prototype |
-| `archive/aparn2023/` | APARN2023 · APARN · Concept B prototype |
-| `archive/aparn2024/` | APARN2024 · APARN · Concept B prototype |
-| `archive/aparn2025/` | APARN2025 · APARN · Concept B prototype |
-| `archive/sar2025/` | APARN Gathering at SAR 2025 · APARN · Concept B prototype |
-| `archive/aparn2026/` | ADPRex × APARN 2026 · APARN · Concept B prototype |
-| `archive/sar2026/` | APARN Gathering at SAR 2026 · APARN · Concept B prototype |
-| `archive/aparn2027/` | APARN2027 · APARN · Concept B prototype |
-| `archive/sar2027/` | APARN Gathering at SAR 2027 · APARN · Concept B prototype |
+| `/` | Home · APARN |
+| `about/` | About · APARN |
+| `network/` | Network · APARN |
+| `programme/` | Programme · APARN |
+| `programme/conference/` | APARN Conference · APARN |
+| `programme/gathering-at-sar/` | APARN Gathering at the SAR Conference · APARN |
+| `publication/` | Publication · APARN |
+| `template/` | Template for Annual Publication · APARN |
+| `contribute/` | Contribute · APARN |
+| `archive/` | Archive · APARN |
+| `archive/aparn2019/` | APARN 2019 · APARN |
+| `archive/aparn2020/` | APARN2020 · APARN |
+| `archive/aparn2021/` | APARN2021 · APARN |
+| `archive/aparn2022/` | #APARN2022 · APARN |
+| `archive/aparn2023/` | APARN2023 · APARN |
+| `archive/aparn2024/` | APARN2024 · APARN |
+| `archive/aparn2025/` | APARN2025 · APARN |
+| `archive/sar2025/` | APARN Gathering at SAR 2025 · APARN |
+| `archive/aparn2026/` | ADPRex × APARN 2026 · APARN |
+| `archive/sar2026/` | APARN Gathering at SAR 2026 · APARN |
+| `archive/aparn2027/` | APARN2027 · APARN |
+| `archive/sar2027/` | APARN Gathering at SAR 2027 · APARN |
 
 ### Concept C: Clear Signal (https://teohsingjian02.github.io/aparn-prototypeC/)
 
 | Path | Title |
 |---|---|
-| `/` | Home · APARN · Concept C prototype |
-| `about/` | About · APARN · Concept C prototype |
-| `network/` | Network · APARN · Concept C prototype |
-| `programme/` | Programme · APARN · Concept C prototype |
-| `programme/conference/` | APARN Conference · APARN · Concept C prototype |
-| `programme/gathering-at-sar/` | APARN Gathering at the SAR Conference · APARN · Concept C prototype |
-| `publication/` | Publication · APARN · Concept C prototype |
-| `template/` | Template for Annual Publication · APARN · Concept C prototype |
-| `contribute/` | Contribute · APARN · Concept C prototype |
-| `archive/` | Archive · APARN · Concept C prototype |
-| `archive/aparn2019/` | APARN 2019 · APARN · Concept C prototype |
-| `archive/aparn2020/` | APARN2020 · APARN · Concept C prototype |
-| `archive/aparn2021/` | APARN2021 · APARN · Concept C prototype |
-| `archive/aparn2022/` | #APARN2022 · APARN · Concept C prototype |
-| `archive/aparn2023/` | APARN2023 · APARN · Concept C prototype |
-| `archive/aparn2024/` | APARN2024 · APARN · Concept C prototype |
-| `archive/aparn2025/` | APARN2025 · APARN · Concept C prototype |
-| `archive/sar2025/` | APARN Gathering at SAR 2025 · APARN · Concept C prototype |
-| `archive/aparn2026/` | ADPRex × APARN 2026 · APARN · Concept C prototype |
-| `archive/sar2026/` | APARN Gathering at SAR 2026 · APARN · Concept C prototype |
-| `archive/aparn2027/` | APARN2027 · APARN · Concept C prototype |
-| `archive/sar2027/` | APARN Gathering at SAR 2027 · APARN · Concept C prototype |
+| `/` | Home · APARN |
+| `about/` | About · APARN |
+| `network/` | Network · APARN |
+| `programme/` | Programme · APARN |
+| `programme/conference/` | APARN Conference · APARN |
+| `programme/gathering-at-sar/` | APARN Gathering at the SAR Conference · APARN |
+| `publication/` | Publication · APARN |
+| `template/` | Template for Annual Publication · APARN |
+| `contribute/` | Contribute · APARN |
+| `archive/` | Archive · APARN |
+| `archive/aparn2019/` | APARN 2019 · APARN |
+| `archive/aparn2020/` | APARN2020 · APARN |
+| `archive/aparn2021/` | APARN2021 · APARN |
+| `archive/aparn2022/` | #APARN2022 · APARN |
+| `archive/aparn2023/` | APARN2023 · APARN |
+| `archive/aparn2024/` | APARN2024 · APARN |
+| `archive/aparn2025/` | APARN2025 · APARN |
+| `archive/sar2025/` | APARN Gathering at SAR 2025 · APARN |
+| `archive/aparn2026/` | ADPRex × APARN 2026 · APARN |
+| `archive/sar2026/` | APARN Gathering at SAR 2026 · APARN |
+| `archive/aparn2027/` | APARN2027 · APARN |
+| `archive/sar2027/` | APARN Gathering at SAR 2027 · APARN |
 
 Each site also has `compare/` (the comparison and proposal summary), `sources/` (this inventory as a page), `downloads/` (the template) and a `404.html` page.

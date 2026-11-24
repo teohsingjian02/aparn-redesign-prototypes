@@ -3,7 +3,7 @@
 import {
   esc, rel, statusChip, sourceLinks, img, figure, ext, EXT, joinButton, templateButton, eventPath, nodeIndex, nodePanel,
   contributionsFilter, templatePreview, templateLimitsLine, presentationGuide, downloads, submissionDemo, recordModel, IMAGES,
-  HEAD_MOTION, motionSwitch, progressBar, toTop, riseWords, riseH1, countUp, homeFigures, homeWhy, homeTakePart, homeClosing, ARROW,
+  HEAD_MOTION, motionSwitch, progressBar, toTop, riseWords, riseH1, countUp, homeFigures, homeWhy, homeTakePart, homeClosing, ARROW, homePeople, personImg, brandLogo, faviconLinks,
 } from "../lib.mjs";
 
 const C = ""; // Concept A is the whole of its own site, so its pages sit at the site root
@@ -42,10 +42,10 @@ function shell(c, page, { title, description, active, body }) {
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>${esc(title)} · APARN · Concept A prototype</title>
+<title>${esc(title)} · APARN</title>
 <meta name="description" content="${esc(description)}">
 <meta name="theme-color" content="#F4EFE6">
-<link rel="icon" href="${rel(page, P("assets/icon.svg"))}" type="image/svg+xml">
+${faviconLinks(page)}
 <link rel="preload" href="${rel(page, "assets/fonts/newsreader-normal-latin-3.woff2")}" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="${rel(page, P("assets/a.css"))}">
 ${HEAD_MOTION}
@@ -56,7 +56,7 @@ ${HEAD_MOTION}
 <a class="skip" href="#main">Skip to content</a>
 <header class="masthead" data-top>
   <div class="masthead-inner">
-    <a class="wordmark" href="${rel(page, P(""))}">${isles(2019, { w: 64, h: 22, cls: "wordmark-isles" })}<span class="wordmark-short">APARN</span><span class="wordmark-full">Asia Pacific Artistic Research Network</span></a>
+    <a class="wordmark" href="${rel(page, P(""))}">${brandLogo(page, { alt: "APARN home", sizes: "150px" })}</a>
     <nav class="site-nav" aria-label="Main">
       <button class="menu-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="site-menu">Menu</button>
       <div class="site-menu" id="site-menu">
@@ -74,8 +74,8 @@ ${riseH1(body)}
 <footer class="colophon">
   <div class="colophon-inner">
     <div class="colophon-lead">
-      <p class="colophon-mark">APARN</p>
-      <p>${esc(c.site.name)}: a Special Interest Group of the ${ext("https://societyforartisticresearch.org/", "Society for Artistic Research")}.</p>
+      <p class="colophon-mark">${brandLogo(page, { cls: "colophon-logo", sizes: "180px", lazy: true })}</p>
+      <p>A Special Interest Group of the ${ext("https://societyforartisticresearch.org/", "Society for Artistic Research")}.</p>
       ${joinButton(c, "btn btn--join")}
       <p class="colophon-small">${esc(c.site.join.where)}</p>
     </div>
@@ -92,17 +92,6 @@ ${riseH1(body)}
         <li>${ext("https://sar2027.eu/sk", "SAR 2027, Bratislava")}</li>
         <li>${ext(c.site.officialSite, "The current aparn.net")}</li>
       </ul>
-    </div>
-    <div>
-      <h2 class="colophon-h">About this prototype</h2>
-      <p class="colophon-small">A redesign proposal for discussion. Content checked ${esc(c.site.lastChecked)}. Proposals are marked as such.</p>
-      <ul class="colophon-list">
-        <li><a href="${rel(page, "compare/")}">Compare all three concepts</a></li>
-        <li><a href="${rel(page, "sources/")}">Sources, credits and open questions</a></li>
-        <li><a href="${esc(c.deploy.sites.b.url)}">See Concept B: Living Network</a></li>
-        <li><a href="${esc(c.deploy.sites.c.url)}">See Concept C: Clear Signal</a></li>
-      </ul>
-      ${motionSwitch()}
     </div>
   </div>
 </footer>
@@ -174,6 +163,7 @@ function home(c) {
   <figure class="hero-art">${img(page, "eshraghi", { sizes: "(min-width: 64em) 44vw, 100vw", eager: true })}<figcaption>${esc(IMAGES.eshraghi.caption)} ${esc(IMAGES.eshraghi.credit)}</figcaption></figure>
 </div></section>
 ${homeFigures(c, page, C)}
+${homePeople(c, page, C)}
 ${homeWhy(c)}
 ${homeTakePart(c, page, C)}
 ${homeClosing(c)}`;
@@ -215,7 +205,7 @@ function about(c) {
   <h2 id="h-people" class="h2">Director and convenors</h2>
   <p class="lead-s">The convenors look after the network. Each annual conference also has its own organising team, listed in the <a href="${rel(page, P("archive/"))}">archive</a>.</p>
   <div class="people-cat">${c.people.people.map((p, i) => `<article class="person" id="${p.id}" data-rise>
-    <p class="person-n">${String(i + 1).padStart(2, "0")}</p>
+    <div class="person-photo">${personImg(page, p, { sizes: "(min-width: 48em) 10rem, 7rem" })}</div>
     <div><h3 class="person-name">${esc(p.honorific)} ${esc(p.name)}</h3>
     <p class="person-roles">${p.roles.map(esc).join(" · ")}</p>
     <p class="person-inst">${esc(p.institution)}, ${esc(p.country)}</p>

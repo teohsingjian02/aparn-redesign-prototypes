@@ -738,3 +738,35 @@ body::before { content: ""; position: fixed; z-index: -1; width: 64vmax; height:
 .motion-toast { position: fixed; left: 16px; right: 16px; bottom: 16px; z-index: 70; max-width: 30rem; display: grid; gap: .8rem; padding: 1.1rem 1.2rem; border-radius: 24px; background: #fff; box-shadow: 0 24px 60px -20px rgba(0, 33, 122, .4); color: var(--ink-2); font-size: .98rem; }
 .motion-toast-act { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem 1rem; }
 .motion-toast-x { background: none; border: 0; padding: .4rem .2rem; color: var(--ink-3); font-weight: 500; cursor: pointer; text-decoration: underline; }
+
+/* gradient words keep flowing, always (the colour drifts slowly along the word) */
+.grad-t { background-image: linear-gradient(90deg, #002FA7 0%, #2F55F4 25%, #7B61FF 50%, #2F55F4 75%, #002FA7 100%); background-size: 200% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; }
+.anim .wi.grad-t { animation: c-word .95s var(--ease) both, c-flow 6s linear infinite; animation-delay: calc(.12s + var(--d) * 75ms), 0s; }
+@keyframes c-flow { from { background-position: 0% 0; } to { background-position: -200% 0; } }
+
+/* the people behind APARN: portraits unveil as they scroll into view and zoom gently on hover */
+.hpeople { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2.2rem 1.2rem; margin-top: 2.6rem; }
+@media (min-width: 48em) { .hpeople { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (min-width: 64em) { .hpeople { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1.6rem; } }
+.hpeople a { display: grid; gap: .5rem; text-decoration: none; }
+.hpeople-img { display: block; overflow: hidden; border-radius: 24px; transform: translateZ(0); }
+.hpeople-img img { width: 100%; aspect-ratio: 895 / 1000; object-fit: cover; transition: transform .9s var(--ease); }
+.hpeople a:hover .hpeople-img img, .hpeople a:focus-visible .hpeople-img img { transform: scale(1.06); }
+.motion .hpeople li[data-rise] { transition-delay: calc(var(--i) * 110ms); }
+.motion .hpeople .hpeople-img { clip-path: inset(0 0 0 0); transition: clip-path 1.2s var(--ease) calc(var(--i) * 110ms + .15s); }
+.motion .hpeople li:not(.is-in) .hpeople-img { clip-path: inset(100% 0 0 0); }
+.motion .hpeople li:not(.is-in) .hpeople-img img { transform: scale(1.15); }
+.motion .hpeople .hpeople-img img { transition: transform 1.4s var(--ease) calc(var(--i) * 110ms + .15s); }
+.hpeople-img { background: var(--bg-2); box-shadow: 0 24px 50px -32px rgba(0, 33, 122, .5); }
+.hpeople-n { font-size: 1.12rem; font-weight: 500; line-height: 1.25; color: var(--ink); margin-top: .5rem; }
+.hpeople-r { font-size: .9rem; color: var(--ink-3); }
+.person-photo { overflow: hidden; border-radius: 20px; margin-bottom: .4rem; }
+.person-photo img { width: 100%; aspect-ratio: 895 / 1000; object-fit: cover; }
+.cpanel-photo { width: 104px; height: 104px; border-radius: 50%; object-fit: cover; box-shadow: 0 16px 34px -18px rgba(0, 33, 122, .5); }
+
+@media (min-width: 64em) { .foot-in { grid-template-columns: 1.6fr 1fr 1fr; } }
+
+/* the APARN logo */
+.logo img { display: block; height: 42px; width: auto; }
+@media (max-width: 47.99em) { .logo img { height: 34px; } }
+.foot .logo img { height: 54px; }

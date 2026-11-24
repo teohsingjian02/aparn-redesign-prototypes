@@ -1,17 +1,12 @@
 /* APARN prototypes: shared motion for all three concepts (no dependencies).
    Smooth scrolling up and down, a reading-progress line, back to top, content that rises in from the side you
-   scroll from, counting figures, a soft press ripple on buttons, and the Animations switch.
-   Motion follows the device setting (prefers-reduced-motion). A visitor can turn it on or off; that one choice is
-   remembered in localStorage under "aparn-motion". Nothing else is stored and nothing is sent anywhere.
-   The page head adds class "anim" to <html> when motion is allowed, before anything is drawn. */
+   scroll from, counting figures and a soft press ripple on buttons. Animations are always on: the page head adds
+   class "anim" to <html>. Nothing is stored and nothing is sent anywhere. */
 (function () {
   "use strict";
-  var d = document, root = d.documentElement, KEY = "aparn-motion";
-  var reduceQuery = window.matchMedia ? window.matchMedia("(prefers-reduced-motion: reduce)") : { matches: false };
+  var d = document, root = d.documentElement;
   function still() { return !root.classList.contains("anim"); }
   function each(list, fn) { Array.prototype.forEach.call(list, fn); }
-  function stored() { try { return window.localStorage.getItem(KEY); } catch (e) { return null; } }
-  function store(v) { try { window.localStorage.setItem(KEY, v); } catch (e) { /* storage may be blocked */ } }
   var riseOn = false, countOn = false;
 
   /* header state, reading progress and the back-to-top button */
@@ -123,35 +118,6 @@
     d.addEventListener("animationend", function (e) { if (e.animationName === "m-ripple") e.target.classList.remove("is-rippling"); });
   }
 
-  /* the Animations switch (footer) and, on devices that ask for reduced motion, a one-time prompt */
-  function setMotion(on) {
-    root.classList.toggle("anim", on);
-    root.classList.toggle("motion-off", !on);
-    store(on ? "on" : "off");
-    if (on) { initRise(); initCount(); } else { root.classList.remove("motion"); }
-    each(d.querySelectorAll("[data-motion-toggle]"), function (b) { b.setAttribute("aria-pressed", on ? "true" : "false"); });
-    var t = d.querySelector(".motion-toast");
-    if (t) t.parentNode.removeChild(t);
-  }
-  function initSwitch() {
-    each(d.querySelectorAll("[data-motion-toggle]"), function (btn) {
-      btn.hidden = false;
-      btn.setAttribute("aria-pressed", still() ? "false" : "true");
-      btn.addEventListener("click", function () { setMotion(still()); });
-    });
-    if (!reduceQuery.matches || stored()) return;
-    var toast = d.createElement("div");
-    toast.className = "motion-toast";
-    toast.setAttribute("role", "region");
-    toast.setAttribute("aria-label", "Animations");
-    toast.innerHTML = '<p>Animations are off because this device asks for reduced motion.</p>' +
-      '<div class="motion-toast-act"><button type="button" class="btn btn--primary btn--sm" data-motion-on>Turn on animations</button>' +
-      '<button type="button" class="motion-toast-x" data-motion-keep>Keep off</button></div>';
-    d.body.appendChild(toast);
-    toast.querySelector("[data-motion-on]").addEventListener("click", function () { setMotion(true); });
-    toast.querySelector("[data-motion-keep]").addEventListener("click", function () { setMotion(false); });
-  }
-
-  function init() { initSwitch(); initScroll(); initSmooth(); initRise(); initCount(); initPress(); }
+  function init() { initScroll(); initSmooth(); initRise(); initCount(); initPress(); }
   if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); else init();
 })();

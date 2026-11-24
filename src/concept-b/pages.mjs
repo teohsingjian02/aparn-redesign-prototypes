@@ -3,7 +3,7 @@
 import {
   esc, rel, statusChip, sourceLinks, img, figure, ext, EXT, joinButton, templateButton, eventPath, nodeIndex, nodePanel,
   contributionsFilter, templatePreview, templateLimitsLine, presentationGuide, downloads, submissionDemo, recordModel, IMAGES,
-  HEAD_MOTION, motionSwitch, progressBar, toTop, riseLines, riseH1, countUp, homeFigures, homeWhy, homeTakePart, homeClosing, ARROW,
+  HEAD_MOTION, motionSwitch, progressBar, toTop, riseLines, riseH1, countUp, homeFigures, homeWhy, homeTakePart, homeClosing, ARROW, homePeople, personImg, brandLogo, faviconLinks,
 } from "../lib.mjs";
 
 // blocks that rise into view as you scroll (added to the rendered page so the templates stay readable)
@@ -42,10 +42,10 @@ function shell(c, page, { title, description, active, body }) {
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>${esc(title)} · APARN · Concept B prototype</title>
+<title>${esc(title)} · APARN</title>
 <meta name="description" content="${esc(description)}">
 <meta name="theme-color" content="#121212">
-<link rel="icon" href="${rel(page, P("assets/icon.svg"))}" type="image/svg+xml">
+${faviconLinks(page)}
 <link rel="preload" href="${rel(page, "assets/fonts/archivo-normal-latin-3.woff2")}" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="${rel(page, P("assets/b.css"))}">
 ${HEAD_MOTION}
@@ -56,7 +56,7 @@ ${HEAD_MOTION}
 <a class="skip" href="#main">Skip to content</a>
 <svg class="defs" width="0" height="0" aria-hidden="true" focusable="false"><defs><linearGradient id="b-grad" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1300" y2="0"><stop offset="0" stop-color="#16E0A6"/><stop offset=".5" stop-color="#FFC23D"/><stop offset="1" stop-color="#FF4D3D"/></linearGradient></defs></svg>
 <header class="bar" data-top>
-  <a class="bar-mark" href="${rel(page, P(""))}"><span class="bar-aparn">APARN</span><span class="bar-full">Asia Pacific Artistic Research Network</span></a>
+  <a class="bar-mark" href="${rel(page, P(""))}">${brandLogo(page, { tone: "white", alt: "APARN home", sizes: "140px" })}</a>
   <nav class="bar-quick" aria-label="Quick links">
     <a href="${rel(page, P("network/"))}"${active === "network/" ? ' aria-current="page"' : ""}>Explore</a>
     <a href="${rel(page, P("programme/"))}"${active === "programme/" ? ' aria-current="page"' : ""}>Take part</a>
@@ -79,8 +79,8 @@ ${rise(body)}
 </main>
 <footer class="foot">
   <div class="foot-band">
-    <p class="foot-big">APARN</p>
-    <p class="foot-sub mono">Asia Pacific Artistic Research Network / a Special Interest Group of the Society for Artistic Research</p>
+    <p class="foot-big"><span class="foot-logo" role="img" aria-label="APARN, Asia Pacific Artistic Research Network"></span></p>
+    <p class="foot-sub mono">A Special Interest Group of the Society for Artistic Research</p>
   </div>
   <div class="foot-grid">
     <div><h2 class="foot-h mono">Join</h2>${joinButton(c, "btn btn--join")}<p class="small">${esc(c.site.join.where)}</p></div>
@@ -90,8 +90,6 @@ ${rise(body)}
       <li>${ext("https://societyforartisticresearch.org/sigs/asia-pacific-artistic-research-network", "APARN at SAR")}</li>
       <li>${ext("https://sar2027.eu/sk", "SAR 2027")}</li>
       <li>${ext(c.site.officialSite, "Current aparn.net")}</li></ul></div>
-    <div><h2 class="foot-h mono">This prototype</h2><p class="small">A redesign proposal for discussion. Content checked ${esc(c.site.lastChecked)}.</p><ul class="foot-list">
-      <li><a href="${rel(page, "compare/")}">Compare all three concepts</a></li><li><a href="${rel(page, "sources/")}">Sources, credits and open questions</a></li><li><a href="${esc(c.deploy.sites.a.url)}">See Concept A: Editorial Gallery</a></li><li><a href="${esc(c.deploy.sites.c.url)}">See Concept C: Clear Signal</a></li></ul>${motionSwitch()}</div>
   </div>
 </footer>
 ${toTop()}
@@ -177,6 +175,7 @@ function home(c) {
   <figure class="hero-art"><span class="hero-glow" aria-hidden="true"></span>${img(page, "eshraghi", { sizes: "(min-width: 64em) 42vw, 100vw", eager: true })}<figcaption>${esc(IMAGES.eshraghi.caption)} ${esc(IMAGES.eshraghi.credit)}</figcaption></figure>
 </div></section>
 ${homeFigures(c, page, C)}
+${homePeople(c, page, C)}
 ${homeWhy(c)}
 ${homeTakePart(c, page, C)}
 ${homeClosing(c)}`;
@@ -206,7 +205,7 @@ ${pageHead("About", "About APARN", esc(c.site.about.intro))}
 <section class="sec-b" aria-labelledby="h-peopleb">
   <h2 id="h-peopleb" class="disp">Director and convenors</h2>
   <p class="small">The convenors look after the network. Each conference also has its own organising team, listed in the <a href="${rel(page, P("archive/"))}">archive</a>.</p>
-  <div class="people-b">${c.people.people.map((p, i) => `<article class="pb pb--${i}" id="${p.id}"><p class="pb-country mono">${esc(p.country)}</p><h3 class="pb-name">${esc(p.honorific)} ${esc(p.name)}</h3><p class="pb-roles mono">${p.roles.map(esc).join(" / ")}</p><p class="pb-inst">${esc(p.institution)}</p><p>${esc(p.bio)}</p>
+  <div class="people-b">${c.people.people.map((p, i) => `<article class="pb pb--${i}" id="${p.id}"><div class="pb-photo">${personImg(page, p, { sizes: "(min-width: 75em) 22vw, (min-width: 48em) 42vw, 90vw" })}</div><p class="pb-country mono">${esc(p.country)}</p><h3 class="pb-name">${esc(p.honorific)} ${esc(p.name)}</h3><p class="pb-roles mono">${p.roles.map(esc).join(" / ")}</p><p class="pb-inst">${esc(p.institution)}</p><p>${esc(p.bio)}</p>
     <details class="pb-more"><summary>Work with APARN</summary><ul>${p.activity.map((a) => `<li>${esc(a)}</li>`).join("")}</ul></details>
     <p><a href="mailto:${esc(p.email)}">${esc(p.email)}</a></p></article>`).join("")}</div>
 </section>

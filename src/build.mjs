@@ -122,7 +122,7 @@ function neutralPage({ site, depth, title, description, body }) {
 <meta name="robots" content="noindex, nofollow">
 <title>${esc(title)} · APARN redesign prototypes</title>
 <meta name="description" content="${esc(description)}">
-<link rel="icon" href="${up}assets/icon.svg" type="image/svg+xml">
+<link rel="icon" href="${up}assets/brand/favicon-32.png" sizes="32x32" type="image/png">
 <style>${NEUTRAL_CSS}</style>
 </head>
 <body>
@@ -191,10 +191,10 @@ function sourcesPage(site) {
 function notFound(site) {
   return `<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex, nofollow">
-<title>Page not found · APARN · ${esc(site.name)} prototype</title><link rel="icon" href="${site.base}assets/icon.svg" type="image/svg+xml"><style>${NEUTRAL_CSS}</style></head>
-<body><main id="main" class="wrap" style="padding-top:3rem;padding-bottom:3rem"><p class="k">APARN redesign prototype</p><h1>This page is not here</h1>
-<p class="lead">The address may be mistyped, or the page may have moved while the prototype is being revised.</p>
-<div class="btns"><a class="btn" href="${site.base}">Go to ${esc(site.name)}</a><a class="btn" href="${site.base}archive/">Browse the archive</a><a class="btn" href="${site.base}compare/">Compare all three concepts</a></div></main></body></html>`;
+<title>Page not found · APARN</title><link rel="icon" href="${site.base}assets/brand/favicon-32.png" sizes="32x32" type="image/png"><style>${NEUTRAL_CSS}</style></head>
+<body><main id="main" class="wrap" style="padding-top:3rem;padding-bottom:3rem"><h1>This page is not here</h1>
+<p class="lead">The address may be mistyped, or the page may have moved.</p>
+<div class="btns"><a class="btn" href="${site.base}">Go to the home page</a><a class="btn" href="${site.base}archive/">Browse the archive</a></div></main></body></html>`;
 }
 
 function siteReadme(site) {
@@ -217,7 +217,8 @@ for (const site of SITES) {
   const pages = site.build(c);
   for (const p of pages) writeOut(out, `${p.path}index.html`, p.html);
   writeOut(out, `assets/${site.cssName}`, `${fontFaces(site.fonts)}\n${readFileSync(join(ROOT, site.css), "utf8")}`);
-  writeOut(out, "assets/icon.svg", ICONS[site.key]);
+  for (const f of readdirSync(join(STATIC, "brand"))) copyInto(out, `assets/brand/${f}`, join(STATIC, "brand", f));
+  copyInto(out, "favicon.ico", join(STATIC, "brand", "favicon.ico"));
   writeOut(out, "assets/js/aparn.js", readFileSync(join(ROOT, "src", "shared", "aparn.js"), "utf8"));
   writeOut(out, "assets/js/motion.js", readFileSync(join(ROOT, "src", "shared", "motion.js"), "utf8"));
   if (site.js) writeOut(out, `assets/js/${site.key}.js`, readFileSync(join(ROOT, site.js), "utf8"));

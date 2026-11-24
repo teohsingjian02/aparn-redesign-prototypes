@@ -27,7 +27,7 @@ Please choose a direction (or a mix), confirm the open items below, and approve 
 5. Whether the 2025 yearbook pilot (SAR’s APARN page) was published.
 6. How the June 2026 online gathering during SAR’s Galway forum went (it was announced in the January 2026 newsletter).
 7. Rebordering the Archipelago: the JAR channel dates it 2024, the January 2026 newsletter 2025 (it was launched in Porto in 2025).
-8. Credits and permissions for every reused image, especially the three images without a stated credit.
+8. Credits and permissions for every image, including the five portraits and the three images without a stated credit.
 9. Which contact addresses to publish (Director, convenors, or one shared APARN address).
 10. Approved member-location data, if APARN wants to show where members are based.
 11. The YouTube channel handle (@APARN202, as printed in the 2024 info pack).

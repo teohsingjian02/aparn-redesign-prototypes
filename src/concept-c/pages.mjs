@@ -3,7 +3,7 @@
 import {
   esc, rel, statusChip, sourceLinks, figure, ext, EXT, joinButton, templateButton, eventPath, nodeIndex, nodeHref,
   contributionsFilter, templatePreview, templateLimitsLine, presentationGuide, downloads, submissionDemo, recordModel, IMAGES,
-  HEAD_MOTION, motionSwitch, riseWords, riseH1, homeFigures, homeWhy, homeTakePart, homeClosing,
+  HEAD_MOTION, motionSwitch, riseWords, riseH1, homeFigures, homeWhy, homeTakePart, homeClosing, homePeople, personImg, brandLogo, faviconLinks,
 } from "../lib.mjs";
 
 const C = ""; // Concept C is the whole of its own site, so its pages sit at the site root
@@ -51,10 +51,10 @@ function shell(c, page, { title, description, active, body, index }) {
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>${esc(title)} · APARN · Concept C prototype</title>
+<title>${esc(title)} · APARN</title>
 <meta name="description" content="${esc(description)}">
 <meta name="theme-color" content="#ffffff">
-<link rel="icon" href="${rel(page, P("assets/icon.svg"))}" type="image/svg+xml">
+${faviconLinks(page)}
 <link rel="preload" href="${rel(page, "assets/fonts/roboto-normal-latin-3.woff2")}" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="${rel(page, P("assets/c.css"))}">
 ${HEAD_MOTION}
@@ -66,7 +66,7 @@ ${HEAD_MOTION}
 <a class="skip" href="#main">Skip to content</a>
 <header class="top" data-top>
   <div class="wrap top-in">
-    <a class="logo" href="${rel(page, P(""))}">${LOGO}<span class="logo-t">APARN</span><span class="vh"> home</span></a>
+    <a class="logo" href="${rel(page, P(""))}">${brandLogo(page, { alt: "APARN home", sizes: "140px" })}</a>
     <nav class="nav" aria-label="Main" data-navbar>
       <ul>${NAV.map(([href, label]) => `<li><a href="${rel(page, P(href))}"${active === href ? ' aria-current="page"' : ""}>${label}</a></li>`).join("")}</ul>
       <span class="nav-bar" aria-hidden="true"></span>
@@ -89,8 +89,8 @@ ${riseH1(body)}
 ${index ? `<nav class="index" aria-label="Sections on this page" data-index>${index.map(([id, label]) => `<a href="#${id}"><span class="index-l">${esc(label)}</span><span class="index-d" aria-hidden="true"></span></a>`).join("")}</nav>` : ""}
 <footer class="foot">
   <div class="wrap foot-in">
-    <div class="foot-a"><a class="logo" href="${rel(page, P(""))}">${LOGO}<span class="logo-t">APARN</span><span class="vh"> home</span></a>
-      <p>Asia Pacific Artistic Research Network, a Special Interest Group of the <a href="https://societyforartisticresearch.org/" rel="noopener" target="_blank">Society for Artistic Research${EXT}<span class="vh"> (opens in a new tab)</span></a>.</p>
+    <div class="foot-a"><a class="logo" href="${rel(page, P(""))}">${brandLogo(page, { alt: "APARN home", sizes: "140px" })}</a>
+      <p>A Special Interest Group of the <a href="https://societyforartisticresearch.org/" rel="noopener" target="_blank">Society for Artistic Research${EXT}<span class="vh"> (opens in a new tab)</span></a>.</p>
       ${joinButton(c, "btn btn--join")}<p class="small">${esc(c.site.join.where)}</p></div>
     <div><h2 class="foot-h">Contact</h2><p>${esc(c.site.contact.general.name)}, ${esc(c.site.contact.general.role)}<br><a href="mailto:${esc(c.site.contact.general.email)}">${esc(c.site.contact.general.email)}</a></p><p><a href="${rel(page, P("about/#contact"))}">All contacts</a></p></div>
     <div><h2 class="foot-h">Elsewhere</h2><ul class="foot-list">
@@ -98,11 +98,6 @@ ${index ? `<nav class="index" aria-label="Sections on this page" data-index>${in
       <li>${ext("https://societyforartisticresearch.org/sigs/asia-pacific-artistic-research-network", "APARN at SAR")}</li>
       <li>${ext("https://sar2027.eu/sk", "SAR 2027")}</li>
       <li>${ext(c.site.officialSite, "Current aparn.net")}</li></ul></div>
-    <div><h2 class="foot-h">This prototype</h2><p class="small">A redesign proposal for discussion. Content checked ${esc(c.site.lastChecked)}.</p><ul class="foot-list">
-      <li><a href="${rel(page, "compare/")}">Compare all three concepts</a></li>
-      <li><a href="${rel(page, "sources/")}">Sources, credits and open questions</a></li>
-      <li><a href="${esc(D.a.url)}">See Concept A: Editorial Gallery</a></li>
-      <li><a href="${esc(D.b.url)}">See Concept B: Living Network</a></li></ul>${motionSwitch()}</div>
   </div>
 </footer>
 <a class="totop" href="#main" data-totop><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M10 16V4M5 9l5-5 5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="vh">Back to top</span></a>
@@ -141,8 +136,8 @@ function orbit(c, page, { initial = "aparn2025", id = "orbit" } = {}) {
   const notes = c.network.linkNotes || {};
   const panel = (nid) => {
     const n = idx.nodes[nid];
-    let meta = "", text = "", src = [], extra = "";
-    if (n.type === "person") { const p = c.personById[nid]; meta = `${p.roles.map(esc).join(" · ")}<br>${esc(p.institution)}`; text = p.bio; src = p.sources; }
+    let meta = "", text = "", src = [], extra = "", photo = "";
+    if (n.type === "person") { const p = c.personById[nid]; photo = personImg(page, p, { cls: "cpanel-photo", sizes: "112px" }); meta = `${p.roles.map(esc).join(" · ")}<br>${esc(p.institution)}`; text = p.bio; src = p.sources; }
     if (n.type === "place") { const p = c.placeById[nid]; meta = p.kinds.map((k) => `<span class="pill">${esc(c.network.placeKinds[k])}</span>`).join(" "); text = p.text; src = p.sources; }
     if (n.type === "activity") { const e = c.eventById[nid]; meta = `${statusChip(e.status, e.statusLabel)} ${esc(e.dates.display)} · ${esc(evPlace(e))}`; text = e.summary; src = e.sources; }
     if (n.type === "practice") { const t = c.practiceById[nid]; text = t.text; src = t.sources; }
@@ -151,7 +146,7 @@ function orbit(c, page, { initial = "aparn2025", id = "orbit" } = {}) {
     if (href) extra = href.startsWith("http") ? ext(href, `Visit ${esc(n.label)}`, "btn btn--soft btn--sm") : `<a class="btn btn--soft btn--sm" href="${href}">${n.type === "person" ? "Full profile" : `Open ${esc(n.label)}`}</a>`;
     return `<article class="cpanel" data-select-panel="${nid}" data-select-group="node" aria-labelledby="cp-${nid}" tabindex="-1">
       <p class="cpanel-type"><span class="orb-dot orb-dot--${n.type}" aria-hidden="true"></span>${TYPE[n.type]}</p>
-      <h3 id="cp-${nid}" class="cpanel-h">${esc(n.label)}</h3>
+      ${photo}<h3 id="cp-${nid}" class="cpanel-h">${esc(n.label)}</h3>
       ${meta ? `<p class="cpanel-meta">${meta}</p>` : ""}<p class="cpanel-t">${esc(text)}</p>
       <h4 class="cpanel-rel">Connected to</h4>
       <ul class="hops">${idx.links[nid].map((r) => { const note = notes[`${nid}|${r}`] || notes[`${r}|${nid}`]; return `<li><button type="button" class="hop" ${attrs(r)}><span class="orb-dot orb-dot--${idx.nodes[r].type}" aria-hidden="true"></span>${esc(idx.nodes[r].label)}${note ? ` <span class="hop-note">(${esc(note)})</span>` : ""}</button></li>`; }).join("")}</ul>
@@ -215,10 +210,11 @@ function home(c) {
   </figure>
 </div></section>
 ${homeFigures(c, page, C)}
+${homePeople(c, page, C)}
 ${homeWhy(c)}
 ${homeTakePart(c, page, C)}
 ${homeClosing(c)}`;
-  const index = [["top", "Start"], ["network", "Across the network"], ["why", "Why join"], ["take-part", "Take part"], ["join", "Join"]];
+  const index = [["top", "Start"], ["network", "Across the network"], ["people", "People"], ["why", "Why join"], ["take-part", "Take part"], ["join", "Join"]];
   return { page, title: "Home", description: c.site.messages.lede, active: "", body, index };
 }
 
@@ -230,6 +226,7 @@ ${sec("sar", "Part of the Society for Artistic Research", `<div class="cols3">${
 ${sec("aims", "What we are here to do", `<ol class="aims">${c.site.about.purposes.map((p) => `<li data-rise>${esc(p)}</li>`).join("")}</ol><p class="small">${esc(c.site.about.volunteer)}</p>`, { tint: true })}
 ${sec("history", "How it began", `<ol class="hist">${c.site.about.history.map((h) => `<li data-rise><span class="hist-d">${esc(h.date)}</span><p>${esc(h.text)}</p></li>`).join("")}</ol><p class="small">${esc(c.people.firstMeeting.text)}</p>`)}
 ${sec("people", "Director and convenors", `<div class="people">${c.people.people.map((p) => `<article class="person" id="${p.id}" data-rise>
+  <div class="person-photo">${personImg(page, p, { sizes: "(min-width: 75em) 22vw, (min-width: 48em) 42vw, 90vw" })}</div>
   <h3 class="person-h">${esc(p.honorific)} ${esc(p.name)}</h3><p class="person-r">${p.roles.map((r) => `<span class="pill${/Director/.test(r) ? " pill--blue" : ""}">${esc(r)}</span>`).join(" ")}</p>
   <p class="person-i">${esc(p.institution)}, ${esc(p.country)}</p>
   <details class="more"><summary>About ${esc(p.name.split(" ")[0])}</summary><div class="more-in"><p>${esc(p.bio)}</p><ul class="plain">${p.activity.map((a) => `<li>${esc(a)}</li>`).join("")}</ul></div></details>

@@ -642,3 +642,42 @@ html.anim::view-transition-new(root) { animation: b-vt-in .45s var(--ease) both;
 html:not(.anim) *, html:not(.anim) *::before, html:not(.anim) *::after { transition: none !important; animation: none !important; }
 html:not(.anim)::view-transition-group(*), html:not(.anim)::view-transition-old(*), html:not(.anim)::view-transition-new(*) { animation: none !important; }
 @media print { .bar, .index-menu, .foot, .join-band, .hclose, .totop, .motion-toast { display: none !important; } html { background: #fff; color: #000; } body { background: none; } body::before, body::after { display: none; } }
+
+/* gradient words keep flowing, always (the colour drifts slowly along the word) */
+.grad-t { background-image: linear-gradient(90deg, #16E0A6 0%, #29B8FF 20%, #FFC23D 45%, #FF5A4E 65%, #29B8FF 85%, #16E0A6 100%); background-size: 200% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; }
+.anim .wi.grad-t { animation: b-word 1s var(--ease) both, b-flow 6s linear infinite; animation-delay: calc(.12s + var(--d) * 80ms), 0s; }
+.anim .hclose-h, .anim .join-band-h, .anim .bar-aparn { background-image: linear-gradient(90deg, #16E0A6 0%, #29B8FF 20%, #FFC23D 45%, #FF5A4E 65%, #29B8FF 85%, #16E0A6 100%); background-size: 200% 100%; animation: b-flow 8s linear infinite; }
+@keyframes b-flow { from { background-position: 0% 0; } to { background-position: -200% 0; } }
+
+/* the people behind APARN: portraits unveil as they scroll into view and zoom gently on hover */
+.hpeople { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2.2rem 1.2rem; margin-top: 2.6rem; }
+@media (min-width: 48em) { .hpeople { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (min-width: 64em) { .hpeople { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1.6rem; } }
+.hpeople a { display: grid; gap: .5rem; text-decoration: none; }
+.hpeople-img { display: block; overflow: hidden; border-radius: 26px; transform: translateZ(0); }
+.hpeople-img img { width: 100%; aspect-ratio: 895 / 1000; object-fit: cover; transition: transform .9s var(--ease); }
+.hpeople a:hover .hpeople-img img, .hpeople a:focus-visible .hpeople-img img { transform: scale(1.06); }
+.motion .hpeople li[data-rise] { transition-delay: calc(var(--i) * 110ms); }
+.motion .hpeople .hpeople-img { clip-path: inset(0 0 0 0); transition: clip-path 1.2s var(--ease) calc(var(--i) * 110ms + .15s); }
+.motion .hpeople li:not(.is-in) .hpeople-img { clip-path: inset(100% 0 0 0); }
+.motion .hpeople li:not(.is-in) .hpeople-img img { transform: scale(1.15); }
+.motion .hpeople .hpeople-img img { transition: transform 1.4s var(--ease) calc(var(--i) * 110ms + .15s); }
+.hpeople-img { padding: 2px; background: var(--grad); box-shadow: 0 24px 50px -28px rgba(41, 184, 255, .6); }
+.hpeople-img img { border-radius: 24px; }
+.hpeople a:hover .hpeople-img { box-shadow: 0 30px 60px -24px rgba(255, 140, 60, .7); }
+.hpeople-n { font-weight: 800; font-stretch: 85%; font-size: 1.3rem; line-height: 1.15; color: var(--ink); margin-top: .5rem; }
+.hpeople-r { font-size: .9rem; font-weight: 700; color: var(--ink-3); }
+.pb-photo { overflow: hidden; border-radius: 26px; padding: 2px; background: var(--grad); margin-bottom: .6rem; }
+.pb-photo img { width: 100%; aspect-ratio: 895 / 1000; object-fit: cover; border-radius: 24px; }
+.panel-photo { width: 104px; height: 104px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 2px #29B8FF, 0 0 26px rgba(41, 184, 255, .5); }
+
+@media (min-width: 75em) { .foot-grid { grid-template-columns: repeat(3, 1fr); } }
+
+/* the APARN logo: white in the bar, filled with the flowing gradient in the footer */
+.bar-mark { align-items: center; }
+.bar-mark img { display: block; height: 42px; width: auto; }
+@media (max-width: 47.99em) { .bar-mark img { height: 34px; } }
+.foot-big { line-height: 0; }
+.foot-logo { display: block; width: min(100%, 46rem); aspect-ratio: 1046 / 344; background-image: linear-gradient(90deg, #16E0A6 0%, #29B8FF 20%, #FFC23D 45%, #FF5A4E 65%, #29B8FF 85%, #16E0A6 100%); background-size: 200% 100%;
+  -webkit-mask: url(brand/logo-white-600.png) left center / contain no-repeat; mask: url(brand/logo-white-600.png) left center / contain no-repeat; }
+.anim .foot-logo { animation: b-flow 10s linear infinite; }

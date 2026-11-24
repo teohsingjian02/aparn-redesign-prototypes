@@ -57,7 +57,7 @@ const PAGE_AUDIT = `(() => {
   const unlabelled = [...document.querySelectorAll("input:not([type=hidden]), textarea, select")].filter((e) => !(e.closest("label") || (e.id && document.querySelector("label[for='" + e.id + "']")) || e.getAttribute("aria-label"))).map((e) => e.name || e.id);
   const noAlt = [...document.images].filter((i) => !i.hasAttribute("alt")).map((i) => i.src);
   const broken = [...document.images].filter((i) => i.complete && i.naturalWidth === 0 && i.currentSrc).map((i) => i.currentSrc);
-  return { over, culprits, dupIds, unnamed, unlabelled, noAlt, broken, h1: document.querySelectorAll("h1").length, noindex: !!document.querySelector('meta[name=robots][content*=noindex]'), motion: de.classList.contains("motion") };
+  return { over, culprits, dupIds, unnamed, unlabelled, noAlt, broken, h1: document.querySelectorAll("h1").length, noindex: !!document.querySelector('meta[name=robots][content*=noindex]'), motion: de.classList.contains("anim") };
 })()`;
 
 // ------------------------------------------------------------------ 1. every page at three widths
@@ -79,7 +79,7 @@ async function auditPages(browser, site) {
       check(r.noAlt.length === 0 && r.broken.length === 0, `${where}: images (missing alt ${r.noAlt.length}, broken ${r.broken.join(", ")})`);
       check(r.h1 === 1, `${where}: one h1 (found ${r.h1})`);
       check(r.noindex, `${where}: noindex`);
-      check(!r.motion, `${where}: reduced motion respected`);
+      check(r.motion || path.startsWith("compare") || path.startsWith("sources"), `${where}: animations on`);
     }
     check(p.consoleErrors.length === 0, `${site.key.toUpperCase()} ${view.width}px: no console errors (${p.consoleErrors.slice(0, 3).join(" | ")})`);
     await p.close();
@@ -157,6 +157,7 @@ async function behaviour(browser, site) {
     await phone.click(".menu-toggle");
     check(await phone.visible("#site-menu") && await phone.visible(".menu-join a[data-join]"), `A 360px: menu opens with Join APARN inside`);
     await phone.key("Escape", "Escape", 27);
+    await sleep(500);
     check(!(await phone.visible("#site-menu")) && await phone.$(`document.activeElement.classList.contains("menu-toggle")`), `A 360px: Esc closes the menu and returns focus`);
     // network explorer
     await desk.goto(site.root + "network/", 300);
@@ -200,6 +201,7 @@ async function behaviour(browser, site) {
     for (let i = 0; i < 14; i++) await phone.key("Tab", "Tab", 9);
     check(await phone.$(`document.getElementById("index-menu").contains(document.activeElement)`), `B 360px: focus stays inside the open index`);
     await phone.key("Escape", "Escape", 27);
+    await sleep(500);
     check(!(await phone.visible("#index-menu")) && await phone.$(`document.activeElement.classList.contains("bar-index")`), `B 360px: Esc closes the index and returns focus`);
     await phone.click('[data-select-button="bangkok"]');
     await sleep(200);
@@ -232,8 +234,7 @@ async function behaviour(browser, site) {
   check(await desk.$(`document.title.includes("2023") && !!document.querySelector("h1")`), `${K}: a deep link survives refresh`);
   const nf = await fetch(site.root + "no-such-page/");
   check(nf.status === 404 && (await nf.text()).includes("This page is not here"), `${K}: unknown pages get the 404 page (${nf.status})`);
-  const other = SITES.find((s) => s.key !== site.key);
-  check(await desk.$(`[...document.querySelectorAll("a")].some((a) => a.href === ${JSON.stringify(other.url)})`), `${K}: links to the other concept`);
+  check(!(await desk.$(`/prototype/i.test(document.title + document.querySelector("footer").textContent)`)), `${K}: no prototype wording in the title or footer`);
   check(desk.consoleErrors.length === 0 && phone.consoleErrors.length === 0, `${K}: no console errors during interaction (${[...desk.consoleErrors, ...phone.consoleErrors].slice(0, 3).join(" | ")})`);
   await desk.close(); await phone.close();
 }
@@ -260,16 +261,16 @@ async function behaviourC(desk, phone, site) {
   // home: figures, the section index, smooth scrolling and back to top
   await desk.goto(site.root, 500);
   check(await desk.$(`["300+", "150+", "22", "8", "28"].every((v) => [...document.querySelectorAll("[data-count]")].some((e) => e.textContent === v))`), "C: figures show their values");
-  check(await desk.$(`document.querySelectorAll("[data-index] a").length === 5 && getComputedStyle(document.querySelector("[data-index]")).display !== "none"`), "C: section index on wide screens");
+  check(await desk.$(`document.querySelectorAll("[data-index] a").length === 6 && getComputedStyle(document.querySelector("[data-index]")).display !== "none"`), "C: section index on wide screens");
   await desk.click('.hero-act a[href="#network"]');
-  await sleep(500);
+  await sleep(1500);
   check(await desk.$(`(() => { const t = document.getElementById("network").getBoundingClientRect().top, h = document.querySelector("[data-top]").offsetHeight; return Math.abs(t - h - 16) < 30 && document.activeElement === document.getElementById("network"); })()`), "C: Explore the network scrolls down to the section and focuses it");
   await desk.click('[data-index] a[href="#why"]');
-  await sleep(600);
+  await sleep(1500);
   check(await desk.$(`(() => { const t = document.getElementById("why").getBoundingClientRect().top; return t > 40 && t < 140 && document.querySelector('[data-index] a[href="#why"]').classList.contains("is-current"); })()`), "C: the section index scrolls to a section and marks it");
   check(await desk.$(`document.querySelector("[data-totop]").classList.contains("is-shown")`), "C: back to top appears after scrolling");
   await desk.click("[data-totop]");
-  await sleep(500);
+  await sleep(1800);
   check(await desk.$(`window.scrollY === 0 && document.activeElement === document.getElementById("main")`), "C: back to top returns to the top and focuses the page");
   await desk.goto(site.root + "network/", 400);
   check(await desk.$(`getComputedStyle(document.querySelector(".nav-bar")).opacity === "1" && document.querySelector('.nav a[aria-current="page"]').textContent === "Network"`), "C: the navigation marks the current section");
@@ -289,6 +290,7 @@ async function behaviourC(desk, phone, site) {
   for (let i = 0; i < 12; i++) await phone.key("Tab", "Tab", 9);
   check(await phone.$(`document.getElementById("menu").contains(document.activeElement)`), "C 360px: focus stays inside the open menu");
   await phone.key("Escape", "Escape", 27);
+    await sleep(500);
   await sleep(150);
   check(!(await phone.visible("#menu")) && await phone.$(`document.activeElement.classList.contains("menu-btn")`), "C 360px: Esc closes the menu and returns focus");
   r = await ringOk(phone);
@@ -305,7 +307,7 @@ async function motionTest(browser, site) {
   const p = await openPage(browser, VIEWS[2], { reducedMotion: false });
   try {
     await p.goto(site.root, 600);
-    check(await p.$(`document.documentElement.classList.contains("anim") && document.documentElement.classList.contains("motion") && !document.querySelector("#network .hh2").classList.contains("is-in") && !document.querySelector(".motion-toast")`), `${K} motion: on, and content below the fold waits to rise in`);
+    check(await p.$(`document.documentElement.classList.contains("anim") && document.documentElement.classList.contains("motion") && !document.querySelector("#network .hh2").classList.contains("is-in")`), `${K} motion: on, and content below the fold waits to rise in`);
     await p.$(`window.scrollTo(0, document.getElementById("take-part").offsetTop), true`);
     await sleep(1600);
     const down = await p.$(`({ part: document.querySelector("#take-part .hh2").classList.contains("is-in"), from: document.querySelector("#network .hh2").getAttribute("data-from"), netIn: document.querySelector("#network .hh2").classList.contains("is-in") })`);
@@ -316,18 +318,12 @@ async function motionTest(browser, site) {
     check(await p.$(`[...document.querySelectorAll("[data-count]")].some((e) => /^\\d+\\D*$/.test(e.textContent))`), `${K} motion: figures count`);
     check(p.consoleErrors.length === 0, `${K} motion: no console errors (${p.consoleErrors.slice(0, 2).join(" | ")})`);
   } finally { await p.close(); }
+  // a device that asks for reduced motion still gets the animations (owner's choice), with no prompt
   const q = await openPage(browser, VIEWS[2]);
   try {
     await q.goto(site.root, 400);
-    check(await q.$(`!document.documentElement.classList.contains("anim") && !!document.querySelector(".motion-toast") && document.querySelector("[data-motion-toggle]").getAttribute("aria-pressed") === "false" && !document.querySelector("[data-motion-toggle]").hidden`), `${K} switch: reduced motion is respected by default, with a prompt and a switch`);
-    await q.click("[data-motion-on]");
-    check(await q.$(`document.documentElement.classList.contains("anim") && document.documentElement.classList.contains("motion") && !document.querySelector(".motion-toast") && localStorage.getItem("aparn-motion") === "on"`), `${K} switch: Turn on animations starts the motion and closes the prompt`);
-    await q.goto(site.root + "about/", 400);
-    check(await q.$(`document.documentElement.classList.contains("anim") && document.querySelector("[data-motion-toggle]").getAttribute("aria-pressed") === "true" && !document.querySelector(".motion-toast")`), `${K} switch: the choice is remembered on the next page`);
-    await q.click("[data-motion-toggle]");
-    check(await q.$(`!document.documentElement.classList.contains("anim") && !document.documentElement.classList.contains("motion") && localStorage.getItem("aparn-motion") === "off"`), `${K} switch: turning Animations off stops the motion`);
-    check(q.consoleErrors.length === 0, `${K} switch: no console errors (${q.consoleErrors.slice(0, 2).join(" | ")})`);
-  } finally { await q.$(`localStorage.removeItem("aparn-motion"), true`).catch(() => {}); await q.close(); }
+    check(await q.$(`document.documentElement.classList.contains("anim") && document.documentElement.classList.contains("motion") && !document.querySelector(".motion-toast, [data-motion-toggle]")`), `${K}: animations on even when the device asks for reduced motion, with no switch or prompt`);
+  } finally { await q.close(); }
 }
 
 // ------------------------------------------------------------------ 3. screenshots
@@ -345,7 +341,7 @@ async function screenshots(browser) {
     const tab = await openPage(browser, VIEWS[1]);
     const phone = await openPage(browser, VIEWS[0], { dpr: 2 });
     const phoneFull = await openPage(browser, VIEWS[0]);
-    const take = async (p, path, name, full = false, prep) => { await p.goto(site.root + path, 400); await p.$(`document.querySelector(".motion-toast")?.remove(), true`); if (prep) await prep(p); await eagerImages(p); await p.$(`window.scrollTo(0, 0), true`); await sleep(150); await p.shot(join(OUT, name), { full }); shots.push(name); };
+    const take = async (p, path, name, full = false, prep) => { await p.goto(site.root + path, 400); await p.$(`document.documentElement.classList.remove("anim", "motion"), true`); if (prep) await prep(p); await eagerImages(p); await p.$(`window.scrollTo(0, 0), true`); await sleep(150); await p.shot(join(OUT, name), { full }); shots.push(name); };
     await take(desk, "", `${k}-home-desktop.jpg`);
     await take(desk, "", `${k}-home-desktop-full.jpg`, true);
     await take(tab, "", `${k}-home-tablet-full.jpg`, true);
@@ -358,12 +354,13 @@ async function screenshots(browser) {
     await take(phone, "about/", `${k}-about-mobile.jpg`);
     // menu open on a phone
     await phone.goto(site.root, 300);
-    await phone.$(`document.querySelector(".motion-toast")?.remove(), true`);
+    await phone.$(`document.documentElement.classList.remove("anim", "motion"), true`);
     await phone.click({ a: ".menu-toggle", b: ".bar-index", c: ".menu-btn" }[k]);
     await sleep(200);
     await phone.shot(join(OUT, `${k}-menu-mobile.jpg`)); shots.push(`${k}-menu-mobile.jpg`);
     // the demo's review step on a phone
     await phone.goto(site.root + "contribute/", 300);
+    await phone.$(`document.documentElement.classList.remove("anim", "motion"), true`);
     await phone.click('[data-step="1"] [data-go="2"]'); await phone.click('[data-step="2"] [data-go="3"]');
     await phone.$(`(() => { const set = (id, v) => { document.getElementById(id).value = v; }; set("f-name", "Test Contributor"); set("f-email", "test@example.org"); set("f-aff", "Example University"); set("f-country", "Malaysia"); set("f-title", "Listening to rivers"); document.querySelector('input[name="length"][value="5 minutes"]').click(); return true; })()`);
     await phone.setFiles("#f-file", [DOCX]);
