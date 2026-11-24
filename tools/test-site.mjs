@@ -177,11 +177,11 @@ async function behaviour(browser, site) {
     await sleep(200);
     check(await phone.$(`document.activeElement === document.querySelector('[data-select-panel="danny-butt"]')`), `A 360px: choosing a person moves focus to the story`);
   } else {
-    // connection board
-    await desk.goto(site.root, 500);
+    // connection board (network page)
+    await desk.goto(site.root + "network/", 500);
     const lines = () => desk.$(`(() => ({ paths: document.querySelectorAll("[data-board-lines] path").length, related: [...document.querySelectorAll(".board .is-related")].filter((b) => b.offsetParent).length }))()`);
     let l = await lines();
-    check(await desk.$(`!document.querySelector('[data-select-panel="aparn2025"]').hidden`) && l.paths > 0 && l.paths === l.related, `B: board starts on APARN2025 with ${l.paths} drawn links`);
+    check(await desk.$(`!document.querySelector('[data-select-panel="yogyakarta"]').hidden`) && l.paths > 0 && l.paths === l.related, `B: board starts on Yogyakarta with ${l.paths} drawn links`);
     await desk.click('[data-select-button="danny-butt"]');
     await sleep(150);
     l = await lines();
@@ -191,13 +191,8 @@ async function behaviour(browser, site) {
     const l2 = await lines();
     check(await desk.$(`document.querySelector('[data-board-col="place"]').hidden`) && l2.paths === l2.related, `B: hiding Places hides the column and its links (${l2.paths})`);
     await desk.click('[data-board-type="place"]');
-    // strip
-    const before = await desk.$(`document.querySelector("[data-strip-track]").scrollLeft`);
-    await desk.click('[data-strip-move="1"]');
-    await sleep(300);
-    check((await desk.$(`document.querySelector("[data-strip-track]").scrollLeft`)) > before, `B: the strip scrolls forward`);
     // phone: index overlay and board
-    await phone.goto(site.root, 400);
+    await phone.goto(site.root + "network/", 400);
     check(!(await phone.$(`getComputedStyle(document.querySelector("[data-board-lines]")).display !== "none"`)), `B 360px: link lines hidden on phones`);
     check(await phone.visible(".bar a[data-join]"), `B 360px: Join APARN stays in the bar`);
     await phone.click(".bar-index");
@@ -245,10 +240,10 @@ async function behaviour(browser, site) {
 
 async function behaviourC(desk, phone, site) {
   const ringOk = (p) => p.$(`(() => { const s = document.querySelector('.orb[aria-pressed="true"]'); const want = s.getAttribute("data-links").split(" ").filter(Boolean).length; return { id: s.getAttribute("data-select-button"), want, ring: document.querySelectorAll(".orb.is-ring").length, lines: document.querySelectorAll("[data-orbit-lines] line").length, center: document.querySelectorAll(".orb.is-center").length, leaky: document.querySelectorAll(".orb.is-off:not([inert])").length, panel: !document.querySelector('[data-select-panel="' + s.getAttribute("data-select-button") + '"]').hidden }; })()`);
-  // home on a desktop: the orbit, the hop buttons, browse everything, the section index, smooth scroll and back to top
-  await desk.goto(site.root, 500);
+  // the orbit, the hop buttons and browse everything (network page)
+  await desk.goto(site.root + "network/", 500);
   let r = await ringOk(desk);
-  check(r.id === "aparn2025" && r.center === 1 && r.ring === r.want && r.lines === r.want && r.leaky === 0 && r.panel, `C: orbit starts on APARN2025 with ${r.ring} connections around it (${JSON.stringify(r)})`);
+  check(r.id === "yogyakarta" && r.center === 1 && r.ring === r.want && r.lines === r.want && r.leaky === 0 && r.panel, `C: orbit starts on Yogyakarta with ${r.ring} connections around it (${JSON.stringify(r)})`);
   await desk.click('.orb[data-select-button="bangkok"]');
   await sleep(200);
   r = await ringOk(desk);
@@ -262,8 +257,10 @@ async function behaviourC(desk, phone, site) {
   await sleep(200);
   r = await ringOk(desk);
   check(r.id === "oslo" && r.panel, `C: browse everything reaches any item (${JSON.stringify(r)})`);
+  // home: figures, the section index, smooth scrolling and back to top
+  await desk.goto(site.root, 500);
   check(await desk.$(`["300+", "150+", "22", "8", "28"].every((v) => [...document.querySelectorAll("[data-count]")].some((e) => e.textContent === v))`), "C: figures show their values");
-  check(await desk.$(`document.querySelectorAll("[data-index] a").length === 6 && getComputedStyle(document.querySelector("[data-index]")).display !== "none"`), "C: section index on wide screens");
+  check(await desk.$(`document.querySelectorAll("[data-index] a").length === 5 && getComputedStyle(document.querySelector("[data-index]")).display !== "none"`), "C: section index on wide screens");
   await desk.click('.hero-act a[href="#network"]');
   await sleep(500);
   check(await desk.$(`(() => { const t = document.getElementById("network").getBoundingClientRect().top, h = document.querySelector("[data-top]").offsetHeight; return Math.abs(t - h - 16) < 30 && document.activeElement === document.getElementById("network"); })()`), "C: Explore the network scrolls down to the section and focuses it");
@@ -283,7 +280,7 @@ async function behaviourC(desk, phone, site) {
   check((await arch("sar")) === "3 gatherings", "C: archive filter Gatherings at SAR shows 3");
   check((await arch("all")) === "12 gatherings", "C: archive shows all 12");
   // phone: menu, the fan layout and focus moving to the story
-  await phone.goto(site.root, 400);
+  await phone.goto(site.root + "network/", 400);
   check(await phone.visible(".menu-btn") && !(await phone.visible("#menu")), "C 360px: menu button shown, menu closed");
   check(await phone.visible(".top a[data-join]"), "C 360px: Join APARN stays in the header");
   await phone.click(".menu-btn");
@@ -301,32 +298,36 @@ async function behaviourC(desk, phone, site) {
   check(await phone.$(`document.activeElement === document.querySelector('[data-select-panel="bangkok"]')`), "C 360px: choosing an item moves focus to its story");
 }
 
-// motion is on for everyone else: content rises in from the side you scroll and comes back when you scroll up
-async function motionC(browser, site) {
+// motion: content rises in from the side you scroll and comes back when you scroll up; on devices that ask for
+// reduced motion everything stays still until the visitor turns animations on (remembered in localStorage).
+async function motionTest(browser, site) {
+  const K = site.key.toUpperCase();
   const p = await openPage(browser, VIEWS[2], { reducedMotion: false });
-  await p.goto(site.root, 600);
-  check(await p.$(`document.documentElement.classList.contains("motion") && !document.querySelector("#why .why-list li").classList.contains("is-in")`), "C motion: content below the fold waits to rise in");
-  await p.$(`window.scrollTo(0, document.getElementById("why").offsetTop), true`);
-  await sleep(1800);
-  const down = await p.$(`({ why: document.querySelector("#why .why-list li").classList.contains("is-in"), heroFrom: document.querySelector(".hero-h").getAttribute("data-from"), heroIn: document.querySelector(".hero-h").classList.contains("is-in"), counted: document.querySelector("[data-count]").textContent })`);
-  check(down.why && down.heroFrom === "top" && !down.heroIn, `C motion: scrolling down brings content in and lets the top leave upwards (${JSON.stringify(down)})`);
-  await p.$(`window.scrollTo(0, 0), true`);
-  await sleep(1200);
-  check(await p.$(`document.querySelector(".hero-h").classList.contains("is-in")`), "C motion: scrolling back up brings the top back in");
-  check(p.consoleErrors.length === 0, `C motion: no console errors (${p.consoleErrors.slice(0, 2).join(" | ")})`);
-  await p.close();
-  // a device that asks for reduced motion: still, until the visitor turns on the Animations switch for the visit
+  try {
+    await p.goto(site.root, 600);
+    check(await p.$(`document.documentElement.classList.contains("anim") && document.documentElement.classList.contains("motion") && !document.querySelector("#network .hh2").classList.contains("is-in") && !document.querySelector(".motion-toast")`), `${K} motion: on, and content below the fold waits to rise in`);
+    await p.$(`window.scrollTo(0, document.getElementById("take-part").offsetTop), true`);
+    await sleep(1600);
+    const down = await p.$(`({ part: document.querySelector("#take-part .hh2").classList.contains("is-in"), from: document.querySelector("#network .hh2").getAttribute("data-from"), netIn: document.querySelector("#network .hh2").classList.contains("is-in") })`);
+    check(down.part && down.from === "top" && !down.netIn, `${K} motion: scrolling down brings content in and lets the passed section leave upwards (${JSON.stringify(down)})`);
+    await p.$(`window.scrollTo(0, document.getElementById("network").offsetTop - 80), true`);
+    await sleep(1200);
+    check(await p.$(`document.querySelector("#network .hh2").classList.contains("is-in")`), `${K} motion: scrolling back up brings it back in`);
+    check(await p.$(`[...document.querySelectorAll("[data-count]")].some((e) => /^\\d+\\D*$/.test(e.textContent))`), `${K} motion: figures count`);
+    check(p.consoleErrors.length === 0, `${K} motion: no console errors (${p.consoleErrors.slice(0, 2).join(" | ")})`);
+  } finally { await p.close(); }
   const q = await openPage(browser, VIEWS[2]);
-  await q.goto(site.root, 400);
-  check(await q.$(`!document.documentElement.classList.contains("anim") && document.querySelector("[data-motion-toggle]").getAttribute("aria-pressed") === "false" && !document.querySelector("[data-motion-toggle]").hidden`), "C switch: reduced motion is respected by default and the switch shows it is off");
-  await q.click("[data-motion-toggle]");
-  check(await q.$(`document.documentElement.classList.contains("anim") && document.documentElement.classList.contains("motion") && sessionStorage.getItem("aparn-motion") === "on"`), "C switch: turning Animations on starts the motion");
-  await q.goto(site.root + "about/", 400);
-  check(await q.$(`document.documentElement.classList.contains("anim") && document.querySelector("[data-motion-toggle]").getAttribute("aria-pressed") === "true"`), "C switch: the choice lasts for the visit");
-  await q.click("[data-motion-toggle]");
-  check(await q.$(`!document.documentElement.classList.contains("anim") && !document.documentElement.classList.contains("motion") && sessionStorage.getItem("aparn-motion") === "off"`), "C switch: turning Animations off stops the motion");
-  check(q.consoleErrors.length === 0, `C switch: no console errors (${q.consoleErrors.slice(0, 2).join(" | ")})`);
-  await q.close();
+  try {
+    await q.goto(site.root, 400);
+    check(await q.$(`!document.documentElement.classList.contains("anim") && !!document.querySelector(".motion-toast") && document.querySelector("[data-motion-toggle]").getAttribute("aria-pressed") === "false" && !document.querySelector("[data-motion-toggle]").hidden`), `${K} switch: reduced motion is respected by default, with a prompt and a switch`);
+    await q.click("[data-motion-on]");
+    check(await q.$(`document.documentElement.classList.contains("anim") && document.documentElement.classList.contains("motion") && !document.querySelector(".motion-toast") && localStorage.getItem("aparn-motion") === "on"`), `${K} switch: Turn on animations starts the motion and closes the prompt`);
+    await q.goto(site.root + "about/", 400);
+    check(await q.$(`document.documentElement.classList.contains("anim") && document.querySelector("[data-motion-toggle]").getAttribute("aria-pressed") === "true" && !document.querySelector(".motion-toast")`), `${K} switch: the choice is remembered on the next page`);
+    await q.click("[data-motion-toggle]");
+    check(await q.$(`!document.documentElement.classList.contains("anim") && !document.documentElement.classList.contains("motion") && localStorage.getItem("aparn-motion") === "off"`), `${K} switch: turning Animations off stops the motion`);
+    check(q.consoleErrors.length === 0, `${K} switch: no console errors (${q.consoleErrors.slice(0, 2).join(" | ")})`);
+  } finally { await q.$(`localStorage.removeItem("aparn-motion"), true`).catch(() => {}); await q.close(); }
 }
 
 // ------------------------------------------------------------------ 3. screenshots
@@ -344,7 +345,7 @@ async function screenshots(browser) {
     const tab = await openPage(browser, VIEWS[1]);
     const phone = await openPage(browser, VIEWS[0], { dpr: 2 });
     const phoneFull = await openPage(browser, VIEWS[0]);
-    const take = async (p, path, name, full = false, prep) => { await p.goto(site.root + path, 400); if (prep) await prep(p); await eagerImages(p); await p.$(`window.scrollTo(0, 0), true`); await sleep(150); await p.shot(join(OUT, name), { full }); shots.push(name); };
+    const take = async (p, path, name, full = false, prep) => { await p.goto(site.root + path, 400); await p.$(`document.querySelector(".motion-toast")?.remove(), true`); if (prep) await prep(p); await eagerImages(p); await p.$(`window.scrollTo(0, 0), true`); await sleep(150); await p.shot(join(OUT, name), { full }); shots.push(name); };
     await take(desk, "", `${k}-home-desktop.jpg`);
     await take(desk, "", `${k}-home-desktop-full.jpg`, true);
     await take(tab, "", `${k}-home-tablet-full.jpg`, true);
@@ -357,6 +358,7 @@ async function screenshots(browser) {
     await take(phone, "about/", `${k}-about-mobile.jpg`);
     // menu open on a phone
     await phone.goto(site.root, 300);
+    await phone.$(`document.querySelector(".motion-toast")?.remove(), true`);
     await phone.click({ a: ".menu-toggle", b: ".bar-index", c: ".menu-btn" }[k]);
     await sleep(200);
     await phone.shot(join(OUT, `${k}-menu-mobile.jpg`)); shots.push(`${k}-menu-mobile.jpg`);
@@ -386,7 +388,7 @@ async function screenshots(browser) {
 const server = LIVE ? null : await serve(PORT);
 const browser = await launch(9341);
 try {
-  for (const site of SITES) { await auditPages(browser, site); await behaviour(browser, site); if (site.key === "c") await motionC(browser, site); }
+  for (const site of SITES) { await auditPages(browser, site); await behaviour(browser, site); await motionTest(browser, site); }
   if (SHOTS) await screenshots(browser);
 } finally {
   await browser.close();

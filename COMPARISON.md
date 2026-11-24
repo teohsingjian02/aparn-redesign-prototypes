@@ -8,81 +8,76 @@ Three directions for a new website for the Asia Pacific Artistic Research Networ
 
 ## Concept A: Editorial Gallery
 
-Calm, cultured and inviting, like a contemporary arts publication or a carefully made exhibition catalogue.
+Calm, warm and editorial: large serif headlines on light pages, made for easy reading.
 
-**Art direction.** Warm ivory pages, dark ink and one cinnabar accent. Newsreader, a reading serif, carries the headings and text, with Work Sans for small labels. Generous margins, clear section headings and artworks given room to breathe. Original “isles” plates, a horizon of island shapes, mark each conference year.
+**Art direction.** Warm, light pages with soft gradient light in the background, Newsreader for reading and Work Sans for controls, a cinnabar-to-amber gradient for actions, pill buttons and very few boxes. Original “isles” plates mark each conference year.
 
-**How it works.** A guided journey down the home page: discover APARN, see its activity, meet the network, find a way to take part. The network explorer is a tabbed index of people, places, activities and practices beside a reading panel; choosing an item rewrites the panel and marks what it connects to. Stories open in place and the archive is a horizontal timeline.
+**How it works.** A short, guided home page: one headline, the network in figures, why join, how to take part, and a closing invitation. The headline rises in word by word and the artwork unveils; sections drift in as you scroll. The network explorer, a tabbed index beside a reading panel, lives on the Network page, and the archive is a horizontal timeline.
 
 **Strengths**
 
-- Reads easily and feels trustworthy to researchers, institutions and partners.
-- Gives artworks, writing and research the most room.
-- A quiet structure that will age well and is simple to maintain.
-- Very clear on phones: one column, large type and a simple menu.
+- The easiest to read, with large type and calm spacing.
+- Feels trustworthy to researchers, institutions and partners.
+- Gives artworks and writing the most room.
+- Very clear on phones.
 
 **Trade-offs**
 
-- Less immediate energy: activity is described more than shown.
+- The quietest of the three: activity is told more than shown.
 - Depends on strong images and good writing to stay lively.
-- Exploring the network is calmer and asks for a little more reading.
 
 ## Concept B: Living Network
 
-An active artistic network and a digital exhibition: explore first, then join, share and publish.
+Bold, luminous and energetic: a network glowing in the dark.
 
-**Art direction.** White and black with flat blocks of jade, lacquer red and turmeric. Archivo throughout: condensed at poster scale for headings, normal width for reading. An asymmetric but ordered composition with exhibition strips, and an original poster card for every gathering, each with its own colour and shape.
+**Art direction.** Dark pages with jade, cyan, amber and red gradients, heavy condensed poster type (Archivo), glowing network lines, gradient poster cards for every gathering, and pill buttons.
 
-**How it works.** Exploration comes first. The connection board sets people, places, activities, and practices and outputs side by side: pick any one and everything it connects to lights up, with lines on wide screens and its story beside it. Clear next steps follow: join, share your work, publish. A black bar keeps Explore, Take part, Publish and Join APARN in reach, with a full-screen index.
+**How it works.** The same calm home page as the others, with a poster headline whose gradient glides across. The connection board on the Network page sets people, places, activities and practices side by side: pick one and its links draw themselves. A slim bar keeps Explore, Take part, Publish and Join APARN in reach, with a full-screen index.
 
 **Strengths**
 
-- Shows the network’s reach and activity at a glance.
-- Memorable and distinctive among artistic research websites.
-- Turns the network data into something to explore, and every connection shown is sourced.
+- The most striking and memorable of the three.
+- Shows the network’s reach and connections vividly.
 - Strong, repeated invitations to join and take part.
 
 **Trade-offs**
 
-- Louder: the heavy type needs restraint on long text pages.
+- Dark pages suit screens better than print.
 - The board is dense on small phones, where it becomes stacked lists with the story first.
-- More design rules to follow when adding content, such as poster colours and shapes.
 
 ## Concept C: Clear Signal
 
-White, precise and technological: the clearest hierarchy of the three, with smooth motion that guides the eye.
+Clean, precise and technological: the clearest hierarchy of the three.
 
-**Art direction.** White pages, near-black text and one deep blue accent close to International Klein Blue, a nod to both art history and the screen. Roboto in a strict type scale: one clear title per section, a short lead, no small labels above titles. Rounded buttons and cards, thin lines, and an original two-line transit diagram of every gathering since 2019.
+**Art direction.** White pages with a blue-to-violet gradient, Roboto in a strict scale, rounded buttons and cards, and an original two-line transit diagram of every gathering since 2019 that draws itself.
 
-**How it works.** A tidy home page with a section index and a back-to-top button; every link within a page scrolls smoothly up or down. Content glides in from the direction you scroll, figures count up, buttons respond to a press and pages fade into each other. The network explorer is an orbit: choose anything and its connections arrange around it, so you can hop from person to place to event.
+**How it works.** The same calm home page, with a section index and back-to-top. The headline rises in, figures count up and sections glide in from the direction you scroll. The network explorer on the Network page is an orbit: choose anything and its connections arrange around it.
 
 **Strengths**
 
 - The clearest hierarchy and the quickest to scan.
 - Feels current and technological while staying calm.
-- Motion explains relationships (the orbit, the transit lines) rather than decorating.
-- Familiar and comfortable on phones: rounded buttons, a full-screen menu, smooth scrolling.
+- Motion explains relationships (the orbit, the transit lines).
 
 **Trade-offs**
 
-- Less artistic character than A or B; the artworks and diagrams carry the personality.
-- The most motion of the three, so it needs care to stay calm and fast. It switches off for visitors who ask for reduced motion.
-- White, rounded interfaces are common; the blue accent and the diagrams keep it distinct.
+- Less artistic character than A or B; the diagrams carry the personality.
+- White, rounded interfaces are common; the gradient and diagrams keep it distinct.
 
 ## Side by side
 
 | Aspect | Concept A: Editorial Gallery | Concept B: Living Network | Concept C: Clear Signal |
 |---|---|---|---|
-| Feeling | Calm, cultured, inviting | Active, expressive, a network at work | Clean, precise, calmly technological |
-| First screen | One serif headline, the Join button and an artwork, with the next events in a ribbon | A poster headline, the Join button, an artwork on a colour block and two event tickets, then the connection board | One clear headline, the Join button and a two-line transit diagram of every gathering since 2019 |
-| Type | Newsreader serif for headings and reading, Work Sans labels | Archivo condensed at poster scale, normal width for reading | Roboto in a strict scale |
-| Colour | Ivory, ink and one cinnabar accent | White and black with flat jade, lacquer red and turmeric | White with one deep blue accent |
-| Navigation | Masthead with five sections; a drop-down menu on phones | Black bar with Explore, Take part and Publish; a full-screen Index | Sticky header with a sliding indicator, a section index and back-to-top; a full-screen menu on phones |
-| Network | Tabbed index beside a reading panel | Four-column connection board with drawn links | An orbit that re-centres on whatever you choose |
+| Feeling | Calm, warm, editorial | Bold, luminous, energetic | Clean, precise, technological |
+| First screen | A serif headline that rises in word by word, the Join button and the artwork | A poster headline with a gliding gradient, the Join button and the glowing artwork | A headline that rises in, the Join button and a transit diagram that draws itself |
+| Type | Newsreader serif with Work Sans | Archivo condensed at poster scale | Roboto in a strict scale |
+| Colour | Warm off-white with a cinnabar-to-amber gradient | Near-black with jade, cyan, amber and red gradients | White with a blue-to-violet gradient |
+| Navigation | Rounded menu links; a drop-down menu on phones | Slim bar with Explore, Take part and Publish; a full-screen index | Sliding indicator, section index and back-to-top; a full-screen menu on phones |
+| Network | Tabbed index beside a reading panel | Connection board with links that draw themselves | An orbit that re-centres on whatever you choose |
 | Archive | Horizontal timeline with year plates | Poster wall with filters | A vertical timeline with filters |
-| Original graphics | “Isles” horizon plates | Poster cards with a colour and shape for each year | Transit lines and the network orbit |
-| In greyscale | Light pages, fine rules, serif text | Black bands, heavy condensed type, solid blocks | Open white space, thin lines, rounded shapes, sans-serif type |
-| Best if APARN wants | A trusted, scholarly home that reads well | A visible, lively community that invites exploration | A clear, modern site that is quickest to navigate |
+| Original graphics | Gradient isles plates | Gradient poster cards | Transit lines and the network orbit |
+| In greyscale | Light pages, serif type, soft shading | Dark pages, heavy condensed type, glowing lines | White space, sans-serif type, rounded shapes |
+| Best if APARN wants | A warm, scholarly home that reads easily | A vivid community that stands out | A clear, modern site that is quickest to navigate |
 
 ## What all three share
 
@@ -94,5 +89,6 @@ White, precise and technological: the clearest hierarchy of the three, with smoo
 - A submission demo in four steps: download, prepare, add details, review. It asks only for what is needed, the publication checkbox starts unchecked, and nothing is uploaded, sent or stored.
 - An archive of every gathering since 2019, with programmes, organisers and links to the published work.
 - Content kept in JSON files, pages readable without JavaScript, keyboard and screen-reader support, reduced motion respected, and layouts checked at 360, 768 and 1440 pixels.
+- Smooth motion in all three: links scroll smoothly up and down, sections glide in from the direction you scroll, figures count up, buttons respond to a press and pages fade into each other. Motion follows the device setting, and an Animations switch turns it on or off.
 
 Screenshots are in [screenshots/](screenshots/). The three home pages in greyscale are in [screenshots/greyscale-home.jpg](screenshots/greyscale-home.jpg).

@@ -3,6 +3,7 @@
 import {
   esc, rel, statusChip, sourceLinks, figure, ext, EXT, joinButton, templateButton, eventPath, nodeIndex, nodeHref,
   contributionsFilter, templatePreview, templateLimitsLine, presentationGuide, downloads, submissionDemo, recordModel, IMAGES,
+  HEAD_MOTION, motionSwitch, riseWords, riseH1, homeFigures, homeWhy, homeTakePart, homeClosing,
 } from "../lib.mjs";
 
 const C = ""; // Concept C is the whole of its own site, so its pages sit at the site root
@@ -56,13 +57,13 @@ function shell(c, page, { title, description, active, body, index }) {
 <link rel="icon" href="${rel(page, P("assets/icon.svg"))}" type="image/svg+xml">
 <link rel="preload" href="${rel(page, "assets/fonts/roboto-normal-latin-3.woff2")}" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="${rel(page, P("assets/c.css"))}">
-<script>(function () { var r = document.documentElement, m = null; r.classList.add("js"); try { m = sessionStorage.getItem("aparn-motion"); } catch (e) {} var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches; if (m === "on" || (m !== "off" && !reduce)) r.classList.add("anim"); if (m === "off") r.classList.add("motion-off"); })();</script>
+${HEAD_MOTION}
 <script defer src="${rel(page, "assets/js/aparn.js")}"></script>
+<script defer src="${rel(page, "assets/js/motion.js")}"></script>
 <script defer src="${rel(page, "assets/js/c.js")}"></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<div class="proto"><div class="wrap proto-in"><p>${esc(c.site.prototypeLabel)}. <strong>Concept C: Clear Signal.</strong> <a href="${rel(page, "compare/")}">Compare all three concepts</a></p><button type="button" class="motion-sw" data-motion-toggle aria-pressed="false" hidden><span>Animations</span><span class="motion-sw-k" aria-hidden="true"></span></button></div></div>
 <header class="top" data-top>
   <div class="wrap top-in">
     <a class="logo" href="${rel(page, P(""))}">${LOGO}<span class="logo-t">APARN</span><span class="vh"> home</span></a>
@@ -83,7 +84,7 @@ function shell(c, page, { title, description, active, body, index }) {
   </div>
 </div>
 <main id="main" tabindex="-1">
-${body}
+${riseH1(body)}
 </main>
 ${index ? `<nav class="index" aria-label="Sections on this page" data-index>${index.map(([id, label]) => `<a href="#${id}"><span class="index-l">${esc(label)}</span><span class="index-d" aria-hidden="true"></span></a>`).join("")}</nav>` : ""}
 <footer class="foot">
@@ -98,9 +99,10 @@ ${index ? `<nav class="index" aria-label="Sections on this page" data-index>${in
       <li>${ext("https://sar2027.eu/sk", "SAR 2027")}</li>
       <li>${ext(c.site.officialSite, "Current aparn.net")}</li></ul></div>
     <div><h2 class="foot-h">This prototype</h2><p class="small">A redesign proposal for discussion. Content checked ${esc(c.site.lastChecked)}.</p><ul class="foot-list">
+      <li><a href="${rel(page, "compare/")}">Compare all three concepts</a></li>
       <li><a href="${rel(page, "sources/")}">Sources, credits and open questions</a></li>
       <li><a href="${esc(D.a.url)}">See Concept A: Editorial Gallery</a></li>
-      <li><a href="${esc(D.b.url)}">See Concept B: Living Network</a></li></ul></div>
+      <li><a href="${esc(D.b.url)}">See Concept B: Living Network</a></li></ul>${motionSwitch()}</div>
   </div>
 </footer>
 <a class="totop" href="#main" data-totop><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M10 16V4M5 9l5-5 5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="vh">Back to top</span></a>
@@ -109,7 +111,7 @@ ${index ? `<nav class="index" aria-label="Sections on this page" data-index>${in
 }
 
 // ------------------------------------------------------------------ shared blocks
-const phead = (title, lead = "", extra = "", back = "") => `<header class="phead"><div class="wrap">${back}<h1 class="h1" data-rise>${title}</h1>${lead ? `<p class="lead" data-rise>${lead}</p>` : ""}${extra}</div></header>`;
+const phead = (title, lead = "", extra = "", back = "") => `<header class="phead"><div class="wrap">${back}<h1 class="h1">${title}</h1>${lead ? `<p class="lead" data-rise>${lead}</p>` : ""}${extra}</div></header>`;
 const back = (page, href, label) => `<a class="back" href="${rel(page, P(href))}"><svg class="ico ico--back" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M16 10H5M9 5l-5 5 5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>${esc(label)}</a>`;
 const sec = (id, heading, inner, { tint = false, lead = "", cls = "" } = {}) => `<section class="sec${tint ? " sec--tint" : ""}${cls ? ` ${cls}` : ""}"${id ? ` id="${id}"` : ""} aria-labelledby="h-${id || heading.length}"><div class="wrap">
   <h2 class="h2" id="h-${id || heading.length}" data-rise>${heading}</h2>${lead ? `<p class="lead" data-rise>${lead}</p>` : ""}
@@ -154,7 +156,7 @@ function orbit(c, page, { initial = "aparn2025", id = "orbit" } = {}) {
       <h4 class="cpanel-rel">Connected to</h4>
       <ul class="hops">${idx.links[nid].map((r) => { const note = notes[`${nid}|${r}`] || notes[`${r}|${nid}`]; return `<li><button type="button" class="hop" ${attrs(r)}><span class="orb-dot orb-dot--${idx.nodes[r].type}" aria-hidden="true"></span>${esc(idx.nodes[r].label)}${note ? ` <span class="hop-note">(${esc(note)})</span>` : ""}</button></li>`; }).join("")}</ul>
       <div class="cpanel-go">${extra}</div>
-      ${sourceLinks(c, src)}
+      
     </article>`;
   };
   return `<div class="orbit" id="${id}" data-select="node" data-orbit data-select-initial="${initial}" data-select-focus>
@@ -200,44 +202,23 @@ const pillList = (items) => `<ul class="plain">${items.map((x) => `<li>${x}</li>
 // ------------------------------------------------------------------ pages
 function home(c) {
   const page = P("");
-  const n27 = c.eventById.aparn2027;
-  const strip = c.contributions.items.filter((x) => x.edition === "aparn2026");
   const body = `
-<section class="hero" id="top" aria-labelledby="h-hero">
-  <div class="wrap hero-in">
-    <div class="hero-t">
-      <h1 class="hero-h" id="h-hero" data-rise>${esc(c.site.messages.headlineC)}</h1>
-      <p class="hero-lede" data-rise>${esc(c.site.messages.lede)}</p>
-      <div class="hero-act" data-rise>${joinButton(c, "btn btn--join btn--lg")}<a class="btn btn--soft btn--lg" href="#network">Explore the network ${ARROW}</a></div>
-      <p class="note" data-rise>${esc(c.site.join.where)}</p>
-    </div>
-    <figure class="hero-f" data-rise>${transit(c, page)}
-      <figcaption id="transit-cap"><span class="key key--reg">APARN Conference</span><span class="key key--sar">APARN Gathering at the SAR Conference</span><span class="key key--tbc">Details to be confirmed</span></figcaption>
-    </figure>
+<section class="hero" id="top" aria-labelledby="h-hero"><div class="wrap hero-in">
+  <div class="hero-t">
+    <h1 class="hero-h" id="h-hero">${riseWords(c.site.messages.headlineC, { grad: ["connected"] })}</h1>
+    <p class="hero-lede">${esc(c.site.messages.hero)}</p>
+    <div class="hero-act">${joinButton(c, "btn btn--join btn--lg")}<a class="btn btn--soft btn--lg" href="#network">Explore ${ARROW}</a></div>
+    <p class="note">${esc(c.site.join.where)}</p>
   </div>
-  <div class="wrap next">
-    <a class="next-i" href="${rel(page, P("programme/conference/"))}" data-rise><span class="next-t">Next conference: <strong>APARN2027 at RMIT University Vietnam</strong></span>${statusChip(n27.status)}</a>
-    <a class="next-i" href="${rel(page, P("programme/gathering-at-sar/"))}" data-rise><span class="next-t">Next SAR Conference: <strong>Bratislava, 21–23 April 2027</strong></span><span class="status status--upcoming">Upcoming</span></a>
-  </div>
-</section>
-${sec("network", "Across the network", `${figures(c)}${orbit(c, page)}<p class="small reach">${esc(c.site.reachNote)}</p>`, { lead: "APARN connects researchers, artists and institutions across the Asia Pacific and beyond. Choose anyone or anything to see what it connects to." })}
-<section class="sec sec--tint" id="why" aria-labelledby="h-why"><div class="wrap why">
-  <div class="why-a"><h2 class="h2" id="h-why" data-rise>Why join APARN</h2><p class="lead" data-rise>${esc(c.site.join.benefit)}</p>
-    <div class="why-act" data-rise>${joinButton(c, "btn btn--join btn--lg")}<p class="note">${esc(c.site.join.where)} ${esc(c.site.join.who)}</p></div>
-    <div data-rise>${figure(page, "eshraghi", { sizes: "(min-width: 64em) 36vw, 100vw", figCls: "fig" })}</div></div>
-  ${benefits(c)}
+  <figure class="hero-f">${transit(c, page)}
+    <figcaption id="transit-cap"><span class="key key--reg">APARN Conference</span><span class="key key--sar">Gathering at SAR</span></figcaption>
+  </figure>
 </div></section>
-${sec("take-part", esc(c.site.messages.contribute), `${ways(c, page)}${flow(c, page)}`, { lead: esc(c.site.messages.contributeLine) })}
-<section class="sec sec--tint" id="research" aria-labelledby="h-research" data-strip><div class="wrap">
-  <div class="strip-head"><div><h2 class="h2" id="h-research" data-rise>Research in conversation</h2><p class="lead" data-rise>Fourteen contributions from ADPRex × APARN 2026, already published in APARN’s channel of the Journal for Artistic Research.</p></div>
-  <div class="strip-ctrl"><button type="button" class="round" data-strip-move="-1"><span class="vh">Scroll back</span><svg class="ico" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M16 10H5M9 5l-5 5 5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button><button type="button" class="round" data-strip-move="1"><span class="vh">Scroll forward</span>${ARROW}</button></div></div>
-  <ul class="strip" data-strip-track tabindex="0" aria-label="Contributions from 2026">${strip.map((it) => `<li class="card"><a href="${esc(it.url)}" rel="noopener" target="_blank"><span class="card-t">${esc(it.title)}</span><span class="card-a">${esc(it.authors)}</span><span class="card-x">Read in JAR${EXT}</span><span class="vh"> (opens the Journal for Artistic Research in a new tab)</span></a></li>`).join("")}</ul>
-  <p><a class="btn btn--ghost" href="${rel(page, P("network/#research"))}">All 28 pieces ${ARROW}</a></p>
-</div></section>
-<section class="closing" id="join" aria-labelledby="h-join"><div class="wrap closing-in" data-rise>
-  <h2 class="closing-h" id="h-join">Join the conversation</h2><p>${esc(c.site.join.benefit)}</p>${joinButton(c, "btn btn--join btn--lg")}<p class="note">${esc(c.site.join.where)} ${esc(c.site.join.who)}</p>
-</div></section>`;
-  const index = [["top", "Start"], ["network", "Across the network"], ["why", "Why join"], ["take-part", "Take part"], ["research", "Research"], ["join", "Join"]];
+${homeFigures(c, page, C)}
+${homeWhy(c)}
+${homeTakePart(c, page, C)}
+${homeClosing(c)}`;
+  const index = [["top", "Start"], ["network", "Across the network"], ["why", "Why join"], ["take-part", "Take part"], ["join", "Join"]];
   return { page, title: "Home", description: c.site.messages.lede, active: "", body, index };
 }
 
@@ -247,11 +228,11 @@ function about(c) {
 ${phead("About APARN", esc(c.site.about.intro))}
 ${sec("sar", "Part of the Society for Artistic Research", `<div class="cols3">${[c.site.messages.sar, c.site.messages.jar, c.site.about.open].map((t) => `<p data-rise>${esc(t)}</p>`).join("")}</div><p>${ext("https://societyforartisticresearch.org/sigs/asia-pacific-artistic-research-network", "APARN on the SAR website", "btn btn--soft")}</p>`)}
 ${sec("aims", "What we are here to do", `<ol class="aims">${c.site.about.purposes.map((p) => `<li data-rise>${esc(p)}</li>`).join("")}</ol><p class="small">${esc(c.site.about.volunteer)}</p>`, { tint: true })}
-${sec("history", "How it began", `<ol class="hist">${c.site.about.history.map((h) => `<li data-rise><span class="hist-d">${esc(h.date)}</span><p>${esc(h.text)}</p></li>`).join("")}</ol><p class="small">${esc(c.people.firstMeeting.text)}</p>${sourceLinks(c, c.site.about.sources)}`)}
+${sec("history", "How it began", `<ol class="hist">${c.site.about.history.map((h) => `<li data-rise><span class="hist-d">${esc(h.date)}</span><p>${esc(h.text)}</p></li>`).join("")}</ol><p class="small">${esc(c.people.firstMeeting.text)}</p>`)}
 ${sec("people", "Director and convenors", `<div class="people">${c.people.people.map((p) => `<article class="person" id="${p.id}" data-rise>
   <h3 class="person-h">${esc(p.honorific)} ${esc(p.name)}</h3><p class="person-r">${p.roles.map((r) => `<span class="pill${/Director/.test(r) ? " pill--blue" : ""}">${esc(r)}</span>`).join(" ")}</p>
   <p class="person-i">${esc(p.institution)}, ${esc(p.country)}</p>
-  <details class="more"><summary>About ${esc(p.name.split(" ")[0])}</summary><div class="more-in"><p>${esc(p.bio)}</p><ul class="plain">${p.activity.map((a) => `<li>${esc(a)}</li>`).join("")}</ul>${sourceLinks(c, p.sources)}</div></details>
+  <details class="more"><summary>About ${esc(p.name.split(" ")[0])}</summary><div class="more-in"><p>${esc(p.bio)}</p><ul class="plain">${p.activity.map((a) => `<li>${esc(a)}</li>`).join("")}</ul></div></details>
   <p><a href="mailto:${esc(p.email)}">${esc(p.email)}</a></p></article>`).join("")}</div>
   <p class="small">Each conference also has its own organising team, listed in the <a href="${rel(page, P("archive/"))}">archive</a>.</p>`, { tint: true, lead: "The convenors look after the network between meetings." })}
 ${sec("contact", "Contact", `<p class="big-contact" data-rise><strong>${esc(c.site.contact.general.name)}</strong>, ${esc(c.site.contact.general.role)}<br><a href="mailto:${esc(c.site.contact.general.email)}">${esc(c.site.contact.general.email)}</a></p><p class="small">${esc(c.site.contact.note)}</p>${joinCta(c)}`, { lead: esc(c.site.contact.intro) })}`;
@@ -295,7 +276,7 @@ function conference(c) {
   const body = `
 ${phead("APARN Conference", "Each year a different host opens its doors to artists, researchers, educators and communities from across the Asia Pacific, to share practices, test ideas and build friendships that last.", "", back(page, "programme/", "Programme"))}
 ${sec("next", "Next: APARN2027", `<div class="feature" data-rise><p class="feature-m">${statusChip(next.status)} RMIT University Vietnam</p><p>${esc(next.summary)}</p><p>City, dates, theme and call: to be announced.</p><div class="row-act">${joinButton(c, "btn btn--join")}<p class="small">${esc(c.site.join.where)} Calls are shared there first.</p></div></div>`)}
-${sec("expect", "What to expect", `${pillList(["Papers, performances, creative interventions, workshops and video essays, usually 15–20 minutes each.", "Open to artistic researchers in the region and to those elsewhere with an interest in it.", "Publication in APARN’s channel of the Journal for Artistic Research; some hosts add partner journals.", "APARN2026 was free to attend. Travel bursaries were not available."].map(esc))}${sourceLinks(c, ["aparn-2024", "aparn-2025", "aparn-2026"])}`, { tint: true })}
+${sec("expect", "What to expect", `${pillList(["Papers, performances, creative interventions, workshops and video essays, usually 15–20 minutes each.", "Open to artistic researchers in the region and to those elsewhere with an interest in it.", "Publication in APARN’s channel of the Journal for Artistic Research; some hosts add partner journals.", "APARN2026 was free to attend. Travel bursaries were not available."].map(esc))}`, { tint: true })}
 ${sec("hosts", "Where it has been", `<ol class="rows rows--link">${c.regional.filter((e) => e.status === "held").map((e) => `<li data-rise><a href="${rel(page, eventPath(C, e))}"><span class="rows-d">${e.year}</span><span class="rows-t">${esc(e.title)}</span><span class="rows-p">${esc(evPlace(e))}</span>${ARROW}</a></li>`).join("")}</ol>`)}`;
   return { page, title: "APARN Conference", description: "The annual APARN Conference, hosted across the Asia Pacific.", active: "programme/", body };
 }

@@ -25,7 +25,8 @@ engines not to index it.
 | `src/lib.mjs` | Shared building blocks: join button, template button, network explorer panels, filters, template preview, submission demo |
 | `src/concept-a/` | Concept A page templates (`pages.mjs`) and stylesheet (`a.css`) |
 | `src/concept-b/` | Concept B page templates (`pages.mjs`) and stylesheet (`b.css`) |
-| `src/concept-c/` | Concept C page templates (`pages.mjs`), stylesheet (`c.css`) and its motion script (`c.js`: smooth scrolling, scroll reveals, counters, the network orbit, the Animations switch) |
+| `src/concept-c/` | Concept C page templates (`pages.mjs`), stylesheet (`c.css`) and script (`c.js`: the network orbit, section index and sliding navigation bar) |
+| `src/shared/motion.js` | Motion shared by all three: smooth scrolling, back to top, progress line, scroll reveals, counters, press ripple, the Animations switch |
 | `src/shared/aparn.js` | The small script all three sites share: menus, explorers, filters, timeline, connection board, demo. No libraries, no tracking, nothing stored |
 | `src/build.mjs` | Builds both sites into `dist/` and checks them |
 | `static/` | Fonts, optimised images and the template downloads (DOCX and PDF) |
@@ -97,14 +98,18 @@ First-time setup for a new owner or repository name:
 Every address works as a direct link and on refresh, because every page is a real `index.html` file. Unknown
 addresses show the site's own `404.html`.
 
-## Motion in Concept C
+## Motion
 
-Concept C animates: links within a page scroll smoothly up and down, content rises in from the direction you scroll,
-figures count up, the transit diagram draws itself, buttons respond when pressed and pages fade into each other.
-All of it follows the device setting for reduced motion. Many Windows computers have "Animation effects" turned
-off (Settings, Accessibility, Visual effects), which asks every website to reduce motion, so Concept C then starts
-still. The **Animations** switch in the top bar turns motion on or off for the current visit (it is remembered only
-in that browser tab).
+All three concepts animate (shared script `src/shared/motion.js`, plus Concept C's `c.js` for its orbit and index):
+links within a page scroll smoothly up and down, a back-to-top button and a reading-progress line appear as you
+scroll, content glides in from the direction you scroll, figures count up, headlines rise in word by word,
+buttons respond when pressed and pages fade into each other.
+
+Motion follows the device setting for reduced motion. Many Windows computers have "Animation effects" turned off
+(Settings, Accessibility, Visual effects), which asks every website to reduce motion; the sites then start still and
+show a small prompt, **Turn on animations**. The **Animations** switch in each footer turns motion on or off. The
+choice is remembered in that browser (localStorage, key `aparn-motion`) and applies to all three sites, because they
+share one address. Nothing else is stored.
 
 ## Updating content
 

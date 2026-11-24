@@ -160,7 +160,7 @@ function comparePage(site) {
 <section class="sec" aria-labelledby="h-side"><div class="wrap"><h2 id="h-side">Side by side</h2>
 <table><thead><tr><th scope="col">Aspect</th>${SITES.map((s) => `<th scope="col">${esc(s.name)}</th>`).join("")}</tr></thead>
 <tbody>${h.compare.map(([k, ...vals]) => `<tr><th scope="row">${esc(k)}</th>${vals.map((v, i) => `<td data-label="${esc(SITES[i].short)}">${esc(v)}</td>`).join("")}</tr>`).join("")}</tbody></table></div></section>
-${shotsAvailable() ? `<section class="sec grey" aria-labelledby="h-grey"><div class="wrap"><h2 id="h-grey">The same pages in greyscale</h2><p>The three directions stay distinct without colour: serif type and fine rules on ivory (A), black bands and heavy condensed type (B), and open white space with thin lines and rounded shapes (C).</p>
+${shotsAvailable() ? `<section class="sec grey" aria-labelledby="h-grey"><div class="wrap"><h2 id="h-grey">The same pages in greyscale</h2><p>The three directions stay distinct without colour: serif type on warm light pages (A), heavy condensed type on dark pages (B), and open white space with rounded shapes (C).</p>
 <figure><img src="../assets/shots/greyscale-home.jpg" width="1440" height="300" alt="The three home pages side by side in greyscale: Concept A on the left, Concept B in the middle, Concept C on the right." loading="lazy"><figcaption>Home pages at desktop width, colour removed. Concept A left, Concept B middle, Concept C right.</figcaption></figure></div></section>` : ""}
 <section class="sec" aria-labelledby="h-st"><div class="wrap"><h2 id="h-st">Strengths and trade-offs</h2><div class="cols">${h.concepts.map((x) => `<div><h3>${esc(D.sites[x.id].name)}</h3><p><strong>Strengths</strong></p><ul>${x.strengths.map((s) => `<li>${esc(s)}</li>`).join("")}</ul><p style="margin-top:.8rem"><strong>Trade-offs</strong></p><ul>${x.tradeoffs.map((s) => `<li>${esc(s)}</li>`).join("")}</ul></div>`).join("")}</div></div></section>
 <section class="sec" aria-labelledby="h-shared"><div class="wrap"><h2 id="h-shared">What all three share</h2><ul>${h.shared.map((s) => `<li>${esc(s)}</li>`).join("")}</ul>
@@ -219,6 +219,7 @@ for (const site of SITES) {
   writeOut(out, `assets/${site.cssName}`, `${fontFaces(site.fonts)}\n${readFileSync(join(ROOT, site.css), "utf8")}`);
   writeOut(out, "assets/icon.svg", ICONS[site.key]);
   writeOut(out, "assets/js/aparn.js", readFileSync(join(ROOT, "src", "shared", "aparn.js"), "utf8"));
+  writeOut(out, "assets/js/motion.js", readFileSync(join(ROOT, "src", "shared", "motion.js"), "utf8"));
   if (site.js) writeOut(out, `assets/js/${site.key}.js`, readFileSync(join(ROOT, site.js), "utf8"));
   for (const f of readdirSync(join(STATIC, "fonts")).filter((n) => n.endsWith(".woff2") && site.fonts.some((fam) => n.startsWith(`${fam}-`)))) copyInto(out, `assets/fonts/${f}`, join(STATIC, "fonts", f));
   for (const f of readdirSync(join(STATIC, "img"))) copyInto(out, `assets/img/${f}`, join(STATIC, "img", f));

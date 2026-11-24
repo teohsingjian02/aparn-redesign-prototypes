@@ -5,17 +5,22 @@
  "officialSite": "https://aparn.net",
  "prototypeLabel": "Prototype for discussion: a redesign proposal, not the official APARN website",
  "lastChecked": "24 November 2026",
-
  "join": {
   "url": "https://groups.google.com/g/ap-arn",
   "label": "Join APARN",
   "where": "Opens Google Groups. You join there.",
   "benefit": "Connect with fellow artistic researchers, share your work and hear about upcoming opportunities through our Google Group.",
   "who": "Everyone in or from the Asia Pacific with an interest in artistic research is welcome.",
-  "steps": ["Select Join APARN to open the APARN Google Group.", "Sign in with a Google account and ask to join the group.", "You will then receive calls, news and messages from other members, and can share your own."],
-  "sources": ["newsletter-2026-01", "sar-sig"]
+  "steps": [
+   "Select Join APARN to open the APARN Google Group.",
+   "Sign in with a Google account and ask to join the group.",
+   "You will then receive calls, news and messages from other members, and can share your own."
+  ],
+  "sources": [
+   "newsletter-2026-01",
+   "sar-sig"
+  ]
  },
-
  "messages": {
   "headlineA": "Artistic research, in conversation across the Asia Pacific.",
   "headlineB": "Meet the people. Explore the work.",
@@ -27,18 +32,42 @@
   "contribute": "Share what you are working on.",
   "contributeLine": "One contribution. A short presentation. A place in the annual collection, if you choose.",
   "templateDual": "Prepare one research update for your SAR presentation and, if you choose, APARN’s year-end publication.",
-  "sources": ["sar-sig", "sar-home", "jar-channel", "aparn-2025", "aparn-2026"]
+  "sources": [
+   "sar-sig",
+   "sar-home",
+   "jar-channel",
+   "aparn-2025",
+   "aparn-2026"
+  ],
+  "hero": "Artists and researchers across the Asia Pacific, meeting every year, sharing work and publishing together."
  },
-
  "about": {
   "intro": "APARN is a network for artists, researchers, educators, curators and practitioners who work through art to make knowledge. It brings together people working in, from and with the Asia Pacific, whether they are based in a university, a collective or an independent practice.",
   "history": [
-   {"date": "2019", "text": "APARN starts as a partnership between the Centre of Visual Art at the University of Melbourne and the Indonesian Institute of the Arts Yogyakarta (ISI Yogyakarta)."},
-   {"date": "October 2019", "text": "The first meeting is held in Yogyakarta with the International Conference on Asia Pacific Arts Studies."},
-   {"date": "2020–2022", "text": "Annual meetings continue online: Rebordering the Archipelago (2020), a graduate research meet-up (2021) and #APARN2022."},
-   {"date": "2022–2023", "text": "APARN becomes a Special Interest Group of the Society for Artistic Research. Its inaugural SIG meeting closes #APARN2022, and aparn.net dates the SIG to 2023."},
-   {"date": "2023–2026", "text": "The annual meeting travels: Yogyakarta, Cyberjaya, Bangkok and Singapore. APARN2025 is the largest so far, with over 150 presentations from 22 countries."},
-   {"date": "2026", "text": "Dr Roopesh Sitharan (Multimedia University) becomes Director of APARN."}
+   {
+    "date": "2019",
+    "text": "APARN starts as a partnership between the Centre of Visual Art at the University of Melbourne and the Indonesian Institute of the Arts Yogyakarta (ISI Yogyakarta)."
+   },
+   {
+    "date": "October 2019",
+    "text": "The first meeting is held in Yogyakarta with the International Conference on Asia Pacific Arts Studies."
+   },
+   {
+    "date": "2020–2022",
+    "text": "Annual meetings continue online: Rebordering the Archipelago (2020), a graduate research meet-up (2021) and #APARN2022."
+   },
+   {
+    "date": "2022–2023",
+    "text": "APARN becomes a Special Interest Group of the Society for Artistic Research. Its inaugural SIG meeting closes #APARN2022, and aparn.net dates the SIG to 2023."
+   },
+   {
+    "date": "2023–2026",
+    "text": "The annual meeting travels: Yogyakarta, Cyberjaya, Bangkok and Singapore. APARN2025 is the largest so far, with over 150 presentations from 22 countries."
+   },
+   {
+    "date": "2026",
+    "text": "Dr Roopesh Sitharan (Multimedia University) becomes Director of APARN."
+   }
   ],
   "purposes": [
    "Map artistic research initiatives and activities across the Asia Pacific.",
@@ -48,27 +77,126 @@
   "purposesNote": "Adapted from the purposes on aparn.net and SAR’s APARN page.",
   "volunteer": "APARN is run by volunteers. Its convenors have each hosted a meeting from their own resources, and the network has no budget or separate administration.",
   "open": "Part of the SIG’s work is to address coloniality in artistic research, and to grow a broader, more inclusive network of practitioners from across the region.",
-  "sources": ["aparn-about", "sar-sig", "jar-channel", "aparn-2022", "programme-2023", "newsletter-2026-01", "team-2026-11"]
+  "sources": [
+   "aparn-about",
+   "sar-sig",
+   "jar-channel",
+   "aparn-2022",
+   "programme-2023",
+   "newsletter-2026-01",
+   "team-2026-11"
+  ]
  },
-
  "evidence": [
-  {"value": "300+", "label": "members in the APARN Google Group", "date": "November 2026", "kind": "membership", "note": "The JAR channel says “more than 300 members”. The 300th member was announced in January 2026.", "sources": ["jar-channel", "newsletter-2026-01"]},
-  {"value": "150+", "label": "presentations at APARN2025 in Bangkok", "date": "July 2025", "kind": "conference", "note": "Counted at one conference, not across the membership.", "sources": ["newsletter-2026-01"]},
-  {"value": "22", "label": "countries represented at APARN2025", "date": "July 2025", "kind": "conference", "note": "Where the APARN2025 presenters came from. This is not a count of member countries.", "sources": ["newsletter-2026-01"]},
-  {"value": "8", "label": "annual meetings held since 2019", "date": "2019–2026", "kind": "events", "note": "In Indonesia, Malaysia, Thailand and Singapore, plus three online editions hosted from Melbourne and Yogyakarta.", "sources": ["aparn-about", "aparn-2020", "aparn-2021", "aparn-2022", "aparn-2023", "aparn-2024", "aparn-2025", "aparn-2026"]},
-  {"value": "28", "label": "pieces in APARN’s JAR channel", "date": "November 2026", "kind": "publication", "note": "24 contributions from APARN events and 4 JAR publications from the region.", "sources": ["jar-channel"]}
+  {
+   "value": "300+",
+   "label": "members in the APARN Google Group",
+   "date": "November 2026",
+   "kind": "membership",
+   "note": "The JAR channel says “more than 300 members”. The 300th member was announced in January 2026.",
+   "sources": [
+    "jar-channel",
+    "newsletter-2026-01"
+   ]
+  },
+  {
+   "value": "150+",
+   "label": "presentations at APARN2025 in Bangkok",
+   "date": "July 2025",
+   "kind": "conference",
+   "note": "Counted at one conference, not across the membership.",
+   "sources": [
+    "newsletter-2026-01"
+   ]
+  },
+  {
+   "value": "22",
+   "label": "countries represented at APARN2025",
+   "date": "July 2025",
+   "kind": "conference",
+   "note": "Where the APARN2025 presenters came from. This is not a count of member countries.",
+   "sources": [
+    "newsletter-2026-01"
+   ]
+  },
+  {
+   "value": "8",
+   "label": "annual meetings held since 2019",
+   "date": "2019–2026",
+   "kind": "events",
+   "note": "In Indonesia, Malaysia, Thailand and Singapore, plus three online editions hosted from Melbourne and Yogyakarta.",
+   "sources": [
+    "aparn-about",
+    "aparn-2020",
+    "aparn-2021",
+    "aparn-2022",
+    "aparn-2023",
+    "aparn-2024",
+    "aparn-2025",
+    "aparn-2026"
+   ]
+  },
+  {
+   "value": "28",
+   "label": "pieces in APARN’s JAR channel",
+   "date": "November 2026",
+   "kind": "publication",
+   "note": "24 contributions from APARN events and 4 JAR publications from the region.",
+   "sources": [
+    "jar-channel"
+   ]
+  }
  ],
-
  "benefits": [
-  {"title": "Find your people across the region", "text": "Meet artists and researchers who share your questions, from Yogyakarta to Melbourne, Bangkok to Ann Arbor. More than 300 people already belong to the group.", "proof": "More than 300 Google Group members (JAR channel, November 2026)", "sources": ["jar-channel"]},
-  {"title": "Present at the annual conference", "text": "Each year a different host opens its doors. The meetings welcome papers, performances, workshops, video essays and creative formats.", "proof": "APARN2025: over 150 presentations from 22 countries (newsletter, January 2026)", "sources": ["newsletter-2026-01", "aparn-2025", "aparn-2026"]},
-  {"title": "Join the international conversation", "text": "APARN is part of the Society for Artistic Research, and every year it gathers during the SAR Conference, online, so members who cannot travel can still join in.", "proof": "A Special Interest Group of SAR, with a yearly gathering at the SAR Conference (SAR, 2026)", "sources": ["sar-sig"]},
-  {"title": "Publish your research", "text": "Presenters at APARN events can publish in APARN’s channel of the Journal for Artistic Research, and rework papers for JAR’s peer-reviewed calls.", "proof": "28 pieces in the APARN channel in JAR (November 2026)", "sources": ["jar-channel"]},
-  {"title": "Hear about opportunities", "text": "Calls for papers, hosting invitations and news reach members through the group, and you can share your own projects there too.", "proof": "The call to host APARN2027 was to be announced through the group (newsletter, January 2026)", "sources": ["newsletter-2026-01"]}
+  {
+   "title": "Find your people across the region",
+   "text": "Meet artists and researchers who share your questions, from Yogyakarta to Melbourne, Bangkok to Ann Arbor. More than 300 people already belong to the group.",
+   "proof": "More than 300 Google Group members (JAR channel, November 2026)",
+   "sources": [
+    "jar-channel"
+   ],
+   "short": "Meet artists and researchers who share your questions."
+  },
+  {
+   "title": "Present at the annual conference",
+   "text": "Each year a different host opens its doors. The meetings welcome papers, performances, workshops, video essays and creative formats.",
+   "proof": "APARN2025: over 150 presentations from 22 countries (newsletter, January 2026)",
+   "sources": [
+    "newsletter-2026-01",
+    "aparn-2025",
+    "aparn-2026"
+   ],
+   "short": "A different host welcomes the network every year."
+  },
+  {
+   "title": "Join the international conversation",
+   "text": "APARN is part of the Society for Artistic Research, and every year it gathers during the SAR Conference, online, so members who cannot travel can still join in.",
+   "proof": "A Special Interest Group of SAR, with a yearly gathering at the SAR Conference (SAR, 2026)",
+   "sources": [
+    "sar-sig"
+   ],
+   "short": "APARN is part of the Society for Artistic Research."
+  },
+  {
+   "title": "Publish your research",
+   "text": "Presenters at APARN events can publish in APARN’s channel of the Journal for Artistic Research, and rework papers for JAR’s peer-reviewed calls.",
+   "proof": "28 pieces in the APARN channel in JAR (November 2026)",
+   "sources": [
+    "jar-channel"
+   ],
+   "short": "Share your work in APARN’s channel of the Journal for Artistic Research."
+  },
+  {
+   "title": "Hear about opportunities",
+   "text": "Calls for papers, hosting invitations and news reach members through the group, and you can share your own projects there too.",
+   "proof": "The call to host APARN2027 was to be announced through the group (newsletter, January 2026)",
+   "sources": [
+    "newsletter-2026-01"
+   ],
+   "short": "Calls, news and invitations come to you through the group."
+  }
  ],
-
  "reachNote": "These places come from documented meetings, convenor institutions and projects. They show where APARN has met and worked, not where its members live. Member locations are private to the Google Group; approved figures can be added later.",
-
  "status": {
   "held": "Held",
   "upcoming": "Upcoming",
@@ -79,11 +207,18 @@
   "planned": "Planned",
   "established": "Established"
  },
-
  "contact": {
   "intro": "For anything about APARN, write to the Director or one of the convenors.",
-  "general": {"name": "Dr Roopesh Sitharan", "role": "Director", "email": "rs@mmu.edu.my"},
+  "general": {
+   "name": "Dr Roopesh Sitharan",
+   "role": "Director",
+   "email": "rs@mmu.edu.my"
+  },
   "note": "On the production site, one shared contact address may suit better than listing personal emails.",
-  "sources": ["team-2026-11", "jar-channel", "aparn-about"]
+  "sources": [
+   "team-2026-11",
+   "jar-channel",
+   "aparn-about"
+  ]
  }
 }

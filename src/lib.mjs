@@ -45,8 +45,8 @@ export function sourceLinks(c, ids, { prefix = "Source" } = {}) {
 export const IMAGES = {
   eshraghi: { base: "eshraghi-reculnaissance-2020", widths: [720, 1200, 2000], w: 2000, h: 1334,
     alt: "Neon words glow across a dark wall in Léuli Eshrāghi’s installation re(cul)naissance.",
-    caption: "Léuli Eshrāghi, re(cul)naissance, 2020. Installation view, 22nd Biennale of Sydney, Cockatoo Island. Commissioned by the Biennale of Sydney.",
-    credit: "Courtesy the artist. Photograph: Jessica Maurer." },
+    caption: "Léuli Eshrāghi, re(cul)naissance, 2020, 22nd Biennale of Sydney.",
+    credit: "Courtesy the artist. Photo: Jessica Maurer." },
   raqs: { base: "raqs-media-collective", widths: [800, 1400], w: 1400, h: 933,
     alt: "The three members of Raqs Media Collective stand outside a large building.", caption: "Raqs Media Collective opened APARN2020.", credit: "Photographer to be confirmed." },
   "victoria-hunt": { base: "victoria-hunt", widths: [720, 1200], w: 1200, h: 803,
@@ -140,7 +140,7 @@ export function nodePanel(c, concept, page, idx, id, tag = "article") {
   return `<${tag} class="panel" data-select-panel="${esc(id)}" aria-labelledby="panel-${esc(id)}-h" tabindex="-1">
   <p class="panel-type">${typeName}</p><h3 id="panel-${esc(id)}-h">${esc(n.label)}</h3>${body}
   <div class="panel-related"><h4 class="vh">Connected to</h4>${rel_ || "<p>No documented connections yet.</p>"}</div>
-  ${sourceLinks(c, srcIds)}</${tag}>`;
+</${tag}>`;
 }
 
 // ------------------------------------------------------------------ research contributions (JAR channel) with filters
@@ -161,7 +161,6 @@ export function contributionsFilter(c, { idPrefix = "jar", compact = false, limi
     <a href="${esc(it.url)}" rel="noopener" target="_blank"><span class="contrib-edition">${esc(editions[it.edition])}</span><span class="contrib-title">${esc(it.title)}</span><span class="contrib-authors">${esc(it.authors || "APARN2025 conference team")}</span><span class="contrib-kind">${esc(kinds[it.kind])}${EXT}</span><span class="vh"> (opens the Journal for Artistic Research in a new tab)</span></a></li>`).join("\n  ")}
   </ul>
   <div class="filter-empty" data-filter-empty hidden><p><strong>No pieces match that.</strong> Try another word, or <button type="button" class="linkish" data-filter-reset>show all pieces</button>.</p></div>
-  ${sourceLinks(c, ["jar-channel"], { prefix: "List from" })}
 </div>`;
 }
 
@@ -281,4 +280,70 @@ export function recordModel() {
 export function assertNoEmDash(html, where) {
   const text = html.replace(/<script[\s\S]*?<\/script>/g, "").replace(/<style[\s\S]*?<\/style>/g, "");
   if (text.includes("\u2014")) throw new Error(`em dash found in ${where}: …${text.slice(Math.max(0, text.indexOf("\u2014") - 60), text.indexOf("\u2014") + 20)}…`);
+}
+
+// ------------------------------------------------------------------ motion helpers shared by the three concepts
+// Runs in <head> before anything is drawn: motion is on when the device allows it, or when the visitor has
+// turned on the Animations switch (remembered in localStorage as "aparn-motion").
+export const HEAD_MOTION = `<script>(function () { var r = document.documentElement, m = null; r.classList.add("js"); try { m = localStorage.getItem("aparn-motion"); } catch (e) {} var q = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches; if (m === "on" || (m !== "off" && !q)) r.classList.add("anim"); if (m === "off") r.classList.add("motion-off"); })();</script>`;
+export const motionSwitch = () => `<button type="button" class="motion-sw" data-motion-toggle aria-pressed="false" hidden><span>Animations</span><span class="motion-sw-k" aria-hidden="true"></span></button>`;
+export const progressBar = () => `<div class="progress" aria-hidden="true"><span data-progress></span></div>`;
+export const toTop = () => `<a class="totop" href="#main" data-totop><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M10 16V4M5 9l5-5 5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="vh">Back to top</span></a>`;
+// A headline whose words rise in one after another. `grad` lists words drawn with the concept's gradient.
+export function riseWords(text, { grad = [] } = {}) {
+  let i = 0;
+  return text.split(" ").map((w) => `<span class="w"><span class="wi${grad.includes(w.replace(/[.,!?]/g, "")) ? " grad-t" : ""}" style="--d:${i++}">${esc(w)}</span></span>`).join(" ");
+}
+export function riseLines(lines) {
+  return lines.map((l, i) => `<span class="w w--line"><span class="wi${l.grad ? " grad-t" : ""}" style="--d:${i * 2}">${esc(l.text)}</span></span>`).join(" ");
+}
+// Every plain-text <h1> on a page gets the same word-by-word entrance.
+export function riseH1(html) {
+  return html.replace(/<h1([^>]*)>([^<]+)<\/h1>/g, (m, attrs, text) => {
+    let i = 0;
+    return `<h1${attrs}>${text.trim().split(/\s+/).map((w) => `<span class="w"><span class="wi" style="--d:${i++}">${w}</span></span>`).join(" ")}</h1>`;
+  });
+}
+
+// A figure that counts up when seen ("300+" counts to 300, then shows the suffix). Screen readers get the final value.
+export function countUp(value) {
+  const m = /^(\d+)(\D*)$/.exec(String(value));
+  return m ? `<span aria-hidden="true" data-count="${m[1]}" data-suffix="${esc(m[2])}">${esc(value)}</span><span class="vh">${esc(value)}</span>` : esc(value);
+}
+
+// ------------------------------------------------------------------ calm home-page blocks shared by the three concepts
+export const ARROW = `<svg class="ico" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+export function homeFigures(c, page, base = "") {
+  return `<section class="hsec" id="network" aria-labelledby="h-network"><div class="wrap">
+  <h2 class="hh2" id="h-network" data-rise>Across the network</h2>
+  <dl class="hfigs">${c.site.evidence.map((x) => `<div data-rise><dt>${countUp(x.value)}</dt><dd>${esc(x.label)}<span>${esc(x.date)}</span></dd></div>`).join("")}</dl>
+  <p class="hmore" data-rise><a class="btn btn--soft btn--lg" href="${rel(page, `${base}network/`)}">Explore the network ${ARROW}</a></p>
+</div></section>`;
+}
+export function homeWhy(c) {
+  return `<section class="hsec hsec--why" id="why" aria-labelledby="h-why"><div class="wrap hwhy">
+  <div class="hwhy-a"><h2 class="hh2" id="h-why" data-rise>Why join APARN</h2><p class="hlead" data-rise>${esc(c.site.join.benefit)}</p><div data-rise>${joinButton(c, "btn btn--join btn--lg")}</div></div>
+  <ul class="hwhy-list">${c.site.benefits.map((b) => `<li data-rise><h3>${esc(b.title)}</h3><p>${esc(b.short)}</p></li>`).join("")}</ul>
+</div></section>`;
+}
+export function homeTakePart(c, page, base = "") {
+  const n27 = c.eventById.aparn2027, s27 = c.eventById.sar2027;
+  const ways = [
+    ["programme/conference/", "APARN Conference", "Every year, hosted somewhere new in the region.", "APARN2027 · RMIT University Vietnam", statusChip(n27.status)],
+    ["programme/gathering-at-sar/", "Gathering at the SAR Conference", "Share a 5–10-minute update with members.", "SAR 2027 · Bratislava", statusChip(s27.status)],
+    ["publication/", "Annual Publication", "Your contribution, collected at the end of the year.", "A proposal for review", statusChip("proposed")],
+  ];
+  return `<section class="hsec" id="take-part" aria-labelledby="h-part"><div class="wrap">
+  <h2 class="hh2" id="h-part" data-rise>${esc(c.site.messages.contribute)}</h2>
+  <ul class="hways">${ways.map(([href, h, p, next, chip]) => `<li data-rise><a href="${rel(page, base + href)}"><h3>${h}</h3><p>${p}</p><p class="hways-next">${esc(next)} ${chip}</p><span class="hways-go" aria-hidden="true">${ARROW}</span></a></li>`).join("")}</ul>
+  <div class="hflow" data-rise>
+    <ol><li><span>1</span>Prepare one contribution</li><li><span>2</span>Share it in 5–10 minutes at SAR</li><li><span>3</span>Add it to the year-end collection, if you choose</li></ol>
+    <div class="hflow-act">${templateButton(c, page, base, "btn btn--template btn--lg")}<p>${esc(c.template.dual)}</p></div>
+  </div>
+</div></section>`;
+}
+export function homeClosing(c) {
+  return `<section class="hclose" id="join" aria-labelledby="h-join"><div class="wrap" data-rise>
+  <h2 class="hclose-h" id="h-join">Join the conversation</h2>${joinButton(c, "btn btn--join btn--lg")}
+</div></section>`;
 }

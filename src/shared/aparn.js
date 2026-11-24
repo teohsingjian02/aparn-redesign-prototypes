@@ -129,6 +129,7 @@
           var same = Math.abs(X1 - X2) < 2;
           var bend = same ? X1 + 36 : (X1 + X2) / 2;
           var p = d.createElementNS(NS, "path");
+          p.setAttribute("pathLength", "1");
           p.setAttribute("d", "M" + X1 + " " + Y1 + " C " + bend + " " + Y1 + ", " + bend + " " + Y2 + ", " + X2 + " " + Y2);
           svg.appendChild(p);
         });

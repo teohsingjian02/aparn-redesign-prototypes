@@ -1,50 +1,11 @@
-/* Concept C: Clear Signal. Motion and the network orbit, on top of the shared aparn.js.
-   Everything here is an enhancement: pages work without it. Motion follows the device setting
-   (prefers-reduced-motion); the Animations switch lets a visitor turn it on or off for this visit only
-   (kept in sessionStorage). Nothing else is stored and nothing is sent anywhere. */
+/* Concept C: Clear Signal. The sliding navigation bar, the section index and the network orbit.
+   Smooth scrolling, reveals, counters, the press ripple and the Animations switch come from the shared motion.js.
+   Nothing is stored and nothing is sent anywhere. */
 (function () {
   "use strict";
   var d = document, root = d.documentElement;
   function still() { return !root.classList.contains("anim"); }
-  var riseOn = false, countOn = false;
   function each(list, fn) { Array.prototype.forEach.call(list, fn); }
-
-  /* header shadow, reading progress and the back-to-top button */
-  function initScroll() {
-    var top = d.querySelector("[data-top]"), bar = d.querySelector("[data-progress]"), totop = d.querySelector("[data-totop]");
-    var queued = false;
-    function update() {
-      queued = false;
-      var y = window.scrollY, max = root.scrollHeight - window.innerHeight;
-      if (top) top.classList.toggle("is-scrolled", y > 8);
-      if (bar) bar.style.transform = "scaleX(" + (max > 0 ? Math.min(1, y / max).toFixed(4) : 0) + ")";
-      if (totop) totop.classList.toggle("is-shown", y > 640);
-    }
-    window.addEventListener("scroll", function () { if (!queued) { queued = true; window.requestAnimationFrame(update); } }, { passive: true });
-    window.addEventListener("resize", update);
-    update();
-  }
-
-  /* smooth scrolling, up or down, for every link within the page; the target then takes focus */
-  function initSmooth() {
-    d.addEventListener("click", function (e) {
-      if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
-      var a = e.target.closest('a[href^="#"]');
-      if (!a) return;
-      var id = decodeURIComponent(a.getAttribute("href").slice(1));
-      var target = id ? d.getElementById(id) : null;
-      if (!target) return;
-      e.preventDefault();
-      var toTop = a.hasAttribute("data-totop");
-      var header = d.querySelector("[data-top]");
-      var offset = (header ? header.offsetHeight : 0) + 16;
-      var y = toTop ? 0 : Math.max(0, target.getBoundingClientRect().top + window.scrollY - offset);
-      window.scrollTo({ top: y, behavior: still() ? "auto" : "smooth" });
-      if (!target.hasAttribute("tabindex") && !/^(A|BUTTON|INPUT|SELECT|TEXTAREA|SUMMARY)$/.test(target.tagName)) target.setAttribute("tabindex", "-1");
-      target.focus({ preventScroll: true });
-      if (window.history && history.replaceState) history.replaceState(null, "", toTop ? window.location.pathname : "#" + id);
-    });
-  }
 
   /* a blue bar slides under the main navigation, following the pointer and keyboard focus */
   function initNavBar() {
@@ -71,51 +32,6 @@
     if (d.fonts && d.fonts.ready) d.fonts.ready.then(function () { place(current); });
   }
 
-  /* content rises in from the side you are scrolling from, every time it comes back into view */
-  function initRise() {
-    var els = d.querySelectorAll("[data-rise]");
-    if (!els.length || still() || !("IntersectionObserver" in window)) return;
-    root.classList.add("motion");
-    if (riseOn) return;
-    riseOn = true;
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (en) {
-        var el = en.target;
-        if (en.isIntersecting) { el.classList.add("is-in"); return; }
-        el.setAttribute("data-from", en.boundingClientRect.top < 0 ? "top" : "bottom");
-        el.classList.remove("is-in");
-      });
-    }, { rootMargin: "0px 0px -5% 0px", threshold: 0 });
-    each(els, function (el) {
-      var r = el.getBoundingClientRect();
-      if (r.top < window.innerHeight && r.bottom > 0) el.classList.add("is-in");
-      io.observe(el);
-    });
-  }
-
-  /* figures count up the first time they are seen */
-  function initCount() {
-    var els = d.querySelectorAll("[data-count]");
-    if (!els.length || still() || !("IntersectionObserver" in window) || countOn) return;
-    countOn = true;
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (en) {
-        if (!en.isIntersecting) return;
-        io.unobserve(en.target);
-        var el = en.target, end = Number(el.getAttribute("data-count")), suffix = el.getAttribute("data-suffix") || "", t0 = null;
-        function step(t) {
-          if (t0 === null) t0 = t;
-          var k = Math.min(1, (t - t0) / 1400), eased = 1 - Math.pow(1 - k, 3);
-          el.textContent = Math.round(end * eased) + suffix;
-          if (k < 1) window.requestAnimationFrame(step);
-        }
-        el.textContent = "0" + suffix;
-        window.requestAnimationFrame(step);
-      });
-    }, { threshold: 0.5 });
-    each(els, function (el) { io.observe(el); });
-  }
-
   /* the section index on the home page shows where you are */
   function initIndex() {
     var nav = d.querySelector("[data-index]");
@@ -131,22 +47,6 @@
       });
     }, { rootMargin: "-40% 0px -55% 0px" });
     Object.keys(map).forEach(function (id) { io.observe(d.getElementById(id)); });
-  }
-
-  /* a soft ripple where a button is pressed */
-  function initPress() {
-    d.addEventListener("pointerdown", function (e) {
-      if (still()) return;
-      var b = e.target.closest(".btn");
-      if (!b) return;
-      var r = b.getBoundingClientRect();
-      b.style.setProperty("--rx", (e.clientX - r.left) + "px");
-      b.style.setProperty("--ry", (e.clientY - r.top) + "px");
-      b.classList.remove("is-rippling");
-      void b.offsetWidth;
-      b.classList.add("is-rippling");
-    });
-    d.addEventListener("animationend", function (e) { if (e.animationName === "c-ripple") e.target.classList.remove("is-rippling"); });
   }
 
   /* the network orbit: whatever is chosen moves to the centre and its connections arrange around it */
@@ -211,23 +111,6 @@
     });
   }
 
-  /* the Animations switch in the prototype bar */
-  function initSwitch() {
-    var btn = d.querySelector("[data-motion-toggle]");
-    if (!btn) return;
-    function sync() { btn.setAttribute("aria-pressed", still() ? "false" : "true"); }
-    btn.hidden = false;
-    btn.addEventListener("click", function () {
-      var on = still();
-      root.classList.toggle("anim", on);
-      root.classList.toggle("motion-off", !on);
-      try { window.sessionStorage.setItem("aparn-motion", on ? "on" : "off"); } catch (e) {}
-      if (on) { initRise(); initCount(); } else { root.classList.remove("motion"); }
-      sync();
-    });
-    sync();
-  }
-
-  function init() { initSwitch(); initScroll(); initSmooth(); initNavBar(); initRise(); initCount(); initIndex(); initPress(); initOrbit(); }
+  function init() { initNavBar(); initIndex(); initOrbit(); }
   if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); else init();
 })();
