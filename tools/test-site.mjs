@@ -19,7 +19,7 @@ const QUICK = process.argv.includes("--quick");
 const PORT = 8137;
 const OUT = join(ROOT, "screenshots");
 const DOCX = join(ROOT, "static", "downloads", template.files.docx);
-const SITES = ["a", "b"].map((key) => ({ key, ...deploy.sites[key], root: LIVE ? deploy.sites[key].url : `http://127.0.0.1:${PORT}${deploy.sites[key].base}` }));
+const SITES = Object.keys(deploy.sites).map((key) => ({ key, ...deploy.sites[key], root: LIVE ? deploy.sites[key].url : `http://127.0.0.1:${PORT}${deploy.sites[key].base}` }));
 const VIEWS = [
   { name: "mobile", width: 360, height: 780, mobile: true },
   { name: "tablet", width: 768, height: 1024, mobile: true },
@@ -150,7 +150,7 @@ async function behaviour(browser, site) {
   check(outlines.every(Boolean), `${K}: keyboard focus is visible on the first stops (${outlines.join(",")})`);
   check(await desk.$(`[...document.querySelectorAll("header a[data-join]")].some((a) => a.offsetParent && a.href === "https://groups.google.com/g/ap-arn" && a.target === "_blank")`), `${K}: Join APARN visible in the desktop header`);
 
-  if (site.key === "a") {
+  if (site.key === "c") { /* see behaviourC */ } else if (site.key === "a") {
     // phone menu
     await phone.goto(site.root, 300);
     check(await phone.visible(".menu-toggle") && !(await phone.visible("#site-menu")), `A 360px: menu button shown, menu closed`);
@@ -219,6 +219,8 @@ async function behaviour(browser, site) {
     await filterFlow(desk, "B network");
   }
 
+  if (site.key === "c") await behaviourC(desk, phone, site);
+
   // shared: template downloads, demo, direct link and refresh, 404
   for (const f of [template.files.docx, template.files.pdf]) {
     const r = await fetch(site.root + "downloads/" + f, { method: "GET" });
@@ -239,6 +241,92 @@ async function behaviour(browser, site) {
   check(await desk.$(`[...document.querySelectorAll("a")].some((a) => a.href === ${JSON.stringify(other.url)})`), `${K}: links to the other concept`);
   check(desk.consoleErrors.length === 0 && phone.consoleErrors.length === 0, `${K}: no console errors during interaction (${[...desk.consoleErrors, ...phone.consoleErrors].slice(0, 3).join(" | ")})`);
   await desk.close(); await phone.close();
+}
+
+async function behaviourC(desk, phone, site) {
+  const ringOk = (p) => p.$(`(() => { const s = document.querySelector('.orb[aria-pressed="true"]'); const want = s.getAttribute("data-links").split(" ").filter(Boolean).length; return { id: s.getAttribute("data-select-button"), want, ring: document.querySelectorAll(".orb.is-ring").length, lines: document.querySelectorAll("[data-orbit-lines] line").length, center: document.querySelectorAll(".orb.is-center").length, leaky: document.querySelectorAll(".orb.is-off:not([inert])").length, panel: !document.querySelector('[data-select-panel="' + s.getAttribute("data-select-button") + '"]').hidden }; })()`);
+  // home on a desktop: the orbit, the hop buttons, browse everything, the section index, smooth scroll and back to top
+  await desk.goto(site.root, 500);
+  let r = await ringOk(desk);
+  check(r.id === "aparn2025" && r.center === 1 && r.ring === r.want && r.lines === r.want && r.leaky === 0 && r.panel, `C: orbit starts on APARN2025 with ${r.ring} connections around it (${JSON.stringify(r)})`);
+  await desk.click('.orb[data-select-button="bangkok"]');
+  await sleep(200);
+  r = await ringOk(desk);
+  check(r.id === "bangkok" && r.ring === r.want && r.lines === r.want && r.panel, `C: choosing Bangkok re-centres the orbit (${JSON.stringify(r)})`);
+  await desk.click('.cpanel:not([hidden]) .hop[data-select-button="pornrat-damrhung"]');
+  await sleep(200);
+  r = await ringOk(desk);
+  check(r.id === "pornrat-damrhung" && r.ring === r.want && r.panel, `C: a connection in the story hops to it (${JSON.stringify(r)})`);
+  await desk.$(`document.querySelector(".browse").open = true, true`);
+  await desk.click('.chip--node[data-select-button="oslo"]');
+  await sleep(200);
+  r = await ringOk(desk);
+  check(r.id === "oslo" && r.panel, `C: browse everything reaches any item (${JSON.stringify(r)})`);
+  check(await desk.$(`["300+", "150+", "22", "8", "28"].every((v) => [...document.querySelectorAll("[data-count]")].some((e) => e.textContent === v))`), "C: figures show their values");
+  check(await desk.$(`document.querySelectorAll("[data-index] a").length === 6 && getComputedStyle(document.querySelector("[data-index]")).display !== "none"`), "C: section index on wide screens");
+  await desk.click('.hero-act a[href="#network"]');
+  await sleep(500);
+  check(await desk.$(`(() => { const t = document.getElementById("network").getBoundingClientRect().top, h = document.querySelector("[data-top]").offsetHeight; return Math.abs(t - h - 16) < 30 && document.activeElement === document.getElementById("network"); })()`), "C: Explore the network scrolls down to the section and focuses it");
+  await desk.click('[data-index] a[href="#why"]');
+  await sleep(600);
+  check(await desk.$(`(() => { const t = document.getElementById("why").getBoundingClientRect().top; return t > 40 && t < 140 && document.querySelector('[data-index] a[href="#why"]').classList.contains("is-current"); })()`), "C: the section index scrolls to a section and marks it");
+  check(await desk.$(`document.querySelector("[data-totop]").classList.contains("is-shown")`), "C: back to top appears after scrolling");
+  await desk.click("[data-totop]");
+  await sleep(500);
+  check(await desk.$(`window.scrollY === 0 && document.activeElement === document.getElementById("main")`), "C: back to top returns to the top and focuses the page");
+  await desk.goto(site.root + "network/", 400);
+  check(await desk.$(`getComputedStyle(document.querySelector(".nav-bar")).opacity === "1" && document.querySelector('.nav a[aria-current="page"]').textContent === "Network"`), "C: the navigation marks the current section");
+  await filterFlow(desk, "C network");
+  await desk.goto(site.root + "archive/", 300);
+  const arch = (v) => desk.$(`(() => { document.querySelector('[data-filter-value="${v}"]').click(); return document.querySelector("[data-filter-count]").textContent.trim(); })()`);
+  check((await arch("open")) === "2 gatherings", "C: archive filter Coming up shows 2");
+  check((await arch("sar")) === "3 gatherings", "C: archive filter Gatherings at SAR shows 3");
+  check((await arch("all")) === "12 gatherings", "C: archive shows all 12");
+  // phone: menu, the fan layout and focus moving to the story
+  await phone.goto(site.root, 400);
+  check(await phone.visible(".menu-btn") && !(await phone.visible("#menu")), "C 360px: menu button shown, menu closed");
+  check(await phone.visible(".top a[data-join]"), "C 360px: Join APARN stays in the header");
+  await phone.click(".menu-btn");
+  await sleep(150);
+  check(await phone.visible("#menu") && await phone.visible(".menu-join a[data-join]"), "C 360px: the menu opens with Join APARN inside");
+  for (let i = 0; i < 12; i++) await phone.key("Tab", "Tab", 9);
+  check(await phone.$(`document.getElementById("menu").contains(document.activeElement)`), "C 360px: focus stays inside the open menu");
+  await phone.key("Escape", "Escape", 27);
+  await sleep(150);
+  check(!(await phone.visible("#menu")) && await phone.$(`document.activeElement.classList.contains("menu-btn")`), "C 360px: Esc closes the menu and returns focus");
+  r = await ringOk(phone);
+  check(r.ring === r.want && r.lines === r.want && (await phone.$(`!!document.querySelector("[data-orbit-stage]").style.height`)), `C 360px: the orbit becomes a fan (${JSON.stringify(r)})`);
+  await phone.click('.orb[data-select-button="bangkok"]');
+  await sleep(250);
+  check(await phone.$(`document.activeElement === document.querySelector('[data-select-panel="bangkok"]')`), "C 360px: choosing an item moves focus to its story");
+}
+
+// motion is on for everyone else: content rises in from the side you scroll and comes back when you scroll up
+async function motionC(browser, site) {
+  const p = await openPage(browser, VIEWS[2], { reducedMotion: false });
+  await p.goto(site.root, 600);
+  check(await p.$(`document.documentElement.classList.contains("motion") && !document.querySelector("#why .why-list li").classList.contains("is-in")`), "C motion: content below the fold waits to rise in");
+  await p.$(`window.scrollTo(0, document.getElementById("why").offsetTop), true`);
+  await sleep(1800);
+  const down = await p.$(`({ why: document.querySelector("#why .why-list li").classList.contains("is-in"), heroFrom: document.querySelector(".hero-h").getAttribute("data-from"), heroIn: document.querySelector(".hero-h").classList.contains("is-in"), counted: document.querySelector("[data-count]").textContent })`);
+  check(down.why && down.heroFrom === "top" && !down.heroIn, `C motion: scrolling down brings content in and lets the top leave upwards (${JSON.stringify(down)})`);
+  await p.$(`window.scrollTo(0, 0), true`);
+  await sleep(1200);
+  check(await p.$(`document.querySelector(".hero-h").classList.contains("is-in")`), "C motion: scrolling back up brings the top back in");
+  check(p.consoleErrors.length === 0, `C motion: no console errors (${p.consoleErrors.slice(0, 2).join(" | ")})`);
+  await p.close();
+  // a device that asks for reduced motion: still, until the visitor turns on the Animations switch for the visit
+  const q = await openPage(browser, VIEWS[2]);
+  await q.goto(site.root, 400);
+  check(await q.$(`!document.documentElement.classList.contains("anim") && document.querySelector("[data-motion-toggle]").getAttribute("aria-pressed") === "false" && !document.querySelector("[data-motion-toggle]").hidden`), "C switch: reduced motion is respected by default and the switch shows it is off");
+  await q.click("[data-motion-toggle]");
+  check(await q.$(`document.documentElement.classList.contains("anim") && document.documentElement.classList.contains("motion") && sessionStorage.getItem("aparn-motion") === "on"`), "C switch: turning Animations on starts the motion");
+  await q.goto(site.root + "about/", 400);
+  check(await q.$(`document.documentElement.classList.contains("anim") && document.querySelector("[data-motion-toggle]").getAttribute("aria-pressed") === "true"`), "C switch: the choice lasts for the visit");
+  await q.click("[data-motion-toggle]");
+  check(await q.$(`!document.documentElement.classList.contains("anim") && !document.documentElement.classList.contains("motion") && sessionStorage.getItem("aparn-motion") === "off"`), "C switch: turning Animations off stops the motion");
+  check(q.consoleErrors.length === 0, `C switch: no console errors (${q.consoleErrors.slice(0, 2).join(" | ")})`);
+  await q.close();
 }
 
 // ------------------------------------------------------------------ 3. screenshots
@@ -269,7 +357,7 @@ async function screenshots(browser) {
     await take(phone, "about/", `${k}-about-mobile.jpg`);
     // menu open on a phone
     await phone.goto(site.root, 300);
-    await phone.click(k === "a" ? ".menu-toggle" : ".bar-index");
+    await phone.click({ a: ".menu-toggle", b: ".bar-index", c: ".menu-btn" }[k]);
     await sleep(200);
     await phone.shot(join(OUT, `${k}-menu-mobile.jpg`)); shots.push(`${k}-menu-mobile.jpg`);
     // the demo's review step on a phone
@@ -284,11 +372,11 @@ async function screenshots(browser) {
     await phone.shot(join(OUT, `${k}-demo-review-mobile.jpg`)); shots.push(`${k}-demo-review-mobile.jpg`);
     for (const p of [desk, tab, phone, phoneFull]) await p.close();
   }
-  // the two home pages side by side in greyscale
-  const g = await browser.page({ width: 1440, height: 450 });
+  // the home pages side by side in greyscale
+  const g = await browser.page({ width: 1440, height: 300 });
   const b64 = (f) => readFileSync(join(OUT, f)).toString("base64");
   await g.goto("about:blank", 100);
-  await g.eval(`(() => { document.body.style.margin = "0"; document.body.innerHTML = '<div style="display:flex;filter:grayscale(1)"><img style="width:720px;height:450px" src="data:image/jpeg;base64,${b64("a-home-desktop.jpg")}"><img style="width:720px;height:450px" src="data:image/jpeg;base64,${b64("b-home-desktop.jpg")}"></div>'; return Promise.all([...document.images].map((i) => i.decode())).then(() => true); })()`);
+  await g.eval(`(() => { document.body.style.margin = "0"; document.body.innerHTML = '<div style="display:flex;filter:grayscale(1)">' + ${JSON.stringify(SITES.map((s) => s.key))}.map((k) => '<img style="width:480px;height:300px" src="data:image/jpeg;base64,' + ({ ${SITES.map((s) => `${s.key}: "${b64(`${s.key}-home-desktop.jpg`)}"`).join(", ")} })[k] + '">').join("") + '</div>'; return Promise.all([...document.images].map((i) => i.decode())).then(() => true); })()`);
   await g.shot(join(OUT, "greyscale-home.jpg")); shots.push("greyscale-home.jpg");
   await g.close();
   console.log(`\nsaved ${shots.length} screenshots to screenshots/`);
@@ -298,7 +386,7 @@ async function screenshots(browser) {
 const server = LIVE ? null : await serve(PORT);
 const browser = await launch(9341);
 try {
-  for (const site of SITES) { await auditPages(browser, site); await behaviour(browser, site); }
+  for (const site of SITES) { await auditPages(browser, site); await behaviour(browser, site); if (site.key === "c") await motionC(browser, site); }
   if (SHOTS) await screenshots(browser);
 } finally {
   await browser.close();

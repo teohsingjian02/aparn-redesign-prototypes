@@ -52,7 +52,7 @@ function shell(c, page, { title, description, active, body }) {
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<div class="proto">${esc(c.site.prototypeLabel)}. <span class="proto-concept">Concept A: Editorial Gallery.</span> <a href="${rel(page, "compare/")}">Compare both concepts</a></div>
+<div class="proto">${esc(c.site.prototypeLabel)}. <span class="proto-concept">Concept A: Editorial Gallery.</span> <a href="${rel(page, "compare/")}">Compare all three concepts</a></div>
 <header class="masthead">
   <div class="masthead-inner">
     <a class="wordmark" href="${rel(page, P(""))}">${isles(2019, { w: 64, h: 22, cls: "wordmark-isles" })}<span class="wordmark-short">APARN</span><span class="wordmark-full">Asia Pacific Artistic Research Network</span></a>
@@ -97,6 +97,7 @@ ${body}
       <ul class="colophon-list">
         <li><a href="${rel(page, "sources/")}">Sources, credits and open questions</a></li>
         <li><a href="${esc(c.deploy.sites.b.url)}">See Concept B: Living Network</a></li>
+        <li><a href="${esc(c.deploy.sites.c.url)}">See Concept C: Clear Signal</a></li>
       </ul>
     </div>
   </div>

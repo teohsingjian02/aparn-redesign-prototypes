@@ -1,9 +1,10 @@
-# APARN website redesign: two prototypes: comparison
+# APARN website redesign: three prototypes: comparison
 
-Two directions for a new website for the Asia Pacific Artistic Research Network (APARN), prepared for Dr Roopesh Sitharan, Director of APARN. Both use the same checked content and the same functions, so they can be compared fairly. They differ in look, tone and the way you move through them.
+Three directions for a new website for the Asia Pacific Artistic Research Network (APARN), prepared for Dr Roopesh Sitharan, Director of APARN. All three use the same checked content and the same functions, so they can be compared fairly. They differ in look, tone and the way you move through them.
 
 - Concept A: Editorial Gallery: https://teohsingjian02.github.io/aparn-prototypeA/
 - Concept B: Living Network: https://teohsingjian02.github.io/aparn-prototypeB/
+- Concept C: Clear Signal: https://teohsingjian02.github.io/aparn-prototypeC/
 
 ## Concept A: Editorial Gallery
 
@@ -47,22 +48,43 @@ An active artistic network and a digital exhibition: explore first, then join, s
 - The board is dense on small phones, where it becomes stacked lists with the story first.
 - More design rules to follow when adding content, such as poster colours and shapes.
 
+## Concept C: Clear Signal
+
+White, precise and technological: the clearest hierarchy of the three, with smooth motion that guides the eye.
+
+**Art direction.** White pages, near-black text and one deep blue accent close to International Klein Blue, a nod to both art history and the screen. Roboto in a strict type scale: one clear title per section, a short lead, no small labels above titles. Rounded buttons and cards, thin lines, and an original two-line transit diagram of every gathering since 2019.
+
+**How it works.** A tidy home page with a section index and a back-to-top button; every link within a page scrolls smoothly up or down. Content glides in from the direction you scroll, figures count up, buttons respond to a press and pages fade into each other. The network explorer is an orbit: choose anything and its connections arrange around it, so you can hop from person to place to event.
+
+**Strengths**
+
+- The clearest hierarchy and the quickest to scan.
+- Feels current and technological while staying calm.
+- Motion explains relationships (the orbit, the transit lines) rather than decorating.
+- Familiar and comfortable on phones: rounded buttons, a full-screen menu, smooth scrolling.
+
+**Trade-offs**
+
+- Less artistic character than A or B; the artworks and diagrams carry the personality.
+- The most motion of the three, so it needs care to stay calm and fast. It switches off for visitors who ask for reduced motion.
+- White, rounded interfaces are common; the blue accent and the diagrams keep it distinct.
+
 ## Side by side
 
-| Aspect | Concept A: Editorial Gallery | Concept B: Living Network |
-|---|---|---|
-| Feeling | Calm, cultured, inviting | Active, expressive, a network at work |
-| First screen | One serif headline, the Join button and an artwork, with the next events in a ribbon | A poster headline, the Join button, an artwork on a colour block and two event tickets, then the connection board |
-| Type | Newsreader serif for headings and reading, Work Sans labels | Archivo condensed at poster scale, normal width for reading |
-| Colour | Ivory, ink and one cinnabar accent | White and black with flat jade, lacquer red and turmeric |
-| Navigation | Masthead with five sections; a drop-down menu on phones | Black bar with Explore, Take part and Publish; a full-screen Index |
-| Network | Tabbed index beside a reading panel | Four-column connection board with drawn links |
-| Archive | Horizontal timeline with year plates | Poster wall with filters |
-| Original graphics | “Isles” horizon plates | Poster cards with a colour and shape for each year |
-| In greyscale | Light pages, fine rules, serif text | Black bands, heavy condensed type, solid blocks |
-| Best if APARN wants | A trusted, scholarly home that reads well | A visible, lively community that invites exploration |
+| Aspect | Concept A: Editorial Gallery | Concept B: Living Network | Concept C: Clear Signal |
+|---|---|---|---|
+| Feeling | Calm, cultured, inviting | Active, expressive, a network at work | Clean, precise, calmly technological |
+| First screen | One serif headline, the Join button and an artwork, with the next events in a ribbon | A poster headline, the Join button, an artwork on a colour block and two event tickets, then the connection board | One clear headline, the Join button and a two-line transit diagram of every gathering since 2019 |
+| Type | Newsreader serif for headings and reading, Work Sans labels | Archivo condensed at poster scale, normal width for reading | Roboto in a strict scale |
+| Colour | Ivory, ink and one cinnabar accent | White and black with flat jade, lacquer red and turmeric | White with one deep blue accent |
+| Navigation | Masthead with five sections; a drop-down menu on phones | Black bar with Explore, Take part and Publish; a full-screen Index | Sticky header with a sliding indicator, a section index and back-to-top; a full-screen menu on phones |
+| Network | Tabbed index beside a reading panel | Four-column connection board with drawn links | An orbit that re-centres on whatever you choose |
+| Archive | Horizontal timeline with year plates | Poster wall with filters | A vertical timeline with filters |
+| Original graphics | “Isles” horizon plates | Poster cards with a colour and shape for each year | Transit lines and the network orbit |
+| In greyscale | Light pages, fine rules, serif text | Black bands, heavy condensed type, solid blocks | Open white space, thin lines, rounded shapes, sans-serif type |
+| Best if APARN wants | A trusted, scholarly home that reads well | A visible, lively community that invites exploration | A clear, modern site that is quickest to navigate |
 
-## What both prototypes share
+## What all three share
 
 - “Join APARN” opens the APARN Google Group. It sits in the header, the phone menu, the opening screen, after the network section and in a closing invitation, with a note that joining happens on Google Groups.
 - Across the network: dated evidence that keeps members, conference participation, host locations and project locations apart.
@@ -73,4 +95,4 @@ An active artistic network and a digital exhibition: explore first, then join, s
 - An archive of every gathering since 2019, with programmes, organisers and links to the published work.
 - Content kept in JSON files, pages readable without JavaScript, keyboard and screen-reader support, reduced motion respected, and layouts checked at 360, 768 and 1440 pixels.
 
-Screenshots are in [screenshots/](screenshots/). The greyscale pair is [screenshots/greyscale-home.jpg](screenshots/greyscale-home.jpg).
+Screenshots are in [screenshots/](screenshots/). The three home pages in greyscale are in [screenshots/greyscale-home.jpg](screenshots/greyscale-home.jpg).

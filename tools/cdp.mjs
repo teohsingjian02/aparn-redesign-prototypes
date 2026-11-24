@@ -37,7 +37,7 @@ export async function launch(port = 9333) {
       await s("Page.enable"); await s("Runtime.enable");
       await s("Emulation.setDeviceMetricsOverride", { width, height, deviceScaleFactor: dpr, mobile });
       if (mobile) await s("Emulation.setTouchEmulationEnabled", { enabled: true, maxTouchPoints: 5 });
-      if (reducedMotion) await s("Emulation.setEmulatedMedia", { features: [{ name: "prefers-reduced-motion", value: "reduce" }] });
+      await s("Emulation.setEmulatedMedia", { features: [{ name: "prefers-reduced-motion", value: reducedMotion ? "reduce" : "no-preference" }] });
       const consoleErrors = [];
       listeners.push((m) => {
         if (m.sessionId !== sessionId) return;

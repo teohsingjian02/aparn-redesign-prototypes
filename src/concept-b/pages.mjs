@@ -48,7 +48,7 @@ function shell(c, page, { title, description, active, body }) {
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<div class="proto">${esc(c.site.prototypeLabel)} / <strong>Concept B: Living Network</strong> / <a href="${rel(page, "compare/")}">Compare both concepts</a></div>
+<div class="proto">${esc(c.site.prototypeLabel)} / <strong>Concept B: Living Network</strong> / <a href="${rel(page, "compare/")}">Compare all three concepts</a></div>
 <header class="bar">
   <a class="bar-mark" href="${rel(page, P(""))}"><span class="bar-aparn">APARN</span><span class="bar-full">Asia Pacific Artistic Research Network</span></a>
   <nav class="bar-quick" aria-label="Quick links">
@@ -84,7 +84,7 @@ ${body}
       <li>${ext("https://sar2027.eu/sk", "SAR 2027")}</li>
       <li>${ext(c.site.officialSite, "Current aparn.net")}</li></ul></div>
     <div><h2 class="foot-h mono">This prototype</h2><p class="small">A redesign proposal for discussion. Content checked ${esc(c.site.lastChecked)}.</p><ul class="foot-list">
-      <li><a href="${rel(page, "sources/")}">Sources, credits and open questions</a></li><li><a href="${esc(c.deploy.sites.a.url)}">See Concept A: Editorial Gallery</a></li></ul></div>
+      <li><a href="${rel(page, "sources/")}">Sources, credits and open questions</a></li><li><a href="${esc(c.deploy.sites.a.url)}">See Concept A: Editorial Gallery</a></li><li><a href="${esc(c.deploy.sites.c.url)}">See Concept C: Clear Signal</a></li></ul></div>
   </div>
 </footer>
 </body>

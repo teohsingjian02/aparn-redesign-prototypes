@@ -1,15 +1,16 @@
-# APARN website redesign: two prototypes
+# APARN website redesign: three prototypes
 
-Two working prototypes for a new website for the Asia Pacific Artistic Research Network (APARN), prepared for
-Dr Roopesh Sitharan, Director of APARN. Both use the same checked content and the same functions, so they can be
+Three working prototypes for a new website for the Asia Pacific Artistic Research Network (APARN), prepared for
+Dr Roopesh Sitharan, Director of APARN. All three use the same checked content and the same functions, so they can be
 compared fairly. They differ in art direction and in how you move through them.
 
 | | Live prototype | Built site repository |
 |---|---|---|
 | Concept A: Editorial Gallery | https://teohsingjian02.github.io/aparn-prototypeA/ | https://github.com/teohsingjian02/aparn-prototypeA |
 | Concept B: Living Network | https://teohsingjian02.github.io/aparn-prototypeB/ | https://github.com/teohsingjian02/aparn-prototypeB |
+| Concept C: Clear Signal | https://teohsingjian02.github.io/aparn-prototypeC/ | https://github.com/teohsingjian02/aparn-prototypeC |
 
-This repository holds the source: content, code, the shared template, screenshots and documents. The two site
+This repository holds the source: content, code, the shared template, screenshots and documents. The three site
 repositories only receive the built output. Each site also has a `compare/` page (the comparison and the proposal
 summary) and a `sources/` page (sources, credits and open questions).
 
@@ -24,12 +25,13 @@ engines not to index it.
 | `src/lib.mjs` | Shared building blocks: join button, template button, network explorer panels, filters, template preview, submission demo |
 | `src/concept-a/` | Concept A page templates (`pages.mjs`) and stylesheet (`a.css`) |
 | `src/concept-b/` | Concept B page templates (`pages.mjs`) and stylesheet (`b.css`) |
-| `src/shared/aparn.js` | The small script both sites share: menus, explorers, filters, timeline, connection board, demo. No libraries, no tracking, nothing stored |
+| `src/concept-c/` | Concept C page templates (`pages.mjs`), stylesheet (`c.css`) and its motion script (`c.js`: smooth scrolling, scroll reveals, counters, the network orbit, the Animations switch) |
+| `src/shared/aparn.js` | The small script all three sites share: menus, explorers, filters, timeline, connection board, demo. No libraries, no tracking, nothing stored |
 | `src/build.mjs` | Builds both sites into `dist/` and checks them |
 | `static/` | Fonts, optimised images and the template downloads (DOCX and PDF) |
 | `tools/` | Template generator, Word PDF export, local server, browser tests, screenshots, deploy |
-| `screenshots/` | Desktop, tablet and phone screenshots of both concepts, plus a greyscale comparison |
-| `COMPARISON.md` | The two concepts compared: art direction, user experience, strengths and trade-offs |
+| `screenshots/` | Desktop, tablet and phone screenshots of all three concepts, plus a greyscale comparison |
+| `COMPARISON.md` | The three concepts compared: art direction, user experience, strengths and trade-offs |
 | `PROPOSAL.md` | The short proposal summary for Dr Roopesh |
 | `SOURCES.md` | The source and content inventory: sources, dates, image credits, items to confirm, page list |
 
@@ -47,8 +49,8 @@ The only dependency is `docx`, used to generate the template. The sites themselv
 ## Build, preview and test
 
 ```
-npm run build        # writes dist/aparn-prototypeA and dist/aparn-prototypeB, then checks them
-npm run serve        # http://127.0.0.1:8137/aparn-prototypeA/ and /aparn-prototypeB/
+npm run build        # writes dist/aparn-prototypeA, B and C, then checks them
+npm run serve        # http://127.0.0.1:8137/aparn-prototypeA/, /aparn-prototypeB/ and /aparn-prototypeC/
 npm test             # every page at 360, 768 and 1440 px, plus menus, explorers, filters and the demo
 npm run shots        # the tests, then fresh screenshots in screenshots/
 npm run test:live    # the same tests against the published sites
@@ -79,7 +81,7 @@ Each concept is its own GitHub Pages site, published from the `main` branch, fol
 
 ```
 npm run build
-npm run deploy       # pushes dist/aparn-prototypeA and dist/aparn-prototypeB to their repositories
+npm run deploy       # pushes dist/aparn-prototypeA, B and C to their repositories
 ```
 
 `tools/deploy.mjs` uses your normal git login (Git Credential Manager on Windows) and never prints credentials.
@@ -88,12 +90,21 @@ GitHub Pages usually publishes within a minute or two. Then run `npm run test:li
 First-time setup for a new owner or repository name:
 
 1. Change `owner`, the repository names, `base` and `url` in `content/deploy.json`.
-2. Create two empty public repositories with those names on GitHub.
+2. Create three empty public repositories with those names on GitHub.
 3. Run `npm run build` and `npm run deploy`.
 4. In each repository: Settings, Pages, Build and deployment, Source: Deploy from a branch, Branch: `main`, `/ (root)`.
 
 Every address works as a direct link and on refresh, because every page is a real `index.html` file. Unknown
 addresses show the site's own `404.html`.
+
+## Motion in Concept C
+
+Concept C animates: links within a page scroll smoothly up and down, content rises in from the direction you scroll,
+figures count up, the transit diagram draws itself, buttons respond when pressed and pages fade into each other.
+All of it follows the device setting for reduced motion. Many Windows computers have "Animation effects" turned
+off (Settings, Accessibility, Visual effects), which asks every website to reduce motion, so Concept C then starts
+still. The **Animations** switch in the top bar turns motion on or off for the current visit (it is remembered only
+in that browser tab).
 
 ## Updating content
 

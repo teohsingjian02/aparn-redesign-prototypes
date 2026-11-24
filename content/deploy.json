@@ -1,9 +1,31 @@
 {
   "_about": "Where the prototypes are published. Each concept is its own GitHub Pages site, built from this source repository. The build uses these values to link the two concepts to each other and to write each site's 404 page.",
   "owner": "teohsingjian02",
-  "source": { "repo": "aparn-redesign-prototypes", "url": "https://github.com/teohsingjian02/aparn-redesign-prototypes" },
+  "source": {
+    "repo": "aparn-redesign-prototypes",
+    "url": "https://github.com/teohsingjian02/aparn-redesign-prototypes"
+  },
   "sites": {
-    "a": { "repo": "aparn-prototypeA", "base": "/aparn-prototypeA/", "url": "https://teohsingjian02.github.io/aparn-prototypeA/", "name": "Concept A: Editorial Gallery", "short": "Editorial Gallery" },
-    "b": { "repo": "aparn-prototypeB", "base": "/aparn-prototypeB/", "url": "https://teohsingjian02.github.io/aparn-prototypeB/", "name": "Concept B: Living Network", "short": "Living Network" }
+    "a": {
+      "repo": "aparn-prototypeA",
+      "base": "/aparn-prototypeA/",
+      "url": "https://teohsingjian02.github.io/aparn-prototypeA/",
+      "name": "Concept A: Editorial Gallery",
+      "short": "Editorial Gallery"
+    },
+    "b": {
+      "repo": "aparn-prototypeB",
+      "base": "/aparn-prototypeB/",
+      "url": "https://teohsingjian02.github.io/aparn-prototypeB/",
+      "name": "Concept B: Living Network",
+      "short": "Living Network"
+    },
+    "c": {
+      "repo": "aparn-prototypeC",
+      "base": "/aparn-prototypeC/",
+      "url": "https://teohsingjian02.github.io/aparn-prototypeC/",
+      "name": "Concept C: Clear Signal",
+      "short": "Clear Signal"
+    }
   }
 }

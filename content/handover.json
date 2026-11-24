@@ -1,7 +1,7 @@
 {
   "_about": "Comparison and proposal summary. The build shows these on the landing page and writes COMPARISON.md and PROPOSAL.md from them, so the three always agree.",
-  "title": "APARN website redesign: two prototypes",
-  "intro": "Two directions for a new website for the Asia Pacific Artistic Research Network (APARN), prepared for Dr Roopesh Sitharan, Director of APARN. Both use the same checked content and the same functions, so they can be compared fairly. They differ in look, tone and the way you move through them.",
+  "title": "APARN website redesign: three prototypes",
+  "intro": "Three directions for a new website for the Asia Pacific Artistic Research Network (APARN), prepared for Dr Roopesh Sitharan, Director of APARN. All three use the same checked content and the same functions, so they can be compared fairly. They differ in look, tone and the way you move through them.",
   "note": "These are proposal demos, not the official APARN website. aparn.net is unchanged. Search engines are asked not to index these pages.",
   "concepts": [
     {
@@ -43,19 +43,89 @@
         "The board is dense on small phones, where it becomes stacked lists with the story first.",
         "More design rules to follow when adding content, such as poster colours and shapes."
       ]
+    },
+    {
+      "id": "c",
+      "path": "",
+      "name": "Concept C: Clear Signal",
+      "short": "Clear Signal",
+      "line": "White, precise and technological: the clearest hierarchy of the three, with smooth motion that guides the eye.",
+      "direction": "White pages, near-black text and one deep blue accent close to International Klein Blue, a nod to both art history and the screen. Roboto in a strict type scale: one clear title per section, a short lead, no small labels above titles. Rounded buttons and cards, thin lines, and an original two-line transit diagram of every gathering since 2019.",
+      "ux": "A tidy home page with a section index and a back-to-top button; every link within a page scrolls smoothly up or down. Content glides in from the direction you scroll, figures count up, buttons respond to a press and pages fade into each other. The network explorer is an orbit: choose anything and its connections arrange around it, so you can hop from person to place to event.",
+      "strengths": [
+        "The clearest hierarchy and the quickest to scan.",
+        "Feels current and technological while staying calm.",
+        "Motion explains relationships (the orbit, the transit lines) rather than decorating.",
+        "Familiar and comfortable on phones: rounded buttons, a full-screen menu, smooth scrolling."
+      ],
+      "tradeoffs": [
+        "Less artistic character than A or B; the artworks and diagrams carry the personality.",
+        "The most motion of the three, so it needs care to stay calm and fast. It switches off for visitors who ask for reduced motion.",
+        "White, rounded interfaces are common; the blue accent and the diagrams keep it distinct."
+      ]
     }
   ],
   "compare": [
-    ["Feeling", "Calm, cultured, inviting", "Active, expressive, a network at work"],
-    ["First screen", "One serif headline, the Join button and an artwork, with the next events in a ribbon", "A poster headline, the Join button, an artwork on a colour block and two event tickets, then the connection board"],
-    ["Type", "Newsreader serif for headings and reading, Work Sans labels", "Archivo condensed at poster scale, normal width for reading"],
-    ["Colour", "Ivory, ink and one cinnabar accent", "White and black with flat jade, lacquer red and turmeric"],
-    ["Navigation", "Masthead with five sections; a drop-down menu on phones", "Black bar with Explore, Take part and Publish; a full-screen Index"],
-    ["Network", "Tabbed index beside a reading panel", "Four-column connection board with drawn links"],
-    ["Archive", "Horizontal timeline with year plates", "Poster wall with filters"],
-    ["Original graphics", "“Isles” horizon plates", "Poster cards with a colour and shape for each year"],
-    ["In greyscale", "Light pages, fine rules, serif text", "Black bands, heavy condensed type, solid blocks"],
-    ["Best if APARN wants", "A trusted, scholarly home that reads well", "A visible, lively community that invites exploration"]
+    [
+      "Feeling",
+      "Calm, cultured, inviting",
+      "Active, expressive, a network at work",
+      "Clean, precise, calmly technological"
+    ],
+    [
+      "First screen",
+      "One serif headline, the Join button and an artwork, with the next events in a ribbon",
+      "A poster headline, the Join button, an artwork on a colour block and two event tickets, then the connection board",
+      "One clear headline, the Join button and a two-line transit diagram of every gathering since 2019"
+    ],
+    [
+      "Type",
+      "Newsreader serif for headings and reading, Work Sans labels",
+      "Archivo condensed at poster scale, normal width for reading",
+      "Roboto in a strict scale"
+    ],
+    [
+      "Colour",
+      "Ivory, ink and one cinnabar accent",
+      "White and black with flat jade, lacquer red and turmeric",
+      "White with one deep blue accent"
+    ],
+    [
+      "Navigation",
+      "Masthead with five sections; a drop-down menu on phones",
+      "Black bar with Explore, Take part and Publish; a full-screen Index",
+      "Sticky header with a sliding indicator, a section index and back-to-top; a full-screen menu on phones"
+    ],
+    [
+      "Network",
+      "Tabbed index beside a reading panel",
+      "Four-column connection board with drawn links",
+      "An orbit that re-centres on whatever you choose"
+    ],
+    [
+      "Archive",
+      "Horizontal timeline with year plates",
+      "Poster wall with filters",
+      "A vertical timeline with filters"
+    ],
+    [
+      "Original graphics",
+      "“Isles” horizon plates",
+      "Poster cards with a colour and shape for each year",
+      "Transit lines and the network orbit"
+    ],
+    [
+      "In greyscale",
+      "Light pages, fine rules, serif text",
+      "Black bands, heavy condensed type, solid blocks",
+      "Open white space, thin lines, rounded shapes, sans-serif type"
+    ],
+    [
+      "Best if APARN wants",
+      "A trusted, scholarly home that reads well",
+      "A visible, lively community that invites exploration",
+      "A clear, modern site that is quickest to navigate"
+    ]
   ],
   "shared": [
     "“Join APARN” opens the APARN Google Group. It sits in the header, the phone menu, the opening screen, after the network section and in a closing invitation, with a note that joining happens on Google Groups.",
@@ -69,13 +139,28 @@
   ],
   "proposal": {
     "to": "Dr Roopesh Sitharan, Director of APARN",
-    "summary": "The current aparn.net is accurate but static and text-heavy. Both prototypes keep every verified fact and add what the site is missing: a clear way in, visible activity across the region, simple navigation, artistic character and one easy path from a short SAR update to the year-end publication.",
+    "summary": "The current aparn.net is accurate but static and text-heavy. All three prototypes keep every verified fact and add what the site is missing: a clear way in, visible activity across the region, simple navigation, artistic character and one easy path from a short SAR update to the year-end publication.",
     "points": [
-      { "title": "Joining is always one step away", "text": "“Join APARN” is the strongest button on every page and goes straight to the Google Group. A line beside it says that joining happens on Google Groups, and five benefits explain why to join, each backed by a dated source." },
-      { "title": "International activity you can see", "text": "Across the network brings together people, places, events and published work: 11 documented places plus the online editions, eight annual meetings since 2019 and 28 pieces in APARN’s JAR channel. Figures are dated and never mix conference participation with membership. Member locations stay private until APARN approves data to show." },
-      { "title": "Navigation that stays simple", "text": "Five sections in Concept A and three in Concept B replace a long list of event pages. Every past event has its own archive page, and every address works as a direct link." },
-      { "title": "Artistic character", "text": "Credited artworks from APARN’s own events, original graphics for each concept and warm, direct wording. The two directions offer a calm editorial voice or an energetic exhibition voice." },
-      { "title": "From SAR update to publication", "text": "One template, one contribution, two uses: prepare one contribution, share a 5–10-minute update at the APARN Gathering at the SAR Conference, and opt in to the year-end collection. The demo shows the whole journey honestly, and the README sets out what a live submission service would need." }
+      {
+        "title": "Joining is always one step away",
+        "text": "“Join APARN” is the strongest button on every page and goes straight to the Google Group. A line beside it says that joining happens on Google Groups, and five benefits explain why to join, each backed by a dated source."
+      },
+      {
+        "title": "International activity you can see",
+        "text": "Across the network brings together people, places, events and published work: 11 documented places plus the online editions, eight annual meetings since 2019 and 28 pieces in APARN’s JAR channel. Figures are dated and never mix conference participation with membership. Member locations stay private until APARN approves data to show."
+      },
+      {
+        "title": "Navigation that stays simple",
+        "text": "Concepts A and C use five sections and Concept B three, in place of a long list of event pages. Every past event has its own archive page, and every address works as a direct link."
+      },
+      {
+        "title": "Artistic character",
+        "text": "Credited artworks from APARN’s own events, original graphics for each concept and warm, direct wording. The three directions offer a calm editorial voice, an energetic exhibition voice or a clear, technological one."
+      },
+      {
+        "title": "From SAR update to publication",
+        "text": "One template, one contribution, two uses: prepare one contribution, share a 5–10-minute update at the APARN Gathering at the SAR Conference, and opt in to the year-end collection. The demo shows the whole journey honestly, and the README sets out what a live submission service would need."
+      }
     ],
     "ask": "Please choose a direction (or a mix), confirm the open items below, and approve the draft template limits. With those answers the chosen concept can be prepared for launch."
   }

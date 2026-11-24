@@ -5,6 +5,8 @@
   "use strict";
   var d = document;
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  // Concept C can override the device setting for a visit (classes set in its page head)
+  function reduced() { var c = d.documentElement.classList; if (c.contains("anim")) return false; if (c.contains("motion-off")) return true; return reduceMotion.matches; }
 
   /* ---------------------------------------------------------------- menus */
   function initNav() {
@@ -69,7 +71,7 @@
         group.dispatchEvent(new CustomEvent("aparn:select", { detail: { name: name, id: id } }));
         if (opts.focusPanel) {
           var p = panels.filter(function (x) { return x.getAttribute("data-select-panel") === id; })[0];
-          if (p) { p.focus({ preventScroll: true }); p.scrollIntoView({ behavior: reduceMotion.matches ? "auto" : "smooth", block: "start" }); }
+          if (p) { p.focus({ preventScroll: true }); p.scrollIntoView({ behavior: reduced() ? "auto" : "smooth", block: "start" }); }
         }
       }
       group.addEventListener("click", function (e) {
@@ -197,7 +199,7 @@
       strip.querySelectorAll("[data-strip-move]").forEach(function (b) {
         b.addEventListener("click", function () {
           var dir = Number(b.getAttribute("data-strip-move"));
-          track.scrollBy({ left: dir * Math.max(240, track.clientWidth * 0.8), behavior: reduceMotion.matches ? "auto" : "smooth" });
+          track.scrollBy({ left: dir * Math.max(240, track.clientWidth * 0.8), behavior: reduced() ? "auto" : "smooth" });
         });
       });
     });
@@ -230,7 +232,7 @@
         var cur = steps.filter(function (s) { return s.getAttribute("data-step") === String(n); })[0];
         if (focus !== false && cur) {
           cur.focus({ preventScroll: true });
-          root.scrollIntoView({ behavior: reduceMotion.matches ? "auto" : "smooth", block: "start" });
+          root.scrollIntoView({ behavior: reduced() ? "auto" : "smooth", block: "start" });
         }
       }
       root.addEventListener("click", function (e) {
@@ -341,7 +343,7 @@
 
   /* ---------------------------------------------------------------- gentle reveals (decorative only) */
   function initReveal() {
-    if (reduceMotion.matches || !("IntersectionObserver" in window)) return;
+    if (reduced() || !("IntersectionObserver" in window)) return;
     var els = d.querySelectorAll("[data-reveal]");
     if (!els.length) return;
     d.documentElement.classList.add("motion");

@@ -42,7 +42,7 @@ Source and content inventory for the APARN redesign prototypes. All pages were r
 | Newsreader, Work Sans, Archivo, IBM Plex Mono | `assets/fonts/*.woff2` | Google Fonts | null | SIL Open Font License 1.1. Self-hosted. |
 | Edition plates, line drawings, network diagrams | `drawn SVG and CSS elements` | Made for these prototypes | null | Original. No third-party assets. |
 
-All other graphics (Concept A's isles plates, Concept B's poster cards, icons) are original to these prototypes. Fonts: Newsreader and Work Sans (Concept A), Archivo (Concept B) and Roboto (the template), all SIL Open Font License 1.1, from Google Fonts, self-hosted.
+All other graphics (Concept A's isles plates, Concept B's poster cards, Concept C's transit diagram and orbit, icons) are original to these prototypes. Fonts: Newsreader and Work Sans (Concept A), Archivo (Concept B) and Roboto (Concept C and the template), all SIL Open Font License 1.1, from Google Fonts, self-hosted.
 
 ## To confirm before launch
 
@@ -140,4 +140,31 @@ References were studied for ideas only. Neither prototype copies their layouts, 
 | `archive/aparn2027/` | APARN2027 · APARN · Concept B prototype |
 | `archive/sar2027/` | APARN Gathering at SAR 2027 · APARN · Concept B prototype |
 
-Both sites also have `compare/` (the comparison and proposal summary), `sources/` (this inventory as a page), `downloads/` (the template) and a `404.html` page.
+### Concept C: Clear Signal (https://teohsingjian02.github.io/aparn-prototypeC/)
+
+| Path | Title |
+|---|---|
+| `/` | Home · APARN · Concept C prototype |
+| `about/` | About · APARN · Concept C prototype |
+| `network/` | Network · APARN · Concept C prototype |
+| `programme/` | Programme · APARN · Concept C prototype |
+| `programme/conference/` | APARN Conference · APARN · Concept C prototype |
+| `programme/gathering-at-sar/` | APARN Gathering at the SAR Conference · APARN · Concept C prototype |
+| `publication/` | Publication · APARN · Concept C prototype |
+| `template/` | Template for Annual Publication · APARN · Concept C prototype |
+| `contribute/` | Contribute · APARN · Concept C prototype |
+| `archive/` | Archive · APARN · Concept C prototype |
+| `archive/aparn2019/` | APARN 2019 · APARN · Concept C prototype |
+| `archive/aparn2020/` | APARN2020 · APARN · Concept C prototype |
+| `archive/aparn2021/` | APARN2021 · APARN · Concept C prototype |
+| `archive/aparn2022/` | #APARN2022 · APARN · Concept C prototype |
+| `archive/aparn2023/` | APARN2023 · APARN · Concept C prototype |
+| `archive/aparn2024/` | APARN2024 · APARN · Concept C prototype |
+| `archive/aparn2025/` | APARN2025 · APARN · Concept C prototype |
+| `archive/sar2025/` | APARN Gathering at SAR 2025 · APARN · Concept C prototype |
+| `archive/aparn2026/` | ADPRex × APARN 2026 · APARN · Concept C prototype |
+| `archive/sar2026/` | APARN Gathering at SAR 2026 · APARN · Concept C prototype |
+| `archive/aparn2027/` | APARN2027 · APARN · Concept C prototype |
+| `archive/sar2027/` | APARN Gathering at SAR 2027 · APARN · Concept C prototype |
+
+Each site also has `compare/` (the comparison and proposal summary), `sources/` (this inventory as a page), `downloads/` (the template) and a `404.html` page.
