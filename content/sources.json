@@ -1,0 +1,58 @@
+{
+ "_about": "Source and content inventory for the APARN redesign prototypes. All pages were read on 24 November 2026. Every fact in content/*.json points to one or more of these ids.",
+ "accessed": "2026-11-24",
+ "sources": [
+  {"id": "aparn-about", "title": "About APARN", "url": "https://aparn.net/about-aparn/", "date": "Page updated 5 July 2025", "used": "Origin (2019), SIG of SAR since 2023, purposes, volunteer model, convenors and their emails, Google Group link"},
+  {"id": "aparn-2020", "title": "#APARN2020 (Rebordering the Archipelago)", "url": "https://aparn.net/aparn2020/", "date": "3–6 November 2020; page updated 7 March 2024", "used": "Programme, speakers, organisers, image credits"},
+  {"id": "aparn-2021", "title": "#APARN2021 (Graduate Research Meet-up)", "url": "https://aparn.net/aparn-2021/", "date": "26 November 2021", "used": "Format, convenors and co-organisers"},
+  {"id": "aparn-2022", "title": "#APARN2022", "url": "https://aparn.net/aparn2022-artistic-research-for-the-planet/", "date": "25 November 2022", "used": "Theme, schedule, inaugural SIG meeting"},
+  {"id": "aparn-2023", "title": "#APARN2023 “The Matter of Art”", "url": "https://aparn.net/aparn2023/", "date": "7 July 2023", "used": "Theme, host, convenors"},
+  {"id": "aparn-2024", "title": "#APARN 2024 (Art as Research: Methods for Synthetic Reasoning)", "url": "https://aparn.net/2024-2/", "date": "12–13 June 2024; page updated 25 January 2025", "used": "Host, convenors, live stream, IJCM option"},
+  {"id": "aparn-2025", "title": "#APARN2025 (Artistic Research for Creative Communities)", "url": "https://aparn.net/aparn2025/", "date": "1–3 July 2025; page updated 7 July 2025", "used": "Host, convenors, format, Manusya option, JAR channel note"},
+  {"id": "aparn-2026", "title": "#APARN2026 call (homepage of aparn.net)", "url": "https://aparn.net/", "date": "Page updated 4 March 2026", "used": "Theme, dates, venue, formats, publication options (JAR channel and JAR issues); the call is closed"},
+  {"id": "programme-2023", "title": "APARN2023 programme booklet (PDF)", "url": "https://aparn.net/wp-content/uploads/2023/06/ProgrammeAPARN2023.pdf", "date": "June 2023", "used": "Participants of the first meeting (October 2019); 2023 presenters"},
+  {"id": "infopack-2024", "title": "APARN 2024 info pack (PDF)", "url": "https://aparn.net/wp-content/uploads/2024/06/APARN_info_pack_V2.pdf", "date": "June 2024", "used": "Schedule, opening, panel, YouTube channel @APARN202"},
+  {"id": "newsletter-2026-01", "title": "APARN newsletter, January 2026 (SAR announcement service)", "url": "https://www.researchcatalogue.net/announcements/4152674", "date": "January 2026", "used": "APARN2025: over 150 presentations from 22 countries; the 300th Google Group member; Chapalang; Rebordering the Archipelago; Climate/Coloniality residency; SAR 2026 meet-up; call to host APARN2027"},
+  {"id": "sar-sig", "title": "Asia Pacific Artistic Research Network (SAR Special Interest Groups)", "url": "https://societyforartisticresearch.org/sigs/asia-pacific-artistic-research-network", "date": "Read 24 November 2026", "used": "SIG description, the extra yearly online meeting aligned with the SAR conference and forum, JAR channel, 2025 yearbook pilot, organiser bios, link to APARN at the SAR Conference 2025"},
+  {"id": "sar-home", "title": "Society for Artistic Research", "url": "https://societyforartisticresearch.org/", "date": "Read 24 November 2026", "used": "SAR is a non-profit, member-led international society, established 2010 in Bern; the 2026 Forum is in Galway"},
+  {"id": "jar-channel", "title": "Asia Pacific Artistic Research Network channel (JAR)", "url": "https://www.jar-online.net/en/channels/asia-pacific-artistic-research-network", "date": "Channel revision of 11 November 2026", "used": "“More than 300 members”; the Director, Roopesh Sitharan; 28 listed pieces; APARN2026 took place 27–29 July 2026; channel editors"},
+  {"id": "jar-home", "title": "Journal for Artistic Research", "url": "https://www.jar-online.net/en", "date": "Read 24 November 2026", "used": "JAR is an international, online, open-access, peer-reviewed journal"},
+  {"id": "nafa-2026", "title": "ADPRex × APARN 2026 (NAFA)", "url": "https://www.nafa.edu.sg/adprex-2026", "date": "Read 24 November 2026", "used": "Venue, keynotes, performance, deadline extended to 8 March 2026"},
+  {"id": "aparn2025-site", "title": "APARN 2025 conference website", "url": "https://aparn2025.com/", "date": "Read 24 November 2026", "used": "Venue, keynote (Arahmaiani Feisal), proceedings"},
+  {"id": "rc-sar2025", "title": "APARN at the SAR Conference 2025 (Research Catalogue)", "url": "https://www.researchcatalogue.net/view/2759372/3591200", "date": "Linked from SAR’s APARN page", "used": "Documents APARN’s presence at SAR’s 16th International Conference, University of Porto"},
+  {"id": "sar2027", "title": "18th SAR International Conference on Artistic Research", "url": "https://sar2027.eu/sk", "date": "Read 24 November 2026", "used": "“Beyond the Familiar”, 21–23 April 2027, VŠMU Bratislava; SAR’s call closes 25 November 2026"},
+  {"id": "team-2026-11", "title": "Information from the APARN project team", "url": null, "date": "November 2026", "used": "Dr Roopesh Sitharan is Director of APARN from 2026 (also stated on the JAR channel); APARN2027 will be hosted by RMIT University Vietnam (details to be confirmed); the proposed SAR gathering format and annual publication"}
+ ],
+ "assets": [
+  {"id": "eshraghi", "files": ["eshraghi-reculnaissance-2020-*.webp"], "title": "Léuli Eshrāghi, re(cul)naissance, 2020", "credit": "Installation view, 22nd Biennale of Sydney (2020), Cockatoo Island. Commissioned by the Biennale of Sydney. Courtesy the artist. Photograph: Jessica Maurer.", "source": "aparn-2020", "permission": "Published on aparn.net with this credit. Confirm reuse with the artist and photographer before launch."},
+  {"id": "raqs", "files": ["raqs-media-collective-*.webp"], "title": "Raqs Media Collective", "credit": "Photographer not credited on aparn.net", "source": "aparn-2020", "permission": "To be confirmed: credit and permission."},
+  {"id": "victoria-hunt", "files": ["victoria-hunt-*.webp"], "title": "Victoria Hunt (image from the APARN2020 speaker page)", "credit": "Photographer not credited on aparn.net", "source": "aparn-2020", "permission": "To be confirmed: credit, the people shown and permission."},
+  {"id": "leuli-portrait", "files": ["leuli-eshraghi-portrait-*.webp"], "title": "Dr Léuli Eshrāghi", "credit": "Photo by Rhett Hammerton", "source": "aparn-2020", "permission": "Published on aparn.net. Confirm before launch."},
+  {"id": "lisa-hilli", "files": ["lisa-hilli-*.webp"], "title": "Lisa Hilli", "credit": "Photo by Atong Atem", "source": "aparn-2020", "permission": "Published on aparn.net. Confirm before launch."},
+  {"id": "yuki-kihara", "files": ["yuki-kihara-*.webp"], "title": "Yuki Kihara", "credit": "Photo by Evotia Tamua", "source": "aparn-2020", "permission": "Published on aparn.net. Confirm before launch."},
+  {"id": "natalie-king", "files": ["natalie-king-*.webp"], "title": "Professor Natalie King", "credit": "Photo by Giulia McGauran", "source": "aparn-2020", "permission": "Published on aparn.net. Confirm before launch."},
+  {"id": "aparn2021", "files": ["aparn2021-leaves-*.webp"], "title": "Image from the APARN2021 page (leaves and berries)", "credit": "Not credited on aparn.net", "source": "aparn-2021", "permission": "To be confirmed: credit and permission."},
+  {"id": "fonts", "files": ["assets/fonts/*.woff2"], "title": "Newsreader, Work Sans, Archivo, IBM Plex Mono", "credit": "Google Fonts", "source": null, "permission": "SIL Open Font License 1.1. Self-hosted."},
+  {"id": "graphics", "files": ["drawn SVG and CSS elements"], "title": "Edition plates, line drawings, network diagrams", "credit": "Made for these prototypes", "source": null, "permission": "Original. No third-party assets."}
+ ],
+ "confirm": [
+  "Dr Roopesh Sitharan’s title and start date as Director: the JAR channel calls him Director, but aparn.net and SAR’s page still list five equal convenors.",
+  "APARN2027 at RMIT University Vietnam: campus or city, dates, theme, call, organising team and a contact.",
+  "The APARN Gathering at SAR 2027: whether it will happen, its date and time, whether it is online or in person, and how the 5–10-minute updates are selected.",
+  "The APARN Annual Publication: editors, publisher, format, schedule, licence, the template limits (400–600 words, one or two images), and whether an ISBN or DOI is used.",
+  "Whether the 2025 yearbook pilot (SAR’s APARN page) was published.",
+  "How the June 2026 online gathering during SAR’s Galway forum went (it was announced in the January 2026 newsletter).",
+  "Rebordering the Archipelago: the JAR channel dates it 2024, the January 2026 newsletter 2025 (it was launched in Porto in 2025).",
+  "Credits and permissions for every reused image, especially the three images without a stated credit.",
+  "Which contact addresses to publish (Director, convenors, or one shared APARN address).",
+  "Approved member-location data, if APARN wants to show where members are based.",
+  "The YouTube channel handle (@APARN202, as printed in the 2024 info pack)."
+ ],
+ "references": [
+  {"site": "Journal for Artistic Research", "url": "https://www.jar-online.net/en", "observed": "Text-first: a bold condensed wordmark, a vocabulary of disciplines, the current issue as an image strip, channels under ‘Network’.", "idea": "Treat research contributions as first-class content that visitors can browse and filter, linking straight to the published work."},
+  {"site": "Society for Artistic Research", "url": "https://societyforartisticresearch.org/", "observed": "A plain institutional layout: one strong statement, artwork beside it, a clear membership button, the next conference promoted in a band.", "idea": "Keep one primary action (Join APARN) visible everywhere, and give the next conference its own band."},
+  {"site": "SAR 2027 (Bratislava)", "url": "https://sar2027.eu/sk", "observed": "A strong typographic identity: dates and place first, a countdown, a clear call, text-size controls, a minimal cookie notice.", "idea": "Lead every event with dates, place and a plain status; make the next step obvious."},
+  {"site": "New Media Caucus, Header/Footer Gallery", "url": "https://newmediacaucus.org/header-footer-gallery", "observed": "A dark exhibition space that foregrounds curators, artists and work, with discovery through each show.", "idea": "Put artists, titles and work in the foreground; let exhibition-like strips lead to the work itself."}
+ ],
+ "referencesNote": "References were studied for ideas only. Neither prototype copies their layouts, graphics or code."
+}

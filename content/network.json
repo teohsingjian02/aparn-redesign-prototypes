@@ -1,0 +1,71 @@
+{
+ "_about": "The network explorer data. Every link is documented in the sources. Places show where APARN has met, worked or is based through its convenors; they are NOT member locations. Add approved member-location data under memberLocations when it exists.",
+ "placeKinds": {
+  "host": "Conference host",
+  "convenor": "Convenor institution",
+  "director": "Director’s institution",
+  "project": "Project location",
+  "sar": "SAR Conference city",
+  "online": "Online editions",
+  "next": "Coming next"
+ },
+ "places": [
+  {"id": "porto", "label": "Porto", "country": "Portugal", "lon": -8.61, "kinds": ["sar"], "text": "APARN gathered at SAR’s 16th International Conference on Artistic Research in 2025, where Rebordering the Archipelago was launched.", "sources": ["sar-sig", "newsletter-2026-01"]},
+  {"id": "galway", "label": "Galway", "country": "Ireland", "lon": -9.05, "kinds": ["sar"], "text": "Members were invited to gather online during SAR’s 2026 forum at the University of Galway, 23–26 June 2026.", "sources": ["newsletter-2026-01", "sar-sig"]},
+  {"id": "oslo", "label": "Oslo", "country": "Norway", "lon": 10.75, "kinds": ["project"], "text": "Convenors Danny Butt and Kurniawan Adi Saputro, with original APARN member Helly Minarti, developed the Climate/Coloniality residency with PRAKSIS Oslo (August–September 2025).", "sources": ["newsletter-2026-01"]},
+  {"id": "bratislava", "label": "Bratislava", "country": "Slovakia", "lon": 17.11, "kinds": ["sar", "next"], "text": "SAR 2027, “Beyond the Familiar”, takes place here on 21–23 April 2027. An APARN gathering is proposed; details to be confirmed.", "sources": ["sar2027", "team-2026-11"]},
+  {"id": "ann-arbor", "label": "Ann Arbor", "country": "United States", "lon": -83.74, "kinds": ["convenor"], "text": "Home of the Penny W. Stamps School of Art and Design, University of Michigan, where convenor Gunalan Nadarajan is a professor.", "sources": ["sar-sig"]},
+  {"id": "bangkok", "label": "Bangkok", "country": "Thailand", "lon": 100.53, "kinds": ["host", "convenor"], "text": "Chulalongkorn University hosted APARN2025, the largest meeting so far, with over 150 presentations from 22 countries.", "sources": ["aparn-2025", "newsletter-2026-01"]},
+  {"id": "cyberjaya", "label": "Cyberjaya", "country": "Malaysia", "lon": 101.65, "kinds": ["host", "convenor", "director"], "text": "MMU’s Faculty of Creative Multimedia hosted APARN2024. It is also home to APARN’s Director, Dr Roopesh Sitharan.", "sources": ["aparn-2024", "team-2026-11", "jar-channel"]},
+  {"id": "singapore", "label": "Singapore", "country": "Singapore", "lon": 103.85, "kinds": ["host", "project"], "text": "NAFA, University of the Arts Singapore, hosted ADPRex × APARN 2026. The exhibition Chapalang opened at Artspace @ Helutrans in January 2026, and LASALLE College of the Arts joined the 2020 postgraduate symposium.", "sources": ["aparn-2026", "newsletter-2026-01", "aparn-2020"]},
+  {"id": "vietnam", "label": "Vietnam", "country": "Vietnam", "lon": 106.0, "kinds": ["next"], "text": "RMIT University Vietnam will host APARN2027, APARN’s first conference in Vietnam. City, dates and theme are to be confirmed.", "sources": ["team-2026-11"]},
+  {"id": "yogyakarta", "label": "Yogyakarta", "country": "Indonesia", "lon": 110.37, "kinds": ["host", "convenor"], "text": "Where APARN began. ISI Yogyakarta co-founded the network, and the city hosted the first meeting (2019) and APARN2023.", "sources": ["aparn-about", "aparn-2023"]},
+  {"id": "melbourne", "label": "Melbourne", "country": "Australia", "lon": 144.96, "kinds": ["convenor", "online"], "text": "Home of the University of Melbourne’s Centre of Visual Art, APARN’s other co-founder, which presented the online APARN2020.", "sources": ["aparn-about", "aparn-2020"]},
+  {"id": "online", "label": "Online", "country": "", "lon": null, "kinds": ["online"], "text": "Three annual meetings were held online, in 2020, 2021 and 2022, timed for Melbourne and Yogyakarta.", "sources": ["aparn-2020", "aparn-2021", "aparn-2022"]}
+ ],
+ "practices": [
+  {"id": "archipelago", "label": "Archipelagos and decolonial exchange", "text": "Thinking with oceans, islands and regional solidarity against colonial borders.", "sources": ["aparn-2020"]},
+  {"id": "graduate", "label": "Emerging researchers", "text": "Graduate and independent researchers finding each other across the region.", "sources": ["aparn-2021"]},
+  {"id": "planet", "label": "Planet, ecology and climate", "text": "Local ecologies, extraction, climate and our responsibilities to the planet.", "sources": ["aparn-2022", "newsletter-2026-01"]},
+  {"id": "matter", "label": "Materials and making", "text": "The matter of art: what artists work with, and why it matters.", "sources": ["aparn-2023"]},
+  {"id": "technology", "label": "Art, technology and reasoning", "text": "Art as a way of reasoning, and the cultures of technology across Southeast Asia.", "sources": ["aparn-2024", "newsletter-2026-01"]},
+  {"id": "communities", "label": "Creative communities", "text": "Artistic research with and for communities, places and collectives.", "sources": ["aparn-2025"]},
+  {"id": "authorship", "label": "Voice and authorship", "text": "Who speaks through a work: authorship, authority and authenticity.", "sources": ["aparn-2026"]}
+ ],
+ "outputs": [
+  {"id": "book", "kind": "Book", "label": "Rebordering the Archipelago", "text": "Panels, artist presentations and essays from APARN2020, edited by convenors Danny Butt and Kurniawan Adi Saputro, in English and Bahasa Indonesia. Published by Perimeter Editions and launched at SAR’s 2025 conference in Porto.", "url": "https://www.perimeterbooks.com/products/rebordering-the-archipelago-asia-pacific-exchanges", "sources": ["newsletter-2026-01", "jar-channel"]},
+  {"id": "residency", "kind": "Residency", "label": "Climate/Coloniality", "text": "A thematic residency with PRAKSIS Oslo. Ten residents, chosen from over 130 applications, spent five weeks in fieldwork and dialogue in August and September 2025. A publication is forthcoming.", "url": "https://www.praksisoslo.org/residencieslist/2025/r30-climate-coloniality", "sources": ["newsletter-2026-01"]},
+  {"id": "chapalang", "kind": "Exhibition", "label": "Chapalang", "text": "A touring exhibition curated by Gunalan Nadarajan and Roopesh Sitharan, on vernacular, “making do” approaches to technology in Southeast Asia. Artspace @ Helutrans, Singapore, 22 January to 1 February 2026.", "url": null, "sources": ["newsletter-2026-01"]},
+  {"id": "jar", "kind": "Journal channel", "label": "APARN in JAR", "text": "APARN’s channel in the Journal for Artistic Research: 24 contributions from APARN events and 4 highlighted JAR publications from the region.", "url": "https://www.jar-online.net/en/channels/asia-pacific-artistic-research-network", "sources": ["jar-channel"]},
+  {"id": "proceedings2025", "kind": "Proceedings", "label": "APARN2025 Proceedings", "text": "Published proceedings of the Bangkok conference.", "url": "https://aparn2025.com/", "sources": ["newsletter-2026-01", "aparn2025-site"]}
+ ],
+ "links": [
+  ["roopesh-sitharan", "cyberjaya"], ["kurniawan-adi-saputro", "yogyakarta"], ["danny-butt", "melbourne"], ["pornrat-damrhung", "bangkok"], ["gunalan-nadarajan", "ann-arbor"],
+  ["aparn2019", "yogyakarta"], ["aparn2020", "online"], ["aparn2020", "melbourne"], ["aparn2021", "online"], ["aparn2022", "online"], ["aparn2023", "yogyakarta"], ["aparn2024", "cyberjaya"], ["aparn2025", "bangkok"], ["aparn2026", "singapore"], ["aparn2027", "vietnam"], ["sar2025", "porto"], ["sar2026", "galway"], ["sar2027", "bratislava"],
+  ["aparn2020", "archipelago"], ["aparn2021", "graduate"], ["aparn2022", "planet"], ["aparn2023", "matter"], ["aparn2024", "technology"], ["aparn2025", "communities"], ["aparn2026", "authorship"],
+  ["kurniawan-adi-saputro", "aparn2019"], ["kurniawan-adi-saputro", "aparn2020"], ["kurniawan-adi-saputro", "aparn2021"], ["kurniawan-adi-saputro", "aparn2022"], ["kurniawan-adi-saputro", "aparn2023"], ["kurniawan-adi-saputro", "aparn2024"], ["kurniawan-adi-saputro", "aparn2025"],
+  ["danny-butt", "aparn2019"], ["danny-butt", "aparn2020"], ["danny-butt", "aparn2021"], ["danny-butt", "aparn2022"], ["danny-butt", "aparn2023"], ["danny-butt", "aparn2024"], ["danny-butt", "aparn2025"],
+  ["gunalan-nadarajan", "aparn2019"], ["gunalan-nadarajan", "aparn2020"], ["gunalan-nadarajan", "aparn2022"], ["gunalan-nadarajan", "aparn2023"], ["gunalan-nadarajan", "aparn2024"], ["gunalan-nadarajan", "aparn2025"],
+  ["pornrat-damrhung", "aparn2019"], ["pornrat-damrhung", "aparn2022"], ["pornrat-damrhung", "aparn2025"],
+  ["roopesh-sitharan", "aparn2023"], ["roopesh-sitharan", "aparn2024"], ["roopesh-sitharan", "aparn2025"],
+  ["book", "aparn2020"], ["book", "archipelago"], ["book", "kurniawan-adi-saputro"], ["book", "danny-butt"], ["book", "sar2025"], ["book", "porto"],
+  ["residency", "oslo"], ["residency", "planet"], ["residency", "kurniawan-adi-saputro"], ["residency", "danny-butt"],
+  ["chapalang", "singapore"], ["chapalang", "technology"], ["chapalang", "gunalan-nadarajan"], ["chapalang", "roopesh-sitharan"],
+  ["jar", "aparn2023"], ["jar", "aparn2024"], ["jar", "aparn2025"], ["jar", "aparn2026"], ["jar", "kurniawan-adi-saputro"], ["jar", "danny-butt"], ["jar", "gunalan-nadarajan"], ["jar", "roopesh-sitharan"],
+  ["proceedings2025", "aparn2025"], ["proceedings2025", "bangkok"]
+ ],
+ "linkNotes": {
+  "roopesh-sitharan|aparn2023": "Presented at APARN2023 (programme booklet)",
+  "pornrat-damrhung|aparn2022": "Presented with Lowell Skar",
+  "gunalan-nadarajan|aparn2019": "Keynote",
+  "gunalan-nadarajan|aparn2020": "Opening remarks",
+  "kurniawan-adi-saputro|aparn2019": "Participant, first meeting",
+  "danny-butt|aparn2019": "Participant, first meeting",
+  "pornrat-damrhung|aparn2019": "Participant, first meeting",
+  "jar|roopesh-sitharan": "Contact for channel proposals",
+  "jar|kurniawan-adi-saputro": "Channel editor",
+  "jar|danny-butt": "Channel editor",
+  "jar|gunalan-nadarajan": "Channel editor"
+ },
+ "memberLocations": {"status": "not available", "note": "Google Group membership is private. Add approved, aggregated member-location data here if APARN decides to publish it."}
+}

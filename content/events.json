@@ -1,0 +1,705 @@
+{
+ "_about": "Every APARN meeting. kind: regional (the annual conference) or sar (meetings held alongside SAR). status: held, upcoming, tbc, tba, proposed or announced. Dates are ISO (YYYY-MM-DD) where known. Past calls are kept as archive text and must never be shown as open.",
+ "events": [
+  {
+   "id": "aparn2019",
+   "kind": "regional",
+   "year": 2019,
+   "status": "held",
+   "label": "APARN 2019",
+   "title": "The first meeting",
+   "dates": {
+    "start": "2019-10",
+    "display": "October 2019"
+   },
+   "place": {
+    "id": "yogyakarta",
+    "city": "Yogyakarta",
+    "country": "Indonesia"
+   },
+   "host": "Held with the International Conference on Asia Pacific Arts Studies, Yogyakarta",
+   "format": "In person",
+   "theme": null,
+   "summary": "Where it began. Artists and researchers met in Yogyakarta, alongside the International Conference on Asia Pacific Arts Studies, to start a regional network for artistic research.",
+   "highlights": [
+    "Participants: Kurniawan Adi Saputro, Danny Butt, Alison Carroll, Pornrat Damrhung, Léuli Eshrāghi, Michael Hornblow, Khalid Midam and Helly Minarti",
+    "Keynote: Gunalan Nadarajan"
+   ],
+   "organisers": [],
+   "links": [],
+   "sources": [
+    "aparn-about",
+    "programme-2023"
+   ]
+  },
+  {
+   "id": "aparn2020",
+   "kind": "regional",
+   "year": 2020,
+   "status": "held",
+   "label": "APARN2020",
+   "title": "Rebordering the Archipelago: Asia Pacific Exchanges",
+   "dates": {
+    "start": "2020-11-03",
+    "end": "2020-11-06",
+    "display": "3–6 November 2020"
+   },
+   "place": {
+    "id": "online",
+    "city": "Online",
+    "country": "",
+    "note": "Presented by the Centre of Visual Art, University of Melbourne"
+   },
+   "host": "Centre of Visual Art (CoVA), University of Melbourne, with APARN. Supported by the Melbourne-Indonesia Research Partnership Program.",
+   "format": "Online panels and conversations over four days, with times in Melbourne and Yogyakarta",
+   "theme": "archipelago",
+   "summary": "Four days of conversations about borders, oceans and solidarity across the region, after Édouard Glissant’s line “The entire world is becoming an archipelago.” Speakers included Raqs Media Collective, Léuli Eshrāghi, Yuki Kihara, Natalie King, Nuraini Juliastuti, Sutanto Mendut, Helly Minarti and Mark Teh.",
+   "highlights": [
+    "An open APARN network meeting on 6 November, convened by Danny Butt and Kurniawan Adi Saputro",
+    "A First Peoples Research Forum convened by Dr Léuli Eshrāghi (Sāmoa)",
+    "A linked postgraduate symposium, Archipelagic Encounters, between LASALLE College of the Arts (Singapore) and the University of Melbourne",
+    "Opening remarks by Professor Gunalan Nadarajan, then Dean of the Stamps School",
+    "The talks later became the book Rebordering the Archipelago (Perimeter Editions)"
+   ],
+   "organisers": [
+    {
+     "name": "Danny Butt",
+     "role": "Convenor, APARN meeting"
+    },
+    {
+     "name": "Kurniawan Adi Saputro",
+     "role": "Convenor, APARN meeting"
+    },
+    {
+     "name": "Léuli Eshrāghi",
+     "role": "Convenor, First Peoples Research Forum"
+    }
+   ],
+   "programme": [
+    {
+     "day": "Tue 3 Nov",
+     "item": "Raqs Media Collective with Moonis Ahmad, introduced by Dr David Sequeira"
+    },
+    {
+     "day": "Wed 4 Nov",
+     "item": "Fluid States: Artistic Research in the Great Ocean Basin/Oceania, with Dr Léuli Eshrāghi, Lisa Hilli and Victoria Hunt"
+    },
+    {
+     "day": "Wed 4 Nov",
+     "item": "Yuki Kihara in conversation with Professor Natalie King"
+    },
+    {
+     "day": "Wed 4 Nov",
+     "item": "Dr Nuraini Juliastuti and Sutanto Mendut"
+    },
+    {
+     "day": "Thu 5 Nov",
+     "item": "CoVA/LASALLE postgraduate symposium, Archipelagic Exchanges, with keynotes by Sopheap Pich and Prof. Claire Bishop"
+    },
+    {
+     "day": "Fri 6 Nov",
+     "item": "Out of the Islands: Four Tangents, convened by Dr Helly Minarti with Tamarra, Ginoe Ojoy, Mark Teh and Iriano Yedija Petrus Awom"
+    },
+    {
+     "day": "Fri 6 Nov",
+     "item": "APARN network meeting and First Peoples Research Forum"
+    }
+   ],
+   "archivedCall": "The efforts of oppressed peoples to survive in settler-colonial and postcolonial nations build on regional alliances that precede and exceed the colonial imaginary. … APARN 2020 presents a range of panels and presentations as part of a regional exchange of artistic enquiry that can activate regional solidarity in our fields.",
+   "images": [
+    "eshraghi",
+    "raqs",
+    "victoria-hunt"
+   ],
+   "links": [
+    {
+     "label": "Original page on aparn.net",
+     "url": "https://aparn.net/aparn2020/"
+    },
+    {
+     "label": "Rebordering the Archipelago at Perimeter Editions",
+     "url": "https://www.perimeterbooks.com/products/rebordering-the-archipelago-asia-pacific-exchanges"
+    }
+   ],
+   "sources": [
+    "aparn-2020",
+    "newsletter-2026-01"
+   ]
+  },
+  {
+   "id": "aparn2021",
+   "kind": "regional",
+   "year": 2021,
+   "status": "held",
+   "label": "APARN2021",
+   "title": "Graduate Research Meet-up",
+   "dates": {
+    "start": "2021-11-26",
+    "display": "26 November 2021"
+   },
+   "place": {
+    "id": "online",
+    "city": "Online",
+    "country": "",
+    "note": "11:00–15:00 Yogyakarta, 15:00–19:00 Melbourne"
+   },
+   "host": "Convened from Melbourne and Yogyakarta, on Google Meet",
+   "format": "A half-day online workshop with five-minute introductions to each project",
+   "theme": "graduate",
+   "summary": "The third meeting turned the floor over to graduate researchers. PhD, Masters, Honours and independent researchers each had five minutes to introduce their project, so everyone could see the range of artistic research in the region and find future collaborators.",
+   "highlights": [
+    "Five minutes or 500 words per project, with an optional single slide",
+    "Every applicant was invited into the Google Group afterwards"
+   ],
+   "organisers": [
+    {
+     "name": "Danny Butt",
+     "role": "Convenor"
+    },
+    {
+     "name": "Kurniawan Adi Saputro",
+     "role": "Convenor"
+    },
+    {
+     "name": "Chloe Ho",
+     "role": "Co-organiser"
+    },
+    {
+     "name": "Elyssia Bugg",
+     "role": "Co-organiser"
+    },
+    {
+     "name": "Moonis Ahmad",
+     "role": "Co-organiser"
+    }
+   ],
+   "images": [
+    "aparn2021"
+   ],
+   "links": [
+    {
+     "label": "Original page on aparn.net",
+     "url": "https://aparn.net/aparn-2021/"
+    }
+   ],
+   "sources": [
+    "aparn-2021"
+   ]
+  },
+  {
+   "id": "aparn2022",
+   "kind": "regional",
+   "year": 2022,
+   "status": "held",
+   "label": "#APARN2022",
+   "title": "Artistic research for the planet",
+   "dates": {
+    "start": "2022-11-25",
+    "display": "25 November 2022"
+   },
+   "place": {
+    "id": "online",
+    "city": "Online",
+    "country": "",
+    "note": "10:00–15:00 Yogyakarta, 14:00–19:00 Melbourne"
+   },
+   "host": "Online gathering convened by Kurniawan Adi Saputro, Gunalan Nadarajan and Danny Butt",
+   "format": "15 short presentations, ending with the inaugural meeting of APARN as a SAR Special Interest Group",
+   "theme": "planet",
+   "summary": "A day of research on local ecologies, extraction and our responsibilities to the planet, starting from Gayatri Chakravorty Spivak’s “Imperative to Reimagine the Planet”. Presenters came from Thailand, Aotearoa New Zealand, Australia, Indonesia, the Philippines, Austria and beyond.",
+   "highlights": [
+    "Projects from Chiang Rai to Maui: performance remapping, glacial breath, waste research, tropical temporality and mapping extinctions",
+    "Ended with the inaugural meeting of APARN as a Special Interest Group of the Society for Artistic Research"
+   ],
+   "organisers": [
+    {
+     "name": "Kurniawan Adi Saputro",
+     "role": "Convenor"
+    },
+    {
+     "name": "Gunalan Nadarajan",
+     "role": "Convenor"
+    },
+    {
+     "name": "Danny Butt",
+     "role": "Convenor"
+    }
+   ],
+   "programme": [
+    {
+     "day": "10:15",
+     "item": "Chiengsaen-Saensanuk: A Performance Approach to the Artistic Remapping of Chiangrai’s Cultural Ecosystems in Northern Thailand. Pornrat Damrhung and Lowell Skar"
+    },
+    {
+     "day": "10:30",
+     "item": "Haupapa: The Chilled Breath of Rakamaomao. Ron Bull, Janine Randerson, Rachael Shearer, Heather Purdie, Stefan Marks"
+    },
+    {
+     "day": "10:45",
+     "item": "The 3R Dance Project. Joanna Cook and Janaína Moraes"
+    },
+    {
+     "day": "11:00",
+     "item": "Tender Territory and Micro Reality. Hara Shin"
+    },
+    {
+     "day": "11:15",
+     "item": "Creative (Mis)Understandings: Methodologies of Inspiration. Johannes Kretz and Zheng Kuo / Si Pehbowen"
+    },
+    {
+     "day": "11:30",
+     "item": "Defining ‘Well-Played’ through Inclusive Board Games for the Blind. Nurul Aqmarina Ardani (Arin)"
+    },
+    {
+     "day": "12:15",
+     "item": "The Spoil Grounds: fiction and writing in the excesses of extraction. Therese Keogh"
+    },
+    {
+     "day": "12:30",
+     "item": "Winds~Waves~Wings Festival Maui. Florian Dombois, Andy Graydon and Helene Romakin"
+    },
+    {
+     "day": "12:45",
+     "item": "Waste Research. Dyah Retno"
+    },
+    {
+     "day": "13:00",
+     "item": "Virtual Aesthetic: a Virtual Tour of the National Museum during the Covid-19 Pandemic. Ricky Widyananda Putra"
+    },
+    {
+     "day": "13:45",
+     "item": "Dreaming the future through tropical temporality. Erika M. Carreon"
+    },
+    {
+     "day": "14:00",
+     "item": "When Our Feet Never Touch the Ground. Joan Marie Kelly"
+    },
+    {
+     "day": "14:15",
+     "item": "Terrania. Nicky Stott and Nat Grant"
+    },
+    {
+     "day": "14:30",
+     "item": "Mapping Extinctions. Linda Knight"
+    },
+    {
+     "day": "14:45",
+     "item": "Blue Radius. Laura Donkers"
+    }
+   ],
+   "links": [
+    {
+     "label": "Original page on aparn.net",
+     "url": "https://aparn.net/aparn2022-artistic-research-for-the-planet/"
+    }
+   ],
+   "sources": [
+    "aparn-2022"
+   ]
+  },
+  {
+   "id": "aparn2023",
+   "kind": "regional",
+   "year": 2023,
+   "status": "held",
+   "label": "APARN2023",
+   "title": "The Matter of Art",
+   "dates": {
+    "start": "2023-07-07",
+    "display": "7 July 2023"
+   },
+   "place": {
+    "id": "yogyakarta",
+    "city": "Yogyakarta",
+    "country": "Indonesia"
+   },
+   "host": "Institut Seni Indonesia Yogyakarta (ISI Yogyakarta)",
+   "format": "In person, with 20-minute presentations; creative formats welcome",
+   "theme": "matter",
+   "summary": "Art results from matter, and results in matter. Artists shared the materials they work with, why that matters to them, and how close attention to material can open our senses to a changing planet.",
+   "highlights": [
+    "Hosted by ISI Yogyakarta, where the network began",
+    "Papers published in APARN’s JAR channel: Grounded Methodology Crafting; Encounter ‘Tanah’; No Waste"
+   ],
+   "organisers": [
+    {
+     "name": "Kurniawan Adi Saputro",
+     "role": "Convenor"
+    },
+    {
+     "name": "Danny Butt",
+     "role": "Convenor"
+    },
+    {
+     "name": "Gunalan Nadarajan",
+     "role": "Convenor"
+    }
+   ],
+   "archivedCall": "Art results from and results in matter. As art comprehends and works its material, it can transform solid marble into soft and transparent silk, or a disturbance in the air into melodic streams of experience. … APARN2023 invites artists and artistic researchers to share the matter of their practice and why it matters to them and others.",
+   "links": [
+    {
+     "label": "Programme booklet (PDF, aparn.net)",
+     "url": "https://aparn.net/wp-content/uploads/2023/06/ProgrammeAPARN2023.pdf"
+    },
+    {
+     "label": "Original page on aparn.net",
+     "url": "https://aparn.net/aparn2023/"
+    }
+   ],
+   "sources": [
+    "aparn-2023",
+    "programme-2023",
+    "jar-channel"
+   ]
+  },
+  {
+   "id": "aparn2024",
+   "kind": "regional",
+   "year": 2024,
+   "status": "held",
+   "label": "APARN2024",
+   "title": "Art as Research: Methods for Synthetic Reasoning",
+   "dates": {
+    "start": "2024-06-12",
+    "end": "2024-06-13",
+    "display": "12–13 June 2024"
+   },
+   "place": {
+    "id": "cyberjaya",
+    "city": "Cyberjaya",
+    "country": "Malaysia"
+   },
+   "host": "Faculty of Creative Multimedia, Multimedia University (MMU)",
+   "format": "Hybrid: two tracks, twelve panels of 15-minute talks, a panel discussion, an open studio and a closing gig",
+   "theme": "technology",
+   "summary": "How do we make order and meaning from the world? Two days in Cyberjaya explored art as a way of reasoning: how artworks, as philosophical simulations, produce new knowledge, and how art and technology together can imagine liveable futures.",
+   "highlights": [
+    "Official launch of APARN at MMU by the President and CEO of MMU",
+    "Panel on creative practice as research in universities, with Gunalan Nadarajan, Danny Butt and Samantha Jury (University of Hertfordshire), moderated by Yap Sau Bin",
+    "Six papers published in APARN’s JAR channel",
+    "Live-streamed on YouTube"
+   ],
+   "organisers": [
+    {
+     "name": "Roopesh Sitharan",
+     "role": "Convenor"
+    },
+    {
+     "name": "James Ly Toong Kwok",
+     "role": "Convenor"
+    },
+    {
+     "name": "Kurniawan Adi Saputro",
+     "role": "Convenor"
+    },
+    {
+     "name": "Gunalan Nadarajan",
+     "role": "Convenor"
+    },
+    {
+     "name": "Danny Butt",
+     "role": "Convenor"
+    }
+   ],
+   "archivedCall": "The symposium aims to explore how we create order and meaning from the world around us, encompassing both passive and active forms of reasoning. We invite proposals that explore how art can generate new knowledge, challenge dominant narratives, and envision a better future by engaging with synthetic reasoning methodologies.",
+   "links": [
+    {
+     "label": "Live stream recording (YouTube)",
+     "url": "https://www.youtube.com/live/KSNrc1TUx7k"
+    },
+    {
+     "label": "Info pack and programme (PDF, aparn.net)",
+     "url": "https://aparn.net/wp-content/uploads/2024/06/APARN_info_pack_V2.pdf"
+    },
+    {
+     "label": "Original page on aparn.net",
+     "url": "https://aparn.net/2024-2/"
+    }
+   ],
+   "sources": [
+    "aparn-2024",
+    "infopack-2024",
+    "jar-channel"
+   ]
+  },
+  {
+   "id": "aparn2025",
+   "kind": "regional",
+   "year": 2025,
+   "status": "held",
+   "label": "APARN2025",
+   "title": "Artistic Research for Creative Communities",
+   "dates": {
+    "start": "2025-07-01",
+    "end": "2025-07-03",
+    "display": "1–3 July 2025"
+   },
+   "place": {
+    "id": "bangkok",
+    "city": "Bangkok",
+    "country": "Thailand"
+   },
+   "host": "Department of Dramatic Arts and Faculty of Arts, Chulalongkorn University, with support from its Office of Research Affairs",
+   "format": "In person, with 15-minute talks and 5 minutes of discussion, workshops with local artists, and performances",
+   "theme": "communities",
+   "summary": "The largest APARN gathering so far, at the Sodsai Pantoomkomol Centre for Dramatic Arts. Researchers, artists and community organisers asked how artistic research can enrich community life, and how communities create new ways of knowing and making.",
+   "highlights": [
+    "Over 150 presentations from 22 countries",
+    "Keynote: Arahmaiani Feisal",
+    "Proceedings published on the conference website",
+    "Papers also invited for Manusya: Journal of Humanities"
+   ],
+   "organisers": [
+    {
+     "name": "Pornrat Damrhung",
+     "role": "Convenor"
+    },
+    {
+     "name": "Piyawat Thamkulangkool",
+     "role": "Convenor"
+    },
+    {
+     "name": "Lowell Skar",
+     "role": "Convenor"
+    },
+    {
+     "name": "Gunalan Nadarajan",
+     "role": "Convenor"
+    },
+    {
+     "name": "Danny Butt",
+     "role": "Convenor"
+    },
+    {
+     "name": "Kurniawan Adi Saputro",
+     "role": "Convenor"
+    },
+    {
+     "name": "Roopesh Sitharan",
+     "role": "Convenor"
+    }
+   ],
+   "archivedCall": "The conference will explore the interplay of innovative approaches to research in and through the arts and the formation of creative communities. It asks for contributions that consider how various modes of artistic research can enrich community life and how communities contribute to new ways of artistic knowing and doing.",
+   "links": [
+    {
+     "label": "Conference website and proceedings",
+     "url": "https://aparn2025.com/"
+    },
+    {
+     "label": "Proceedings in APARN’s JAR channel",
+     "url": "https://www.jar-online.net/node/2438"
+    },
+    {
+     "label": "Original page on aparn.net",
+     "url": "https://aparn.net/aparn2025/"
+    }
+   ],
+   "sources": [
+    "aparn-2025",
+    "aparn2025-site",
+    "newsletter-2026-01",
+    "jar-channel"
+   ]
+  },
+  {
+   "id": "aparn2026",
+   "kind": "regional",
+   "year": 2026,
+   "status": "held",
+   "label": "ADPRex × APARN 2026",
+   "title": "Who Speaks? Authorship, Authority, and Authenticity",
+   "dates": {
+    "start": "2026-07-27",
+    "end": "2026-07-29",
+    "display": "27–29 July 2026"
+   },
+   "place": {
+    "id": "singapore",
+    "city": "Singapore",
+    "country": "Singapore"
+   },
+   "host": "Nanyang Academy of Fine Arts (NAFA), University of the Arts Singapore, with the Arts & Design Practice Research Exchange (ADPRex)",
+   "format": "In person, in the NAFA Studio Theatre and Lee Foundation Theatre: papers, performances, creative interventions and video essays of up to 20 minutes. Free to attend.",
+   "theme": "authorship",
+   "summary": "APARN joined NAFA’s practice-research exchange to ask who speaks through an artwork: questions of voice, authorship and authenticity in collaborative, embodied, traditional and AI-assisted practice.",
+   "highlights": [
+    "Keynotes: Celine Parreñas Shimizu (UCLA School of Theater, Film and Television) and farid rakun (ruangrupa)",
+    "Performance: Handle with Care by Ontroerend Goed, arranged with Esplanade – Theatres on the Bay",
+    "14 contributions already published in APARN’s JAR channel"
+   ],
+   "organisers": [
+    {
+     "name": "ADPRex team, NAFA",
+     "role": "Host and organiser",
+     "contact": "adprex@nafa.edu.sg"
+    }
+   ],
+   "archivedCall": "Encountering an artwork, the question of ‘who speaks’ and whose perspective and viewpoint we are receiving underscores our interaction with what we see, hear, and feel about a piece. … We invite presenters to consider how authorship is shaped and articulated in their work using new (and old) technologies.",
+   "links": [
+    {
+     "label": "ADPRex × APARN 2026 at NAFA",
+     "url": "https://www.nafa.edu.sg/adprex-2026"
+    },
+    {
+     "label": "Contributions in APARN’s JAR channel",
+     "url": "https://www.jar-online.net/en/channels/asia-pacific-artistic-research-network"
+    },
+    {
+     "label": "Original call on aparn.net (closed)",
+     "url": "https://aparn.net/"
+    }
+   ],
+   "sources": [
+    "aparn-2026",
+    "nafa-2026",
+    "jar-channel"
+   ]
+  },
+  {
+   "id": "aparn2027",
+   "kind": "regional",
+   "year": 2027,
+   "status": "tbc",
+   "label": "APARN2027",
+   "title": "RMIT University Vietnam",
+   "dates": {
+    "start": "2027",
+    "display": "Dates to be confirmed"
+   },
+   "place": {
+    "id": "vietnam",
+    "city": "Vietnam",
+    "country": "Vietnam",
+    "note": "Campus and city to be confirmed"
+   },
+   "host": "RMIT University Vietnam (details to be confirmed)",
+   "format": "To be confirmed",
+   "theme": null,
+   "summary": "The next APARN conference will be hosted by RMIT University Vietnam: APARN’s first meeting in Vietnam. Dates, city, theme and the call for contributions will be announced through the APARN Google Group.",
+   "highlights": [
+    "Host: RMIT University Vietnam (to be confirmed)",
+    "Dates, city, theme and call: to be announced",
+    "Join the Google Group to hear when the call opens"
+   ],
+   "organisers": [],
+   "links": [],
+   "sources": [
+    "team-2026-11",
+    "newsletter-2026-01"
+   ]
+  },
+  {
+   "id": "sar2025",
+   "kind": "sar",
+   "year": 2025,
+   "status": "held",
+   "label": "APARN Gathering at SAR 2025",
+   "title": "APARN Gathering at the SAR Conference, Porto",
+   "dates": {
+    "start": "2025",
+    "display": "2025"
+   },
+   "place": {
+    "id": "porto",
+    "city": "Porto",
+    "country": "Portugal"
+   },
+   "host": "Society for Artistic Research, University of Porto",
+   "format": "An APARN gathering during the SAR Conference",
+   "theme": "archipelago",
+   "summary": "APARN gathered at SAR’s 16th International Conference on Artistic Research in Porto, where Rebordering the Archipelago was launched.",
+   "highlights": [
+    "Book launch: Rebordering the Archipelago",
+    "Shared on SAR’s APARN page as “APARN at the SAR Conference 2025”"
+   ],
+   "organisers": [],
+   "links": [
+    {
+     "label": "APARN at the SAR Conference 2025 (Research Catalogue)",
+     "url": "https://www.researchcatalogue.net/view/2759372/3591200"
+    }
+   ],
+   "sources": [
+    "sar-sig",
+    "newsletter-2026-01"
+   ]
+  },
+  {
+   "id": "sar2026",
+   "kind": "sar",
+   "year": 2026,
+   "status": "announced",
+   "label": "APARN Gathering at SAR 2026",
+   "title": "An online APARN gathering during SAR’s forum in Galway",
+   "dates": {
+    "start": "2026-06-23",
+    "end": "2026-06-26",
+    "display": "SAR in Galway, 23–26 June 2026"
+   },
+   "place": {
+    "id": "galway",
+    "city": "Galway",
+    "country": "Ireland",
+    "note": "The APARN gathering was held online"
+   },
+   "host": "Society for Artistic Research, University of Galway",
+   "format": "An online gathering open to all APARN members",
+   "theme": null,
+   "summary": "Members were invited to gather online during SAR’s 2026 forum at the University of Galway, with times shared through the APARN Google Group.",
+   "highlights": [
+    "Open to every member of the APARN Google Group",
+    "SAR’s 2026 forum, University of Galway, 23–26 June 2026"
+   ],
+   "organisers": [],
+   "links": [
+    {
+     "label": "SAR’s APARN page",
+     "url": "https://societyforartisticresearch.org/sigs/asia-pacific-artistic-research-network"
+    }
+   ],
+   "sources": [
+    "newsletter-2026-01",
+    "sar-sig"
+   ],
+   "statusLabel": "Online gathering"
+  },
+  {
+   "id": "sar2027",
+   "kind": "sar",
+   "year": 2027,
+   "status": "tbc",
+   "label": "APARN Gathering at SAR 2027",
+   "title": "APARN Gathering at the SAR Conference 2027",
+   "dates": {
+    "start": "2027-04-21",
+    "end": "2027-04-23",
+    "display": "SAR 2027: 21–23 April 2027"
+   },
+   "place": {
+    "id": "bratislava",
+    "city": "Bratislava",
+    "country": "Slovakia"
+   },
+   "host": "SAR’s 18th International Conference on Artistic Research, “Beyond the Familiar”, at the Academy of Performing Arts in Bratislava (VŠMU)",
+   "format": "Proposed format: short research updates of 5–10 minutes. Date, time and whether it is online, in person or both: to be confirmed.",
+   "theme": null,
+   "summary": "Gather with fellow members at SAR 2027 in Bratislava to share where your research is now, in a short update of 5–10 minutes. The APARN team will confirm the date, time and format. SAR’s own call and registration are separate, on sar2027.eu.",
+   "highlights": [
+    "SAR 2027: 21–23 April 2027, Academy of Performing Arts in Bratislava",
+    "SAR’s own call for contributions closes 25 November 2026 (sar2027.eu)",
+    "APARN gathering: details to be confirmed"
+   ],
+   "organisers": [],
+   "links": [
+    {
+     "label": "SAR 2027 conference website",
+     "url": "https://sar2027.eu/sk"
+    }
+   ],
+   "sources": [
+    "sar2027",
+    "team-2026-11"
+   ]
+  }
+ ]
+}

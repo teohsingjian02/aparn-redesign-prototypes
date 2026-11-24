@@ -1,0 +1,46 @@
+{
+ "_about": "Existing publication routes (established, with sources) and the proposed APARN Annual Publication. Keep these apart: the annual collection is a proposal and has no publisher, ISBN, editorial board or schedule yet.",
+ "existing": [
+  {"id": "jar-channel", "title": "APARN in the Journal for Artistic Research", "kind": "Journal channel", "status": "established",
+   "text": "APARN’s channel in JAR, SAR’s open-access journal, holds contributions from APARN conferences and highlights JAR publications from the region. Channel pieces are editorially reviewed, not peer reviewed. Proposals for the channel go to the Director, and calls are shared through SAR Announcements.",
+   "meta": ["Edited by Danny Butt, Kurniawan Adi Saputro and Gunalan Nadarajan", "28 pieces as of November 2026"],
+   "url": "https://www.jar-online.net/en/channels/asia-pacific-artistic-research-network", "sources": ["jar-channel", "aparn-2026"]},
+  {"id": "jar-issues", "title": "JAR peer-reviewed issues", "kind": "Journal", "status": "established",
+   "text": "Academic papers from APARN events can be reworked and submitted to the Journal for Artistic Research through its open calls, where they are peer reviewed.",
+   "meta": ["Open access, international, peer reviewed"],
+   "url": "https://www.jar-online.net/en/calls", "sources": ["aparn-2026", "jar-home"]},
+  {"id": "book", "title": "Rebordering the Archipelago: Asia Pacific Exchanges", "kind": "Book", "status": "established",
+   "text": "Panels, artist presentations and essays from APARN2020, with contributions from Raqs Media Collective, Moonis Ahmad, Léuli Eshrāghi, Victoria Hunt, Natalie King, Yuki Kihara, Helly Minarti, Tamarra, Yedija Awom, Ginoe and Mark Teh. In English and Bahasa Indonesia.",
+   "meta": ["Edited by Danny Butt and Kurniawan Adi Saputro", "Perimeter Editions; launched at SAR’s 2025 conference in Porto"],
+   "url": "https://www.perimeterbooks.com/products/rebordering-the-archipelago-asia-pacific-exchanges", "sources": ["newsletter-2026-01", "jar-channel"]},
+  {"id": "proceedings2025", "title": "APARN2025 Proceedings", "kind": "Proceedings", "status": "established",
+   "text": "Published proceedings of APARN2025, Artistic Research for Creative Communities, held at Chulalongkorn University, Bangkok.",
+   "meta": ["Available on the conference website"],
+   "url": "https://aparn2025.com/", "sources": ["newsletter-2026-01", "aparn2025-site"]},
+  {"id": "partner-journals", "title": "Partner journals at past conferences", "kind": "Journal issues", "status": "established",
+   "text": "Some hosts have offered extra routes for academic papers: the International Journal of Creative Multimedia (MMU Press) for APARN2024, and Manusya: Journal of Humanities, arranged by Pornrat Damrhung and Lowell Skar, for APARN2025.",
+   "meta": ["Offered per edition"],
+   "url": "https://journals.mmupress.com/index.php/ijcm", "sources": ["aparn-2024", "aparn-2025"]}
+ ],
+ "annual": {
+  "title": "APARN Annual Publication",
+  "status": "proposed",
+  "lede": "A year-end collection of members’ research in progress.",
+  "text": "The proposal: participating members’ research-progress contributions are compiled into one publication by the end of each publication year. It uses the same contribution you prepare for your update at the SAR Conference, so there is nothing extra to write.",
+  "context": "The idea grows from the “yearbook” pilot that SAR’s APARN page describes for 2025, documenting artistic research projects from across the region.",
+  "steps": [
+   {"title": "Opt in", "text": "Tick the publication option when you send your contribution. It is optional and unchecked by default."},
+   {"title": "Share your update", "text": "Present the same contribution at the APARN Gathering at the SAR Conference, in 5–10 minutes."},
+   {"title": "Editorial review", "text": "Editors may contact you about revisions, formatting and final approval."},
+   {"title": "Revise the same contribution", "text": "Corrections and new progress update your existing contribution. You do not start a new submission."},
+   {"title": "The year-end collection", "text": "Approved contributions are collected by the end of the publication year."}
+  ],
+  "terms": [
+   "Opting in does not guarantee inclusion.",
+   "Opting in does not transfer your copyright.",
+   "Permission to reproduce images, to record your presentation or to show contact details is asked for separately."
+  ],
+  "toDecide": ["Editors and editorial process", "Publisher and format (print, PDF or Research Catalogue)", "Schedule and deadlines", "Licence and copyright terms", "Whether an ISBN or DOI is used"],
+  "sources": ["sar-sig", "team-2026-11"]
+ }
+}

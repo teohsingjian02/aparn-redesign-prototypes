@@ -1,0 +1,44 @@
+{
+ "_about": "One template, two uses. This file drives the downloadable DOCX (tools/make-template.cjs), its PDF reading copy and the web preview on both prototypes. The limits are draft recommendations for Dr Roopesh Sitharan’s review: change them here.",
+ "buttonLabel": "Template for Annual Publication",
+ "title": "APARN Research Progress Contribution",
+ "subtitle": "One contribution for your SAR presentation and, if you choose, APARN’s year-end publication",
+ "version": "Draft v0.1, November 2026, for review",
+ "versionShort": "Draft v0.1",
+ "dual": "Prepare one research update for your SAR presentation and, if you choose, APARN’s year-end publication.",
+ "limits": {"pages": "About two pages", "words": "400–600 words", "images": "One or two images", "note": "Draft recommendations for review. Easy to change."},
+ "files": {
+  "docx": "APARN-Research-Progress-Template-draft-v0.1.docx",
+  "pdf": "APARN-Research-Progress-Template-draft-v0.1.pdf"
+ },
+ "intro": "Use this template to describe where your research is now. Work in progress is welcome: you do not need finished results. Replace the grey guidance text with your own words and keep the eight headings.",
+ "sections": [
+  {"n": 1, "title": "Project or research title", "guidance": "A clear working title. A subtitle is welcome.", "words": "Up to 20 words", "placeholder": "Working title: subtitle"},
+  {"n": 2, "title": "Authors and context", "guidance": "Each author’s name; affiliation, or “independent practitioner”; and the country or region where the research takes place. Please leave out email addresses: contact details are collected separately and are not published.", "words": "", "fields": ["Author name(s)", "Affiliation or independent-practitioner status", "Country or region of research activity"]},
+  {"n": 3, "title": "Research question, purpose or creative inquiry", "guidance": "What are you asking, exploring or making, and why does it matter to you and to others?", "words": "70–110 words", "placeholder": "Write about your question or inquiry here."},
+  {"n": 4, "title": "Artistic practice, methods or approach", "guidance": "How you work: media, materials, sites, collaborators and methods. Use the language of your own discipline.", "words": "90–130 words", "placeholder": "Describe your practice and approach here."},
+  {"n": 5, "title": "Current progress and emerging insights", "guidance": "Where the work is now: what has happened, what you are noticing, and what is still in development.", "words": "140–200 words", "placeholder": "Share your progress and what is emerging here."},
+  {"n": 6, "title": "Next steps, questions and invitations", "guidance": "What comes next, what you would like feedback on, and any collaboration you are looking for.", "words": "70–110 words", "placeholder": "Note your next steps and questions here."},
+  {"n": 7, "title": "Images or documentation", "guidance": "One or two images, or stills from video, sound or performance work. For each, give a caption, a credit, and confirm you have permission to share it.", "words": "", "fields": ["Image 1: caption, credit, permission confirmed (yes/no)", "Image 2 (optional): caption, credit, permission confirmed (yes/no)"]},
+  {"n": 8, "title": "References and links", "guidance": "Up to five references or links, in any citation style used consistently.", "words": "", "placeholder": "Reference or link"}
+ ],
+ "presentation": {
+  "title": "From contribution to a 5–10-minute update",
+  "intro": "Your talk is a short, lively version of the same contribution. Visual, performative and sound formats are welcome within the time.",
+  "parts": [
+   {"title": "Question and context", "from": "Sections 1–3", "five": "about 1 minute", "ten": "about 2 minutes"},
+   {"title": "Practice and approach", "from": "Section 4", "five": "about 1½ minutes", "ten": "about 3 minutes"},
+   {"title": "Progress and insights", "from": "Sections 5 and 7", "five": "about 1½ minutes", "ten": "about 3 minutes"},
+   {"title": "Next steps", "from": "Section 6", "five": "about 1 minute", "ten": "about 2 minutes"}
+  ],
+  "note": "Presentation length is subject to the programme."
+ },
+ "instructions": [
+  "Download the DOCX. It also opens in Google Docs, Pages and LibreOffice.",
+  "Replace each piece of grey guidance with your own text. Keep the eight headings.",
+  "Aim for about two pages: 400–600 words plus one or two images.",
+  "Add a caption, credit and permission note for every image.",
+  "Save as DOCX or PDF, named Surname_ShortTitle.docx (or .pdf).",
+  "Use the same file to prepare your 5–10-minute update, and attach it in the submission form."
+ ]
+}

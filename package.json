@@ -1,0 +1,22 @@
+{
+  "name": "aparn-redesign-prototypes",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Two static website prototypes for the Asia Pacific Artistic Research Network (APARN), prepared for discussion.",
+  "type": "module",
+  "scripts": {
+    "template": "node tools/make-template.cjs",
+    "build": "node src/build.mjs",
+    "serve": "node tools/serve.mjs",
+    "test": "node tools/test-site.mjs",
+    "shots": "node tools/test-site.mjs --shots",
+    "deploy": "node tools/deploy.mjs",
+    "test:live": "node tools/test-site.mjs --live"
+  },
+  "devDependencies": {
+    "docx": "^9.16.0"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

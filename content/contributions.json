@@ -1,0 +1,242 @@
+{
+ "_about": "Research contributions listed in the APARN channel of the Journal for Artistic Research (JAR). Source: https://www.jar-online.net/en/channels/asia-pacific-artistic-research-network (channel revision of 11 Nov 2026, read 24 Nov 2026). Titles and authors are copied as published; add new items here.",
+ "editions": {
+  "aparn2026": "From ADPRex × APARN 2026, Singapore",
+  "aparn2025": "From APARN2025, Bangkok",
+  "aparn2024": "From APARN2024, Cyberjaya",
+  "aparn2023": "From APARN2023, Yogyakarta",
+  "jar-regional": "JAR publications highlighted by the channel"
+ },
+ "kinds": {
+  "conference-contribution": "Conference contribution",
+  "proceedings": "Proceedings",
+  "exposition": "JAR exposition",
+  "reflection": "JAR reflection"
+ },
+ "items": [
+  {
+   "id": "jar-2439",
+   "title": "Who Speaks the Punjabi Psalm Authorship Erasure and Music Authority in the Punjabi Zaboor",
+   "authors": "Brian Bassanio Paul",
+   "url": "https://www.jar-online.net/node/2439",
+   "edition": "aparn2026",
+   "kind": "conference-contribution"
+  },
+  {
+   "id": "jar-2440",
+   "title": "Beyond the Singular Voice: Mask Performance and Embodied Authorship in Artistic Research",
+   "authors": "Inessa Kalabekova, Dr Tetriana Ahmed Fauzi",
+   "url": "https://www.jar-online.net/node/2440",
+   "edition": "aparn2026",
+   "kind": "conference-contribution"
+  },
+  {
+   "id": "jar-2441",
+   "title": "Pocket as Authored Space: Distributed Authority in Embodied Ensemble Practice",
+   "authors": "Eugene Seow",
+   "url": "https://www.jar-online.net/node/2441",
+   "edition": "aparn2026",
+   "kind": "conference-contribution"
+  },
+  {
+   "id": "jar-2442",
+   "title": "I Surrender to You and Loving It. (A study in co-authoring)",
+   "authors": "Michael Hansen",
+   "url": "https://www.jar-online.net/node/2442",
+   "edition": "aparn2026",
+   "kind": "conference-contribution"
+  },
+  {
+   "id": "jar-2443",
+   "title": "1+1=3: Natality, Avenir, and Corecore Ontology",
+   "authors": "Simon Lindblom",
+   "url": "https://www.jar-online.net/node/2443",
+   "edition": "aparn2026",
+   "kind": "conference-contribution"
+  },
+  {
+   "id": "jar-2447",
+   "title": "Speaking Scripts, Resisting Censorship ~the journey from disavowal to care~",
+   "authors": "Varun / Varun's Worklab",
+   "url": "https://www.jar-online.net/node/2447",
+   "edition": "aparn2026",
+   "kind": "conference-contribution"
+  },
+  {
+   "id": "jar-2445",
+   "title": "A Vocalist-Composer’s Approach to Short Film Scoring",
+   "authors": "Chelsea Stutchbury",
+   "url": "https://www.jar-online.net/node/2445",
+   "edition": "aparn2026",
+   "kind": "conference-contribution"
+  },
+  {
+   "id": "jar-2446",
+   "title": "Directing from the Sidelines: Mentorship, Authority, and Blurred Authorship in Student Animation Projects",
+   "authors": "Bao Chau Phan and Patrick Hartono",
+   "url": "https://www.jar-online.net/node/2446",
+   "edition": "aparn2026",
+   "kind": "conference-contribution"
+  },
+  {
+   "id": "jar-2448",
+   "title": "Voice, Function and Resistance across Bodies",
+   "authors": "Chan Yi Qian",
+   "url": "https://www.jar-online.net/node/2448",
+   "edition": "aparn2026",
+   "kind": "conference-contribution"
+  },
+  {
+   "id": "jar-2449",
+   "title": "Who Speaks Through the Score? Authorship, Authority, and Production Acceptance in the Film Scoring Workflow of Pembantaian Dukun Santet",
+   "authors": "Rocky Irvano Nanlohy, Patrick Hartono",
+   "url": "https://www.jar-online.net/node/2449",
+   "edition": "aparn2026",
+   "kind": "conference-contribution"
+  },
+  {
+   "id": "jar-2450",
+   "title": "Designing Dialogues: Visual Integrity and the Negotiation of Authorship",
+   "authors": "Lisa Winstanley",
+   "url": "https://www.jar-online.net/node/2450",
+   "edition": "aparn2026",
+   "kind": "conference-contribution"
+  },
+  {
+   "id": "jar-2451",
+   "title": "Birrarung Marr Ears: a video essay with virtual reality drawings, field recording and text",
+   "authors": "Susannah Langley",
+   "url": "https://www.jar-online.net/node/2451",
+   "edition": "aparn2026",
+   "kind": "conference-contribution"
+  },
+  {
+   "id": "jar-2452",
+   "title": "Metamorphosis – Ethics and Aesthetics are One – from a Neuroscientific Perspective III",
+   "authors": "Erika Matsunami",
+   "url": "https://www.jar-online.net/node/2452",
+   "edition": "aparn2026",
+   "kind": "conference-contribution"
+  },
+  {
+   "id": "jar-2472",
+   "title": "Who Speaks When Form Persists",
+   "authors": "Olga Cuxart Oriol",
+   "url": "https://www.jar-online.net/node/2472",
+   "edition": "aparn2026",
+   "kind": "conference-contribution"
+  },
+  {
+   "id": "jar-2438",
+   "title": "2025 APARN Proceedings",
+   "authors": "",
+   "url": "https://www.jar-online.net/node/2438",
+   "edition": "aparn2025",
+   "kind": "proceedings"
+  },
+  {
+   "id": "jar-2268",
+   "title": "Metamorphosis - Ethics and Aesthetics are One - from a Neuroscientific Perspective",
+   "authors": "Erika Matsunami",
+   "url": "https://www.jar-online.net/node/2268",
+   "edition": "aparn2024",
+   "kind": "conference-contribution"
+  },
+  {
+   "id": "jar-2269",
+   "title": "Unexceptional Urban Space and Its Experiential Value: A Moving Image Exploration of the Everyday",
+   "authors": "Andrew Stiff",
+   "url": "https://www.jar-online.net/node/2269",
+   "edition": "aparn2024",
+   "kind": "conference-contribution"
+  },
+  {
+   "id": "jar-2270",
+   "title": "Study on the Media Art Experiences and Technological Significance Based on Existential Phenomenology",
+   "authors": "Lim Kok Yoong",
+   "url": "https://www.jar-online.net/node/2270",
+   "edition": "aparn2024",
+   "kind": "conference-contribution"
+  },
+  {
+   "id": "jar-2271",
+   "title": "Vulnerable Body, Resilient Technology in Performing Arts",
+   "authors": "Yola Yulfianti",
+   "url": "https://www.jar-online.net/node/2271",
+   "edition": "aparn2024",
+   "kind": "conference-contribution"
+  },
+  {
+   "id": "jar-2272",
+   "title": "Countenancing Disinformation: Lessons from History, Photography, and AI",
+   "authors": "Amirahvelda Priyono",
+   "url": "https://www.jar-online.net/node/2272",
+   "edition": "aparn2024",
+   "kind": "conference-contribution"
+  },
+  {
+   "id": "jar-2273",
+   "title": "The Present of a Past: Plays, Memories and Making",
+   "authors": "Anwer Ali",
+   "url": "https://www.jar-online.net/node/2273",
+   "edition": "aparn2024",
+   "kind": "conference-contribution"
+  },
+  {
+   "id": "jar-2231",
+   "title": "Grounded Methodology Crafting",
+   "authors": "Dominique Lämmli",
+   "url": "https://www.jar-online.net/node/2231",
+   "edition": "aparn2023",
+   "kind": "conference-contribution"
+  },
+  {
+   "id": "jar-2232",
+   "title": "Encounter ‘Tanah’; Unravelling Materiality and Multispecies Collectivity",
+   "authors": "Ika Yuliana",
+   "url": "https://www.jar-online.net/node/2232",
+   "edition": "aparn2023",
+   "kind": "conference-contribution"
+  },
+  {
+   "id": "jar-2233",
+   "title": "No Waste: Waste Clay Processing as a Medium for Ceramic Works",
+   "authors": "Dyah Retno Fitriani",
+   "url": "https://www.jar-online.net/node/2233",
+   "edition": "aparn2023",
+   "kind": "conference-contribution"
+  },
+  {
+   "id": "jar-regional-1",
+   "title": "What Does Art/Artist Think? Making a Case for Artistic Practice as Research.",
+   "authors": "Premjish Achari",
+   "url": "https://www.jar-online.net/en/what-does-artartist-think-making-case-artistic-practice-research",
+   "edition": "jar-regional",
+   "kind": "reflection"
+  },
+  {
+   "id": "jar-regional-2",
+   "title": "Of Haunted Spaces",
+   "authors": "Ella Raidel",
+   "url": "https://www.jar-online.net/en/exposition/abstract/haunted-spaces",
+   "edition": "jar-regional",
+   "kind": "exposition"
+  },
+  {
+   "id": "jar-regional-3",
+   "title": "A Porous Consciousness in and as Artistic Practice: Re-engaging with classical Indian philosophy and aesthetics as a living tradition",
+   "authors": "Srisrividhiya Kalyanasundaram",
+   "url": "https://www.jar-online.net/en/exposition/abstract/porous-consciousness-and-artistic-practice-re-engaging-classical-indian",
+   "edition": "jar-regional",
+   "kind": "exposition"
+  },
+  {
+   "id": "jar-regional-4",
+   "title": "Petals to Light...Pedagogic Possibilities with Floor Art",
+   "authors": "Geetanjali Sachdev",
+   "url": "https://www.jar-online.net/en/exposition/abstract/petals-lightpedagogic-possibilities-floor-art",
+   "edition": "jar-regional",
+   "kind": "exposition"
+  }
+ ]
+}

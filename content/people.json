@@ -1,0 +1,74 @@
+{
+ "_about": "Network roles only. Network convenors are listed on aparn.net (About) and as Organisers on SAR’s APARN page. Event-specific organisers belong to each event in events.json. Bios are condensed from SAR’s APARN page.",
+ "people": [
+  {
+   "id": "roopesh-sitharan",
+   "name": "Roopesh Sitharan",
+   "honorific": "Dr",
+   "roles": ["Director of APARN (from 2026)", "Network convenor"],
+   "institution": "Faculty of Creative Multimedia, Multimedia University (MMU), Cyberjaya",
+   "country": "Malaysia",
+   "place": "cyberjaya",
+   "email": "rs@mmu.edu.my",
+   "bio": "A multidisciplinary practitioner, educator, curator, researcher and artist. His projects have appeared at the Gwangju Biennale, ISEA and SIGGRAPH, and his writing in Leonardo Electronic Almanac, CTRL+P and Documenta 12.",
+   "activity": ["Convenor of APARN2024, hosted at MMU", "Convenor of APARN2025", "Co-curator of Chapalang (Singapore, 2026)", "The person to contact about proposals for APARN’s JAR channel"],
+   "sources": ["team-2026-11", "jar-channel", "sar-sig", "aparn-about", "aparn-2024", "aparn-2025", "newsletter-2026-01"]
+  },
+  {
+   "id": "kurniawan-adi-saputro",
+   "name": "Kurniawan Adi Saputro",
+   "honorific": "Dr",
+   "roles": ["Network convenor"],
+   "institution": "Indonesian Institute of the Arts Yogyakarta (ISI Yogyakarta)",
+   "country": "Indonesia",
+   "place": "yogyakarta",
+   "email": "kurniawan.as@isi.ac.id",
+   "bio": "Lecturer in the Department of Photography at ISI Yogyakarta, teaching research methods in arts and visual communication. His recent research looks at photographs in climate education, community-based festivals and climate justice. In late 2024 he built Wana Nagara, a studio around a tiny urban forest for researching culture in a time of climate crisis.",
+   "activity": ["Co-led the network in its first years, with Danny Butt", "Convenor of APARN2023, hosted at ISI Yogyakarta", "Convenor of the 2020–2025 meetings", "Co-editor of Rebordering the Archipelago", "Co-editor of APARN’s JAR channel", "Co-developed the Climate/Coloniality residency with PRAKSIS Oslo (2025)"],
+   "sources": ["aparn-about", "sar-sig", "aparn-2020", "aparn-2023", "jar-channel", "newsletter-2026-01"]
+  },
+  {
+   "id": "danny-butt",
+   "name": "Danny Butt",
+   "honorific": "Dr",
+   "roles": ["Network convenor"],
+   "institution": "Victorian College of the Arts, University of Melbourne",
+   "country": "Australia",
+   "place": "melbourne",
+   "email": "butt@unimelb.edu.au",
+   "bio": "Coordinator of Research for Design and Production at the Victorian College of the Arts, University of Melbourne. He wrote Artistic Research in the Future Academy (Intellect / University of Chicago Press, 2017) and sits on the Editorial Board of the Journal for Artistic Research.",
+   "activity": ["Co-led the network in its first years, with Kurniawan Adi Saputro", "Convenor of the 2020–2025 meetings", "Co-editor of Rebordering the Archipelago", "Co-editor of APARN’s JAR channel", "Co-developed the Climate/Coloniality residency with PRAKSIS Oslo (2025)"],
+   "sources": ["aparn-about", "sar-sig", "aparn-2020", "aparn-2021", "jar-channel", "newsletter-2026-01"]
+  },
+  {
+   "id": "pornrat-damrhung",
+   "name": "Pornrat Damrhung",
+   "honorific": "Professor",
+   "roles": ["Network convenor"],
+   "institution": "Department of Dramatic Arts, Chulalongkorn University, Bangkok",
+   "country": "Thailand",
+   "place": "bangkok",
+   "email": "Pornrat.D@chula.ac.th",
+   "bio": "Professor of Dramatic Arts at Chulalongkorn University and Associate Member of the Royal Society of Thailand. She specialises in contemporary dance cultures, community performance and young people’s theatre.",
+   "activity": ["Took part in the first meeting (2019)", "Presented at #APARN2022 with Lowell Skar", "Convenor of APARN2025, hosted at Chulalongkorn University"],
+   "sources": ["aparn-about", "sar-sig", "programme-2023", "aparn-2022", "aparn-2025"]
+  },
+  {
+   "id": "gunalan-nadarajan",
+   "name": "Gunalan Nadarajan",
+   "honorific": "Professor",
+   "roles": ["Network convenor"],
+   "institution": "Penny W. Stamps School of Art and Design, University of Michigan",
+   "country": "United States",
+   "place": "ann-arbor",
+   "email": "guna@umich.edu",
+   "bio": "An art theorist and curator working where art, science and technology meet. His publications have been translated into 16 languages. His curatorial work includes Documenta XI (Kassel, 2002) and ISEA2008 in Singapore.",
+   "activity": ["Keynote at the first meeting (2019)", "Opened APARN2020, as Dean of the Stamps School", "Convenor of the 2022–2025 meetings", "Co-editor of APARN’s JAR channel", "Co-curator of Chapalang (Singapore, 2026)"],
+   "sources": ["aparn-about", "sar-sig", "programme-2023", "aparn-2020", "aparn-2022", "jar-channel", "newsletter-2026-01"]
+  }
+ ],
+ "firstMeeting": {
+  "text": "The first meeting, in October 2019, brought together Kurniawan Adi Saputro, Danny Butt, Alison Carroll, Pornrat Damrhung, Léuli Eshrāghi, Michael Hornblow, Khalid Midam and Helly Minarti, with a keynote by Gunalan Nadarajan.",
+  "sources": ["programme-2023"]
+ }
+}
