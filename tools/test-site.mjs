@@ -280,6 +280,20 @@ async function behaviourC(desk, phone, site) {
   check((await arch("open")) === "2 gatherings", "C: archive filter Coming up shows 2");
   check((await arch("sar")) === "3 gatherings", "C: archive filter Gatherings at SAR shows 3");
   check((await arch("all")) === "12 gatherings", "C: archive shows all 12");
+  // the quiet contrast button: a dark palette, remembered on the next page
+  await desk.goto(site.root, 400);
+  const bg = () => desk.$(`getComputedStyle(document.documentElement).backgroundColor`);
+  const light = await bg();
+  await desk.click("[data-invert]");
+  await sleep(700);
+  const inv = await desk.$(`({ on: document.documentElement.classList.contains("invert"), pressed: document.querySelector("[data-invert]").getAttribute("aria-pressed"), stored: localStorage.getItem("aparn-invert") })`);
+  check(inv.on && inv.pressed === "true" && inv.stored === "on" && (await bg()) !== light, `C: the contrast button inverts the colours (${JSON.stringify(inv)})`);
+  await desk.goto(site.root + "about/", 400);
+  check(await desk.$(`document.documentElement.classList.contains("invert") && document.querySelector("[data-invert]").getAttribute("aria-pressed") === "true"`), "C: the contrast choice is remembered on the next page");
+  await desk.click("[data-invert]");
+  await sleep(700);
+  check(await desk.$(`!document.documentElement.classList.contains("invert") && localStorage.getItem("aparn-invert") === "off"`), "C: the contrast button switches back");
+  await desk.$(`localStorage.removeItem("aparn-invert"), true`);
   // phone: menu, the fan layout and focus moving to the story
   await phone.goto(site.root + "network/", 400);
   check(await phone.visible(".menu-btn") && !(await phone.visible("#menu")), "C 360px: menu button shown, menu closed");

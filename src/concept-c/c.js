@@ -1,6 +1,6 @@
-/* Concept C: Clear Signal. The sliding navigation bar, the section index and the network orbit.
-   Smooth scrolling, reveals, counters, the press ripple and the Animations switch come from the shared motion.js.
-   Nothing is stored and nothing is sent anywhere. */
+/* Concept C: Clear Signal. The sliding navigation bar, the section index, the network orbit and the contrast button.
+   Smooth scrolling, reveals, counters and the press ripple come from the shared motion.js.
+   The only thing stored is the contrast choice (localStorage "aparn-invert"); nothing is sent anywhere. */
 (function () {
   "use strict";
   var d = document, root = d.documentElement;
@@ -111,6 +111,32 @@
     });
   }
 
-  function init() { initNavBar(); initIndex(); initOrbit(); }
+  /* the quiet contrast button in the footer: a dark, inverted palette, remembered from page to page */
+  function initInvert() {
+    var btn = d.querySelector("[data-invert]");
+    if (!btn) return;
+    var meta = d.querySelector('meta[name="theme-color"]');
+    function sync() {
+      var on = root.classList.contains("invert");
+      btn.setAttribute("aria-pressed", on ? "true" : "false");
+      if (meta) meta.setAttribute("content", on ? "#0B0F1A" : "#ffffff");
+    }
+    function flip() {
+      var on = !root.classList.contains("invert");
+      root.classList.toggle("invert", on);
+      try { window.localStorage.setItem("aparn-invert", on ? "on" : "off"); } catch (e) { /* storage may be blocked */ }
+      sync();
+    }
+    btn.hidden = false;
+    btn.addEventListener("click", function () {
+      if (!d.startViewTransition || still()) { flip(); return; }
+      root.classList.add("vt-theme");
+      var vt = d.startViewTransition(flip);
+      vt.finished.then(function () { root.classList.remove("vt-theme"); }, function () { root.classList.remove("vt-theme"); });
+    });
+    sync();
+  }
+
+  function init() { initNavBar(); initIndex(); initOrbit(); initInvert(); }
   if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); else init();
 })();

@@ -109,6 +109,11 @@ Animations are always on, as requested, including on devices whose owners ask fo
 "Animation effects" turned off). To respect that setting again, change `HEAD_MOTION` in `src/lib.mjs` so that it
 adds the class `anim` only when `prefers-reduced-motion` is not `reduce`. Nothing is stored in the browser.
 
+## Contrast in Concept C
+
+A small round button at the bottom of Concept C's footer switches to an inverted, dark palette and back, with a
+soft fade. The choice is remembered in that browser (localStorage, key `aparn-invert`).
+
 ## Updating content
 
 Edit the JSON in `content/`, then build and deploy. Common tasks:

@@ -58,6 +58,7 @@ ${faviconLinks(page)}
 <link rel="preload" href="${rel(page, "assets/fonts/roboto-normal-latin-3.woff2")}" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="${rel(page, P("assets/c.css"))}">
 ${HEAD_MOTION}
+<script>try { if (localStorage.getItem("aparn-invert") === "on") document.documentElement.classList.add("invert"); } catch (e) {}</script>
 <script defer src="${rel(page, "assets/js/aparn.js")}"></script>
 <script defer src="${rel(page, "assets/js/motion.js")}"></script>
 <script defer src="${rel(page, "assets/js/c.js")}"></script>
@@ -91,7 +92,8 @@ ${index ? `<nav class="index" aria-label="Sections on this page" data-index>${in
   <div class="wrap foot-in">
     <div class="foot-a"><a class="logo" href="${rel(page, P(""))}">${brandLogo(page, { alt: "APARN home", sizes: "140px" })}</a>
       <p>A Special Interest Group of the <a href="https://societyforartisticresearch.org/" rel="noopener" target="_blank">Society for Artistic Research${EXT}<span class="vh"> (opens in a new tab)</span></a>.</p>
-      ${joinButton(c, "btn btn--join")}<p class="small">${esc(c.site.join.where)}</p></div>
+      ${joinButton(c, "btn btn--join")}<p class="small">${esc(c.site.join.where)}</p>
+      <button type="button" class="invert-btn" data-invert aria-pressed="false" title="Invert colours" hidden><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="7.4" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M10 2.6a7.4 7.4 0 0 1 0 14.8z" fill="currentColor"/></svg><span class="vh">Invert colours</span></button></div>
     <div><h2 class="foot-h">Contact</h2><p>${esc(c.site.contact.general.name)}, ${esc(c.site.contact.general.role)}<br><a href="mailto:${esc(c.site.contact.general.email)}">${esc(c.site.contact.general.email)}</a></p><p><a href="${rel(page, P("about/#contact"))}">All contacts</a></p></div>
     <div><h2 class="foot-h">Elsewhere</h2><ul class="foot-list">
       <li>${ext("https://jar-online.net/en/channels/asia-pacific-artistic-research-network", "APARN in JAR")}</li>

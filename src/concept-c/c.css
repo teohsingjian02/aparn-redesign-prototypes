@@ -770,3 +770,59 @@ body::before { content: ""; position: fixed; z-index: -1; width: 64vmax; height:
 .logo img { display: block; height: 42px; width: auto; }
 @media (max-width: 47.99em) { .logo img { height: 34px; } }
 .foot .logo img { height: 54px; }
+
+/* ================================================================ inverted (dark) palette, from the quiet footer button */
+.invert-btn { display: inline-grid; place-items: center; width: 40px; height: 40px; margin-top: .4rem; border-radius: 50%; border: 1px solid var(--line-2); background: transparent; color: var(--ink-3); cursor: pointer; transition: color .25s, border-color .25s, transform .3s var(--ease); }
+.invert-btn svg { width: 18px; height: 18px; transition: transform .5s var(--ease); }
+.invert-btn:hover { color: var(--ink); border-color: var(--ink-3); }
+.invert-btn:hover svg { transform: rotate(180deg); }
+.invert-btn:active { transform: scale(.92); }
+html.vt-theme::view-transition-old(root) { animation: c-theme-out .5s ease both; }
+html.vt-theme::view-transition-new(root) { animation: c-theme-in .5s ease both; }
+@keyframes c-theme-out { to { opacity: 0; } }
+@keyframes c-theme-in { from { opacity: 0; } }
+html.invert {
+  --bg: #0B0F1A; --bg-2: #131A2B; --bg-3: #1C2438; --surface: #161E31;
+  --ink: #EEF2FA; --ink-2: #C3CADA; --ink-3: #9AA3B8; --line: rgba(255, 255, 255, .1); --line-2: rgba(255, 255, 255, .2);
+  --blue: #8EA8FF; --blue-2: #AFC2FF; --blue-soft: rgba(142, 168, 255, .14); --blue-ink: #D3DDFF;
+  --grad: linear-gradient(120deg, #3E6BFF 0%, #6F8CFF 52%, #A68BFF 100%);
+  --grad-soft: linear-gradient(135deg, #121A33 0%, #1B1736 55%, #10213A 100%);
+  --glow: 0 18px 40px -18px rgba(111, 140, 255, .55);
+  --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 10px 30px rgba(0, 0, 0, .35);
+  --shadow-up: 0 2px 4px rgba(0, 0, 0, .35), 0 18px 40px -10px rgba(0, 0, 0, .65);
+  color-scheme: dark;
+}
+html.invert .top { background: rgba(11, 15, 26, .86); }
+html.invert .menu { background: var(--bg); }
+html.invert .logo img { filter: invert(1); }
+html.invert :is(.menu-btn, .btn--ghost, .round, .chip, .hero-f, .next-i, .orb, .cpanel, .hop, .card a, .totop, .index-l, .index-d, .more--call, .steps li, .demo-steps li span, .demo-form fieldset.demo-step, .demo-review, .hways a:hover) { background: var(--surface); }
+html.invert .chip[aria-pressed="true"], html.invert .orb[aria-pressed="true"], html.invert .orbit-stage.is-live .orb.is-center { background: var(--grad); }
+html.invert .sec--tint :is(.way, .place-g, .pub, .person, .tline-c, .feature, .flow, .guide-table, .rows li, .rows--link a, .facts div, .orgs li, .record div, .aims li) { background: var(--surface); }
+html.invert .btn--template, html.invert .btn--download { background: #EEF2FA; color: #0B0F1A; }
+html.invert .btn--soft:hover { background: rgba(142, 168, 255, .22); }
+html.invert .status--tbc, html.invert .status--tba { background: rgba(255, 179, 71, .15); color: #FFC27A; }
+html.invert .status--announced, html.invert .status--upcoming { background: rgba(46, 204, 150, .15); color: #7EE0B8; }
+html.invert .hero { background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, .09) 1px, transparent 1.4px); }
+html.invert .hero::after { background: linear-gradient(to bottom, rgba(11, 15, 26, 0) 60%, var(--bg)); }
+html.invert .orbit-stage { background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, .08) 1px, transparent 1.4px); }
+html.invert .t-st circle { fill: var(--surface); }
+html.invert .hist li::before, html.invert .tline-dot { background: var(--bg); }
+html.invert .field input:not([type="radio"]):not([type="checkbox"]), html.invert .field textarea, html.invert .filter-search input { background: var(--bg); color: var(--ink); }
+html.invert .field-error { color: #FF9C93; }
+html.invert .field input[aria-invalid="true"] { border-color: #FF8A80; }
+html.invert .demo-errors { background: rgba(255, 90, 78, .14); color: #FFC1BB; }
+html.invert .demo-errors h3, html.invert .demo-errors a { color: #FFC1BB; }
+html.invert .demo-done { background: rgba(46, 204, 150, .14); color: #BFF2DE; }
+html.invert .demo-done h4 { color: #E3FFF3; }
+html.invert .grad-t { background-image: linear-gradient(90deg, #6F8CFF 0%, #A68BFF 25%, #7FD4FF 50%, #A68BFF 75%, #6F8CFF 100%); }
+html.invert .tpl-doc { --ink: #0A0F1C; --ink-2: #434B5C; --ink-3: #5E6676; --bg-2: #F5F7FB; --bg-3: #EBEFF6; --line: #E3E8F0; --line-2: #C9D1DE; --blue: #002FA7; --blue-soft: #E9EEFB; --blue-ink: #00217A; background: #fff; color: var(--ink); }
+
+/* figures sit open (no cards) on every page, including tinted sections */
+.figs-i, .sec--tint .figs-i { background: none; border: 0; border-radius: 0; box-shadow: none; padding: 1.3rem 0 0; }
+.figs { gap: 2.4rem 2rem; }
+.figs-i dd { gap: .45rem; }
+.figs-n { max-width: 22rem; }
+/* dark palette: a deeper closing band so white text and the white button stay clear */
+html.invert .hclose { background: linear-gradient(120deg, #1D36B8 0%, #3D4FD6 52%, #6A4FD8 100%); }
+html.invert .hclose .btn--join { background: #fff; color: #1D36B8; }
+html.invert .hclose .btn--join:hover { color: #142A99; }
