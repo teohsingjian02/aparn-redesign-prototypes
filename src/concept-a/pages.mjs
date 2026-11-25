@@ -3,7 +3,7 @@
 import {
   esc, rel, statusChip, sourceLinks, img, figure, ext, EXT, joinButton, templateButton, eventPath, nodeIndex, nodePanel,
   contributionsFilter, templatePreview, templateLimitsLine, presentationGuide, downloads, submissionDemo, recordModel, IMAGES,
-  HEAD_MOTION, motionSwitch, progressBar, toTop, riseWords, riseH1, countUp, homeFigures, homeWhy, homeTakePart, homeClosing, ARROW, homePeople, personImg, brandLogo, faviconLinks,
+  HEAD_MOTION, motionSwitch, progressBar, toTop, riseWords, riseH1, countUp, homeFigures, homeWhy, homeTakePart, homeClosing, ARROW, homePeople, personImg, brandLogo, faviconLinks, contactWho,
 } from "../lib.mjs";
 
 const C = ""; // Concept A is the whole of its own site, so its pages sit at the site root
@@ -81,7 +81,7 @@ ${riseH1(body)}
     </div>
     <div>
       <h2 class="colophon-h">Contact</h2>
-      <p>${esc(c.site.contact.general.name)}, ${esc(c.site.contact.general.role)}<br><a href="mailto:${esc(c.site.contact.general.email)}">${esc(c.site.contact.general.email)}</a></p>
+      <p>${contactWho(c)}<br><a href="mailto:${esc(c.site.contact.general.email)}">${esc(c.site.contact.general.email)}</a></p>
       <p><a href="${rel(page, P("about/#contact"))}">All convenors and contacts</a></p>
     </div>
     <div>
@@ -211,14 +211,14 @@ function about(c) {
     <p class="person-inst">${esc(p.institution)}, ${esc(p.country)}</p>
     <p>${esc(p.bio)}</p>
     <details class="person-more"><summary>Work with APARN</summary><ul>${p.activity.map((a) => `<li>${esc(a)}</li>`).join("")}</ul></details>
-    <p class="person-mail"><a href="mailto:${esc(p.email)}">${esc(p.email)}</a></p></div></article>`).join("")}</div>
+    ${p.email ? `<p class="person-mail"><a href="mailto:${esc(p.email)}">${esc(p.email)}</a></p>` : ""}</div></article>`).join("")}</div>
 </section>
 <section class="sec" id="contact" aria-labelledby="h-contact">
   <div class="split">
     <h2 id="h-contact" class="h2">Contact</h2>
     <div class="split-body"><p>${esc(c.site.contact.intro)}</p>
-    <p class="contact-main"><strong>${esc(c.site.contact.general.name)}</strong>, ${esc(c.site.contact.general.role)}<br><a href="mailto:${esc(c.site.contact.general.email)}">${esc(c.site.contact.general.email)}</a></p>
-    <p class="small">${esc(c.site.contact.note)}</p></div>
+    <p class="contact-main"><strong>${contactWho(c)}</strong><br><a href="mailto:${esc(c.site.contact.general.email)}">${esc(c.site.contact.general.email)}</a></p>
+    ${c.site.contact.note ? `<p class="small">${esc(c.site.contact.note)}</p>` : ""}</div>
   </div>
 </section>
 ${joinBlock(c, page)}`;

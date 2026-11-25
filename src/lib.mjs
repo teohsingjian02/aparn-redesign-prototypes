@@ -370,3 +370,6 @@ export function faviconLinks(page) {
 <link rel="icon" href="${rel(page, "assets/brand/favicon-192.png")}" sizes="192x192" type="image/png">
 <link rel="apple-touch-icon" href="${rel(page, "assets/brand/apple-touch-icon.png")}">`;
 }
+
+// ------------------------------------------------------------------ the shared contact (site.json, contact.general)
+export const contactWho = (c) => esc([c.site.contact.general.name, c.site.contact.general.role].filter(Boolean).join(", "));

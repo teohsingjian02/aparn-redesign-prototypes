@@ -209,13 +209,12 @@
   "established": "Established"
  },
  "contact": {
-  "intro": "For anything about APARN, write to the Director or one of the convenors.",
+  "intro": "For anything about APARN, write to the APARN team.",
   "general": {
-   "name": "Dr Roopesh Sitharan",
-   "role": "Director",
-   "email": "rs@mmu.edu.my"
+   "name": "APARN team",
+   "email": "aparnhq@gmail.com"
   },
-  "note": "On the production site, one shared contact address may suit better than listing personal emails.",
+  "note": "",
   "sources": [
    "team-2026-11",
    "jar-channel",

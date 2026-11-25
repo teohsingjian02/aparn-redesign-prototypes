@@ -6,7 +6,7 @@
 import {
   esc, rel, statusChip, sourceLinks, figure, ext, joinButton, templateButton, eventPath, nodeIndex, nodePanel,
   contributionsFilter, templatePreview, templateLimitsLine, presentationGuide, downloads, submissionDemo, recordModel, IMAGES,
-  HEAD_MOTION, riseWords, riseH1, countUp, homeFigures, homeWhy, homeTakePart, homeClosing, homePeople, personImg, brandLogo, faviconLinks, ARROW,
+  HEAD_MOTION, riseWords, riseH1, countUp, homeFigures, homeWhy, homeTakePart, homeClosing, homePeople, personImg, brandLogo, faviconLinks, contactWho, ARROW,
 } from "../lib.mjs";
 
 const C = ""; // Concept D is the whole of its own site, so its pages sit at the site root
@@ -111,7 +111,7 @@ ${index ? `<nav class="index" aria-label="Sections on this page" data-index>${in
     <div class="foot-a"><a class="logo" href="${rel(page, P(""))}">${brandLogo(page, { tone: "white", alt: "APARN home", sizes: "170px", lazy: true })}</a>
       <p>A Special Interest Group of the ${ext("https://societyforartisticresearch.org/", "Society for Artistic Research")}.</p>
       ${joinButton(c, "btn btn--join")}<p class="small">${esc(c.site.join.where)}</p></div>
-    <div><h2 class="foot-h">Contact</h2><p>${esc(c.site.contact.general.name)}, ${esc(c.site.contact.general.role)}<br><a href="mailto:${esc(c.site.contact.general.email)}">${esc(c.site.contact.general.email)}</a></p><p><a href="${rel(page, P("about/#contact"))}">All contacts</a></p></div>
+    <div><h2 class="foot-h">Contact</h2><p>${contactWho(c)}<br><a href="mailto:${esc(c.site.contact.general.email)}">${esc(c.site.contact.general.email)}</a></p><p><a href="${rel(page, P("about/#contact"))}">All contacts</a></p></div>
     <div><h2 class="foot-h">Elsewhere</h2><ul class="foot-list">
       <li>${ext("https://jar-online.net/en/channels/asia-pacific-artistic-research-network", "APARN in JAR")}</li>
       <li>${ext("https://societyforartisticresearch.org/sigs/asia-pacific-artistic-research-network", "APARN at SAR")}</li>
@@ -210,9 +210,9 @@ ${sec("people", "Director and convenors", `<div class="people">${c.people.people
   <h3 class="person-h">${esc(p.honorific)} ${esc(p.name)}</h3><p class="person-r">${p.roles.map(esc).join(" · ")}</p>
   <p class="person-i">${esc(p.institution)}, ${esc(p.country)}</p>
   <details class="more"><summary>About ${esc(p.name.split(" ")[0])}</summary><div class="more-in"><p>${esc(p.bio)}</p><ul class="plain">${p.activity.map((a) => `<li>${esc(a)}</li>`).join("")}</ul></div></details>
-  <p><a href="mailto:${esc(p.email)}">${esc(p.email)}</a></p></article>`).join("")}</div>
+  ${p.email ? `<p><a href="mailto:${esc(p.email)}">${esc(p.email)}</a></p>` : ""}</article>`).join("")}</div>
   <p class="small">Each conference also has its own organising team, listed in the <a href="${rel(page, P("archive/"))}">archive</a>.</p>`, { tint: true, lead: "The convenors look after the network between meetings." })}
-${sec("contact", "Contact", `<p class="big-contact" data-rise><strong>${esc(c.site.contact.general.name)}</strong>, ${esc(c.site.contact.general.role)}<br><a href="mailto:${esc(c.site.contact.general.email)}">${esc(c.site.contact.general.email)}</a></p><p class="small">${esc(c.site.contact.note)}</p>${joinCta(c)}`, { lead: esc(c.site.contact.intro) })}`;
+${sec("contact", "Contact", `<p class="big-contact" data-rise><strong>${contactWho(c)}</strong><br><a href="mailto:${esc(c.site.contact.general.email)}">${esc(c.site.contact.general.email)}</a></p>${c.site.contact.note ? `<p class="small">${esc(c.site.contact.note)}</p>` : ""}${joinCta(c)}`, { lead: esc(c.site.contact.intro) })}`;
   return { page, title: "About", description: "About APARN, its Director and convenors.", active: "about/", body };
 }
 

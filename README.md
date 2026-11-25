@@ -159,7 +159,7 @@ facts were checked on 24 November 2026.
    and licence.
 3. Confirm permission for every reused image with the artists and photographers.
 4. Approve the template limits and wording.
-5. Decide which contact addresses to publish (a shared APARN address may suit better than personal emails).
+5. Confirm who reads the shared contact address (aparnhq@gmail.com), and whether the convenors’ own emails stay on the About page.
 6. Decide where the site lives (aparn.net or a subdomain) and who maintains the content.
 7. Remove the prototype banner and the noindex tags, and add a privacy notice.
 8. Set up a real submission service (below).
