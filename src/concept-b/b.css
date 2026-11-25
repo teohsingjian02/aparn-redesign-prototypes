@@ -681,3 +681,6 @@ html:not(.anim)::view-transition-group(*), html:not(.anim)::view-transition-old(
 .foot-logo { display: block; width: min(100%, 46rem); aspect-ratio: 1046 / 344; background-image: linear-gradient(90deg, #16E0A6 0%, #29B8FF 20%, #FFC23D 45%, #FF5A4E 65%, #29B8FF 85%, #16E0A6 100%); background-size: 200% 100%;
   -webkit-mask: url(brand/logo-white-600.png) left center / contain no-repeat; mask: url(brand/logo-white-600.png) left center / contain no-repeat; }
 .anim .foot-logo { animation: b-flow 10s linear infinite; }
+
+/* opening titles (shared opening.css): night, the white mark and a sweep through the network's colours */
+.intro { --op-bg: #07080D; --op-line: linear-gradient(90deg, #16E0A6, #29B8FF, #FFC23D, #FF5A4E); --op-band: linear-gradient(100deg, transparent 32%, #16E0A6 41%, #29B8FF 47%, #FFC23D 53%, #FF5A4E 59%, transparent 68%); }

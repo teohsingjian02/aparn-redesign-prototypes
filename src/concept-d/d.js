@@ -1,4 +1,4 @@
-/* Concept D: Monochrome. The opening titles, the sliding navigation bar, the section index and the light that
+/* Concept D: Monochrome. The sliding navigation bar, the section index and the light that
    follows the pointer across the black title areas. Smooth scrolling, reveals, counters and the press ripple come
    from the shared motion.js. Nothing is stored and nothing is sent anywhere. */
 (function () {
@@ -6,36 +6,6 @@
   var d = document, root = d.documentElement;
   function still() { return !root.classList.contains("anim"); }
   function each(list, fn) { Array.prototype.forEach.call(list, fn); }
-
-  /* the opening titles on the home page: black, the APARN mark, a sweep of light, then the curtain opens.
-     The page head starts them only for visitors who arrive from outside the site. Any key, click, touch or
-     scroll ends them at once. */
-  function initIntro() {
-    var el = d.querySelector("[data-intro]");
-    if (!el) return;
-    if (!root.classList.contains("opening") || still()) { root.classList.remove("opening"); el.hidden = true; return; }
-    var done = false, timer = 0, EVENTS = ["keydown", "pointerdown", "wheel", "touchstart"];
-    function end() {
-      if (done) return;
-      done = true;
-      window.clearTimeout(timer);
-      EVENTS.forEach(function (ev) { window.removeEventListener(ev, end, true); });
-      root.classList.add("opening-out");
-      root.classList.remove("opening");
-      window.setTimeout(function () { root.classList.remove("opening-out"); el.hidden = true; }, 1100);
-    }
-    EVENTS.forEach(function (ev) { window.addEventListener(ev, end, { capture: true, passive: true }); });
-    // end when the last opening animation finishes (they start with the first paint, before this script runs)
-    var left = 1900;
-    if (el.getAnimations) {
-      left = 0;
-      el.getAnimations({ subtree: true }).forEach(function (a) {
-        var t = a.effect && a.effect.getComputedTiming ? a.effect.getComputedTiming() : null;
-        if (t && isFinite(t.endTime)) left = Math.max(left, t.endTime - (a.currentTime || 0));
-      });
-    }
-    timer = window.setTimeout(end, Math.min(2600, Math.max(250, left + 150)));
-  }
 
   /* a white bar slides under the main navigation, following the pointer and keyboard focus */
   function initNavBar() {
@@ -99,6 +69,6 @@
     });
   }
 
-  function init() { initIntro(); initNavBar(); initIndex(); initSpot(); }
+  function init() { initNavBar(); initIndex(); initSpot(); }
   if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); else init();
 })();

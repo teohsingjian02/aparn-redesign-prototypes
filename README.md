@@ -116,14 +116,19 @@ adds the class `anim` only when `prefers-reduced-motion` is not `reduce`. Nothin
 A small round button at the bottom of Concept C's footer switches to an inverted, dark palette and back, with a
 soft fade. The choice is remembered in that browser (localStorage, key `aparn-invert`).
 
-## The opening of Concept D
+## Opening titles
 
-Concept D's home page opens like a film when a visitor arrives from outside the site (a direct visit, a shared link
-or another site): the APARN mark appears on black, a sweep of light crosses it and the curtain lifts on the title,
-in about two seconds. Any key, click, touch or scroll ends it at once, and moving between pages of the site does not
-play it again. Nothing is stored to decide this: the page looks only at where the visitor came from
-(`document.referrer`). Below the title, a dial marks every APARN Conference since 2019, and its hand lights each
-meeting as it passes.
+Every home page opens like the start of a film when a visitor arrives from outside the site (a direct visit, a
+shared link or another site): the APARN mark comes into focus, a sweep of light crosses it, a line draws beneath it,
+and the curtain parts on the home page, in about two seconds. Each concept uses its own colours: warm paper with a
+cinnabar-to-amber sweep (A), night with the network's colours (B), white with blue to violet (C) and black with
+white light (D). Any key, click, touch or scroll ends the titles at once, and moving between pages of the site does
+not play them again. Nothing is stored to decide this: the page looks only at where the visitor came from
+(`document.referrer`). The shared parts are `OPENING_HEAD` and `opening()` in `src/lib.mjs`,
+`src/shared/opening.css` and the start of `src/shared/motion.js`.
+
+Concept D also has a dial below its title that marks every APARN Conference since 2019; its hand lights each meeting
+as it passes.
 
 ## Updating content
 

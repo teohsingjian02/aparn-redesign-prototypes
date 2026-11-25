@@ -6,7 +6,7 @@
 import {
   esc, rel, statusChip, sourceLinks, figure, ext, joinButton, templateButton, eventPath, nodeIndex, nodePanel,
   contributionsFilter, templatePreview, templateLimitsLine, presentationGuide, downloads, submissionDemo, recordModel, IMAGES,
-  HEAD_MOTION, riseWords, riseH1, countUp, homeFigures, homeWhy, homeTakePart, homeClosing, homePeople, personImg, brandLogo, faviconLinks, contactWho, ARROW,
+  HEAD_MOTION, OPENING_HEAD, opening, riseWords, riseH1, countUp, homeFigures, homeWhy, homeTakePart, homeClosing, homePeople, personImg, brandLogo, faviconLinks, contactWho, ARROW,
 } from "../lib.mjs";
 
 const C = ""; // Concept D is the whole of its own site, so its pages sit at the site root
@@ -52,13 +52,6 @@ function dial(c) {
 </figure>`;
 }
 
-// the opening titles (home page, when a visitor arrives from outside the site)
-function intro(page) {
-  return `<div class="intro" data-intro aria-hidden="true"><div class="intro-half intro-half--t"></div><div class="intro-half intro-half--b"></div>
-  <div class="intro-mark"><div class="intro-logo"><img src="${rel(page, "assets/brand/logo-white-600.png")}" width="600" height="198" alt=""><span class="intro-glint"></span></div><span class="intro-line"></span></div></div>`;
-}
-const INTRO_HEAD = `<script>try { var r = document.referrer, b = location.href.split(/[?#]/)[0].replace(/index\\.html$/, ""); if (!r || r.indexOf(b) !== 0) document.documentElement.classList.add("opening"); } catch (e) {}</script>`;
-
 // ------------------------------------------------------------------ page shell
 const NAV = [["about/", "About"], ["network/", "Network"], ["programme/", "Programme"], ["publication/", "Publication"], ["archive/", "Archive"]];
 function shell(c, page, { title, description, active, body, index }) {
@@ -75,14 +68,14 @@ function shell(c, page, { title, description, active, body, index }) {
 ${faviconLinks(page)}
 <link rel="preload" href="${rel(page, "assets/fonts/manrope-normal-latin-1.woff2")}" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="${rel(page, P("assets/d.css"))}">
-${HEAD_MOTION}${home ? `\n${INTRO_HEAD}` : ""}
+${HEAD_MOTION}${home ? `\n${OPENING_HEAD}` : ""}
 <script defer src="${rel(page, "assets/js/aparn.js")}"></script>
 <script defer src="${rel(page, "assets/js/motion.js")}"></script>
 <script defer src="${rel(page, "assets/js/d.js")}"></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-${home ? intro(page) : ""}
+${home ? opening(page, "white") : ""}
 <header class="top dark" data-top>
   <div class="wrap top-in">
     <a class="logo" href="${rel(page, P(""))}">${brandLogo(page, { tone: "white", alt: "APARN home", sizes: "130px" })}</a>

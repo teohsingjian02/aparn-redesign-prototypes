@@ -1,5 +1,5 @@
-/* APARN prototypes: shared motion for all three concepts (no dependencies).
-   Smooth scrolling up and down, a reading-progress line, back to top, content that rises in from the side you
+/* APARN prototypes: shared motion for all four concepts (no dependencies).
+   Opening titles on the home page, smooth scrolling up and down, a reading-progress line, back to top, content that rises in from the side you
    scroll from, counting figures and a soft press ripple on buttons. Animations are always on: the page head adds
    class "anim" to <html>. Nothing is stored and nothing is sent anywhere. */
 (function () {
@@ -8,6 +8,36 @@
   function still() { return !root.classList.contains("anim"); }
   function each(list, fn) { Array.prototype.forEach.call(list, fn); }
   var riseOn = false, countOn = false;
+
+  /* the opening titles on the home page: the APARN mark, a sweep of light, then the curtain opens.
+     The page head starts them only for visitors who arrive from outside the site. Any key, click, touch or
+     scroll ends them at once; otherwise they end when their last animation finishes. */
+  function initOpening() {
+    var el = d.querySelector("[data-intro]");
+    if (!el) return;
+    if (!root.classList.contains("opening") || still()) { root.classList.remove("opening"); el.hidden = true; return; }
+    var done = false, timer = 0, EVENTS = ["keydown", "pointerdown", "wheel", "touchstart"];
+    function end() {
+      if (done) return;
+      done = true;
+      window.clearTimeout(timer);
+      EVENTS.forEach(function (ev) { window.removeEventListener(ev, end, true); });
+      root.classList.add("opening-out");
+      root.classList.remove("opening");
+      window.setTimeout(function () { root.classList.remove("opening-out"); el.hidden = true; }, 1100);
+    }
+    EVENTS.forEach(function (ev) { window.addEventListener(ev, end, { capture: true, passive: true }); });
+    // the animations start with the first paint, before this script runs: end when the last of them finishes
+    var left = 1900;
+    if (el.getAnimations) {
+      left = 0;
+      el.getAnimations({ subtree: true }).forEach(function (a) {
+        var t = a.effect && a.effect.getComputedTiming ? a.effect.getComputedTiming() : null;
+        if (t && isFinite(t.endTime)) left = Math.max(left, t.endTime - (a.currentTime || 0));
+      });
+    }
+    timer = window.setTimeout(end, Math.min(2600, Math.max(250, left + 150)));
+  }
 
   /* header state, reading progress and the back-to-top button */
   function initScroll() {
@@ -118,6 +148,6 @@
     d.addEventListener("animationend", function (e) { if (e.animationName === "m-ripple") e.target.classList.remove("is-rippling"); });
   }
 
-  function init() { initScroll(); initSmooth(); initRise(); initCount(); initPress(); }
+  function init() { initOpening(); initScroll(); initSmooth(); initRise(); initCount(); initPress(); }
   if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); else init();
 })();

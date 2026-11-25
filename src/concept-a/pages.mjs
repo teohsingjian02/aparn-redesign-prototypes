@@ -3,7 +3,7 @@
 import {
   esc, rel, statusChip, sourceLinks, img, figure, ext, EXT, joinButton, templateButton, eventPath, nodeIndex, nodePanel,
   contributionsFilter, templatePreview, templateLimitsLine, presentationGuide, downloads, submissionDemo, recordModel, IMAGES,
-  HEAD_MOTION, motionSwitch, progressBar, toTop, riseWords, riseH1, countUp, homeFigures, homeWhy, homeTakePart, homeClosing, ARROW, homePeople, personImg, brandLogo, faviconLinks, contactWho,
+  HEAD_MOTION, OPENING_HEAD, opening, motionSwitch, progressBar, toTop, riseWords, riseH1, countUp, homeFigures, homeWhy, homeTakePart, homeClosing, ARROW, homePeople, personImg, brandLogo, faviconLinks, contactWho,
 } from "../lib.mjs";
 
 const C = ""; // Concept A is the whole of its own site, so its pages sit at the site root
@@ -48,13 +48,13 @@ function shell(c, page, { title, description, active, body }) {
 ${faviconLinks(page)}
 <link rel="preload" href="${rel(page, "assets/fonts/newsreader-normal-latin-3.woff2")}" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="${rel(page, P("assets/a.css"))}">
-${HEAD_MOTION}
+${HEAD_MOTION}${page === "" ? `\n${OPENING_HEAD}` : ""}
 <script defer src="${rel(page, "assets/js/aparn.js")}"></script>
 <script defer src="${rel(page, "assets/js/motion.js")}"></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<header class="masthead" data-top>
+${page === "" ? opening(page, "black") + "\n" : ""}<header class="masthead" data-top>
   <div class="masthead-inner">
     <a class="wordmark" href="${rel(page, P(""))}">${brandLogo(page, { alt: "APARN home", sizes: "150px" })}</a>
     <nav class="site-nav" aria-label="Main">

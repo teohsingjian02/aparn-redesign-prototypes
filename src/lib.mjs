@@ -371,5 +371,14 @@ export function faviconLinks(page) {
 <link rel="apple-touch-icon" href="${rel(page, "assets/brand/apple-touch-icon.png")}">`;
 }
 
+// ------------------------------------------------------------------ opening titles on each home page
+// The head script starts them only for visitors who arrive from outside the site (nothing is stored); motion.js
+// ends them, and src/shared/opening.css draws them in each concept's colours. `tone` is the logo: black or white.
+export const OPENING_HEAD = `<script>try { var r = document.referrer, b = location.href.split(/[?#]/)[0].replace(/index\\.html$/, ""); if (!r || r.indexOf(b) !== 0) document.documentElement.classList.add("opening"); } catch (e) {}</script>`;
+export function opening(page, tone = "white") {
+  return `<div class="intro" data-intro aria-hidden="true"><div class="intro-half intro-half--t"></div><div class="intro-half intro-half--b"></div>
+  <div class="intro-mark"><div class="intro-logo"><img src="${rel(page, `assets/brand/logo-${tone}-600.png`)}" width="600" height="198" alt=""><span class="intro-glint"></span></div><span class="intro-line"></span></div></div>`;
+}
+
 // ------------------------------------------------------------------ the shared contact (site.json, contact.general)
 export const contactWho = (c) => esc([c.site.contact.general.name, c.site.contact.general.role].filter(Boolean).join(", "));

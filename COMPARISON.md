@@ -82,7 +82,6 @@ Classic, low-key and strong: black title areas and a strict black and grey hiera
 
 **Trade-offs**
 
-- The opening titles take about two seconds on a first visit (any key, click or scroll skips them).
 - Without colour, warmth has to come from the photographs and the wording.
 
 ## Side by side
@@ -111,5 +110,6 @@ Classic, low-key and strong: black title areas and a strict black and grey hiera
 - An archive of every gathering since 2019, with programmes, organisers and links to the published work.
 - Content kept in JSON files, pages readable without JavaScript, keyboard and screen-reader support, and layouts checked at 360, 768 and 1440 pixels.
 - Smooth motion in all four: links scroll smoothly up and down, sections glide in from the direction you scroll, figures count up, headlines rise in and their gradient words keep flowing, buttons respond to a press and pages fade into each other.
+- Opening titles on every home page, in each concept’s own colours: the APARN mark, a sweep of light and a curtain that parts, in about two seconds. They play only when a visitor arrives from outside the site, and any key, click or scroll skips them.
 
 Screenshots are in [screenshots/](screenshots/). The four home pages in greyscale are in [screenshots/greyscale-home.jpg](screenshots/greyscale-home.jpg).

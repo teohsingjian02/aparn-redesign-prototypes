@@ -218,6 +218,7 @@ async function behaviour(browser, site) {
 
   if (site.key === "c") await behaviourC(desk, phone, site);
   if (site.key === "d") await behaviourD(desk, phone, site);
+  await openingTest(desk, site);
 
   // shared: template downloads, demo, direct link and refresh, 404
   for (const f of [template.files.docx, template.files.pdf]) {
@@ -315,33 +316,40 @@ async function behaviourC(desk, phone, site) {
   check(await phone.$(`document.activeElement === document.querySelector('[data-select-panel="bangkok"]')`), "C 360px: choosing an item moves focus to its story");
 }
 
-async function behaviourD(desk, phone, site) {
-  const regional = JSON.parse(readFileSync(join(ROOT, "content", "events.json"), "utf8")).events.filter((e) => e.kind === "regional");
+// the opening titles on every home page: they play on arrival from outside the site, any key ends them, they also
+// end by themselves with the title in place, and moving within the site does not play them again
+async function openingTest(desk, site) {
+  const K = site.key.toUpperCase();
   const root = JSON.stringify(site.root);
-  // arrive at the home page from outside the site (no referrer), as a visitor following a shared link would
-  const arrive = async (p) => {
-    await p.goto("about:blank", 50);
-    await p.$(`location.href = ${root}, true`);
-    for (let i = 0; i < 60; i++) { await sleep(50); if (await p.$(`location.href === ${root} && !!document.querySelector("[data-intro]")`).catch(() => false)) return; }
+  const reached = `location.href === ${root} && !!document.querySelector("[data-intro]")`;
+  const arrive = async () => {
+    await desk.goto("about:blank", 50);
+    await desk.$(`location.href = ${root}, true`);
+    for (let i = 0; i < 60; i++) { await sleep(50); if (await desk.$(reached).catch(() => false)) return; }
   };
   const settled = `!/opening/.test(document.documentElement.className) && document.querySelector("[data-intro]").hidden`;
-  // the opening titles: they play on arrival, any key ends them, they also end by themselves, and moving
-  // within the site does not play them again
-  await arrive(desk);
-  check(await desk.$(`document.documentElement.classList.contains("opening") && getComputedStyle(document.querySelector("[data-intro]")).display === "block"`), "D: the opening titles play when a visitor arrives");
+  await arrive();
+  check(await desk.$(`document.documentElement.classList.contains("opening") && getComputedStyle(document.querySelector("[data-intro]")).display === "block"`), `${K}: the opening titles play when a visitor arrives`);
   await desk.key("Escape", "Escape", 27);
   await sleep(1400);
-  check(await desk.$(settled), "D: any key ends the opening titles at once");
-  await arrive(desk);
+  check(await desk.$(settled), `${K}: any key ends the opening titles at once`);
+  await arrive();
   await sleep(4600);
-  check(await desk.$(`${settled} && (() => { const t = getComputedStyle(document.querySelector(".hero-h .wi")).transform; return t === "none" || new DOMMatrixReadOnly(t).isIdentity; })()`), "D: the opening titles end by themselves and the title is in place");
+  check(await desk.$(`${settled} && (() => { const t = getComputedStyle(document.querySelector("main h1 .wi")).transform; return t === "none" || new DOMMatrixReadOnly(t).isIdentity; })()`), `${K}: the opening titles end by themselves and the title is in place`);
+  await desk.goto(site.root + "about/", 300);
+  await desk.$(`location.href = ${root}, true`);
+  for (let i = 0; i < 40; i++) { await sleep(50); if (await desk.$(reached).catch(() => false)) break; }
+  await sleep(300);
+  check(await desk.$(`location.href === ${root} && ${settled}`), `${K}: coming back to the home page from inside the site skips the opening titles`);
+}
+
+async function behaviourD(desk, phone, site) {
+  const regional = JSON.parse(readFileSync(join(ROOT, "content", "events.json"), "utf8")).events.filter((e) => e.kind === "regional");
+  await desk.goto(site.root, 400);
+  await desk.key("Escape", "Escape", 27);
+  await sleep(1800);
   const dial = await desk.$(`({ marks: document.querySelectorAll(".dial-m").length, tbc: document.querySelectorAll(".dial-m--tbc").length, sweep: document.getAnimations().some((a) => a.animationName === "d-sweep" && a.playState === "running") })`);
   check(dial.marks === regional.length && dial.tbc === regional.filter((e) => e.status === "tbc").length && dial.sweep, `D: the dial marks every APARN Conference and its hand sweeps (${JSON.stringify(dial)})`);
-  await desk.goto(site.root + "about/", 300);
-  await desk.$(`document.querySelector(".top .logo").click(), true`);
-  for (let i = 0; i < 40; i++) { await sleep(50); if (await desk.$(`location.href === ${root} && !!document.querySelector("[data-intro]")`).catch(() => false)) break; }
-  await sleep(300);
-  check(await desk.$(`location.href === ${root} && ${settled}`), "D: coming back to the home page from inside the site skips the opening titles");
   // home: figures, the section index, smooth scrolling and back to top
   await desk.goto(site.root, 400);
   await desk.key("Escape", "Escape", 27);

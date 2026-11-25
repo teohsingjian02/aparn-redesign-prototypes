@@ -226,7 +226,7 @@ for (const site of SITES) {
   const out = join(DIST, site.repo);
   const pages = site.build(c);
   for (const p of pages) writeOut(out, `${p.path}index.html`, p.html);
-  writeOut(out, `assets/${site.cssName}`, `${fontFaces(site.fonts)}\n${readFileSync(join(ROOT, site.css), "utf8")}`);
+  writeOut(out, `assets/${site.cssName}`, `${fontFaces(site.fonts)}\n${readFileSync(join(ROOT, "src", "shared", "opening.css"), "utf8")}\n${readFileSync(join(ROOT, site.css), "utf8")}`);
   for (const f of readdirSync(join(STATIC, "brand"))) copyInto(out, `assets/brand/${f}`, join(STATIC, "brand", f));
   copyInto(out, "favicon.ico", join(STATIC, "brand", "favicon.ico"));
   writeOut(out, "assets/js/aparn.js", readFileSync(join(ROOT, "src", "shared", "aparn.js"), "utf8"));

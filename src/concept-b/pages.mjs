@@ -3,7 +3,7 @@
 import {
   esc, rel, statusChip, sourceLinks, img, figure, ext, EXT, joinButton, templateButton, eventPath, nodeIndex, nodePanel,
   contributionsFilter, templatePreview, templateLimitsLine, presentationGuide, downloads, submissionDemo, recordModel, IMAGES,
-  HEAD_MOTION, motionSwitch, progressBar, toTop, riseLines, riseH1, countUp, homeFigures, homeWhy, homeTakePart, homeClosing, ARROW, homePeople, personImg, brandLogo, faviconLinks, contactWho,
+  HEAD_MOTION, OPENING_HEAD, opening, motionSwitch, progressBar, toTop, riseLines, riseH1, countUp, homeFigures, homeWhy, homeTakePart, homeClosing, ARROW, homePeople, personImg, brandLogo, faviconLinks, contactWho,
 } from "../lib.mjs";
 
 // blocks that rise into view as you scroll (added to the rendered page so the templates stay readable)
@@ -48,13 +48,13 @@ function shell(c, page, { title, description, active, body }) {
 ${faviconLinks(page)}
 <link rel="preload" href="${rel(page, "assets/fonts/archivo-normal-latin-3.woff2")}" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="${rel(page, P("assets/b.css"))}">
-${HEAD_MOTION}
+${HEAD_MOTION}${page === "" ? `\n${OPENING_HEAD}` : ""}
 <script defer src="${rel(page, "assets/js/aparn.js")}"></script>
 <script defer src="${rel(page, "assets/js/motion.js")}"></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<svg class="defs" width="0" height="0" aria-hidden="true" focusable="false"><defs><linearGradient id="b-grad" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1300" y2="0"><stop offset="0" stop-color="#16E0A6"/><stop offset=".5" stop-color="#FFC23D"/><stop offset="1" stop-color="#FF4D3D"/></linearGradient></defs></svg>
+${page === "" ? opening(page, "white") + "\n" : ""}<svg class="defs" width="0" height="0" aria-hidden="true" focusable="false"><defs><linearGradient id="b-grad" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1300" y2="0"><stop offset="0" stop-color="#16E0A6"/><stop offset=".5" stop-color="#FFC23D"/><stop offset="1" stop-color="#FF4D3D"/></linearGradient></defs></svg>
 <header class="bar" data-top>
   <a class="bar-mark" href="${rel(page, P(""))}">${brandLogo(page, { tone: "white", alt: "APARN home", sizes: "140px" })}</a>
   <nav class="bar-quick" aria-label="Quick links">

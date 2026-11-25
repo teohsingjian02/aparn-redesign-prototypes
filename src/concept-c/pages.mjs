@@ -3,7 +3,7 @@
 import {
   esc, rel, statusChip, sourceLinks, figure, ext, EXT, joinButton, templateButton, eventPath, nodeIndex, nodeHref,
   contributionsFilter, templatePreview, templateLimitsLine, presentationGuide, downloads, submissionDemo, recordModel, IMAGES,
-  HEAD_MOTION, motionSwitch, riseWords, riseH1, homeFigures, homeWhy, homeTakePart, homeClosing, homePeople, personImg, brandLogo, faviconLinks, contactWho,
+  HEAD_MOTION, OPENING_HEAD, opening, motionSwitch, riseWords, riseH1, homeFigures, homeWhy, homeTakePart, homeClosing, homePeople, personImg, brandLogo, faviconLinks, contactWho,
 } from "../lib.mjs";
 
 const C = ""; // Concept C is the whole of its own site, so its pages sit at the site root
@@ -57,7 +57,7 @@ function shell(c, page, { title, description, active, body, index }) {
 ${faviconLinks(page)}
 <link rel="preload" href="${rel(page, "assets/fonts/roboto-normal-latin-3.woff2")}" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="${rel(page, P("assets/c.css"))}">
-${HEAD_MOTION}
+${HEAD_MOTION}${page === "" ? `\n${OPENING_HEAD}` : ""}
 <script>try { if (localStorage.getItem("aparn-invert") === "on") document.documentElement.classList.add("invert"); } catch (e) {}</script>
 <script defer src="${rel(page, "assets/js/aparn.js")}"></script>
 <script defer src="${rel(page, "assets/js/motion.js")}"></script>
@@ -65,7 +65,7 @@ ${HEAD_MOTION}
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<header class="top" data-top>
+${page === "" ? opening(page, "black") + "\n" : ""}<header class="top" data-top>
   <div class="wrap top-in">
     <a class="logo" href="${rel(page, P(""))}">${brandLogo(page, { alt: "APARN home", sizes: "140px" })}</a>
     <nav class="nav" aria-label="Main" data-navbar>
